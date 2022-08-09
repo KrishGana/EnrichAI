@@ -1,0 +1,60 @@
+#RejectReasonBody {
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+
+    .header {
+        width: 100%;
+        align-items: left;
+        background-color: #2085fb;
+        color: white;
+        border-radius: 10px;
+
+        .head_Txt {
+            position: relative;
+            top: 7px;
+            left: 15px;
+        }
+
+    }
+
+    .content {
+        border: 1px solid blue;
+        padding: 15px;
+        border-radius: 10px;
+        height: 150px;
+        overflow: auto;
+
+        .title {
+            font-size: 14px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .text {
+            font-size: 13px;
+            font-weight: 500;
+            position: relative;
+            left: 15px;
+        }
+    }
+
+    .content::-webkit-scrollbar {
+        display: none;
+    }
+
+    .reason_Txt{
+        font-weight: 600;
+    }
+    .btn_row{
+        width: 100%;
+        .cancelBtn{
+            background-color: rgb(236, 8, 8);
+            color: white;
+        }
+        .submitBtn{
+            background-color: #2085fb;
+            color: white;
+        }
+    }
+}

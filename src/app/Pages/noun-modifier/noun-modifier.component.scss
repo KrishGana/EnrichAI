@@ -1,0 +1,297 @@
+#NounModifierBody {
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+    width: 100%;
+    height: 100%;
+    background-color: #f8fbff;
+
+    .noundiv {
+        background-color: #f8fbff;
+        height: 100% !important;
+
+        .noun {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1e3e67;
+        }
+
+        .text {
+            background-color: #2085fb;
+            width: 230px;
+            height: 26px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            border-radius: 4px;
+            color: white;
+            font-size: 12px;
+            margin-left: 1rem;
+            padding-left: 5px;
+        }
+
+        .search_icondiv {
+            width: 50px;
+            height: 30px;
+            background-color: white;
+            border-radius: 4px;
+            position: relative;
+            bottom: 3px;
+            right: 5px;
+        }
+
+        .search_icon {
+            width: 15px;
+        }
+
+        .create {
+            font-size: 12px;
+            font-weight: 600;
+            color: black;
+            cursor: pointer;
+        }
+
+        .create:hover {
+            color: green;
+        }
+
+        .createbox {
+            text-align: right;
+
+            .menu1 {
+                font-size: 12px;
+                font-weight: 600;
+                color: #1e3e67;
+                font-family: 'poppins' !important;
+                text-align: right;
+                width: 165px;
+                height: 35px;
+            }
+
+            .menubtn {
+                width: 125px;
+            }
+
+            .cross {
+                width: 15px;
+            }
+
+            .dropdown {
+                width: 12px;
+                cursor: pointer;
+            }
+        }
+
+
+    }
+
+
+    .tableFixHead {
+        overflow: auto;
+
+        th {
+            position: sticky;
+            top: 0;
+        }
+
+        .nountable {
+            box-shadow: 0px 10px 30px 0px rgba(151, 197, 253, 0.36);
+            height: 86%;
+            background-color: white;
+        }
+
+        .nountab {
+            height: auto;
+            font-family: 'poppins' !important;
+
+            .headerCell {
+                text-align: left;
+                background-color: #2085fb;
+                color: white;
+            }
+
+            .Td {
+                text-align: left;
+                height: 55px;
+            }
+
+            .tab_inp {
+                color: rgb(78, 72, 72);
+                font-size: 12px;
+                font-weight: bold;
+                font-family: 'poppins' !important;
+
+
+            }
+
+            .tab_inp:focus {
+                color: rgb(190, 189, 189);
+                opacity: 1;
+                font-size: 12px;
+                font-weight: bold;
+                font-family: 'poppins' !important;
+            }
+
+            input:disabled {
+                color: rgb(78, 72, 72);
+            }
+
+            .editIcon {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .attributediv {
+        .tablediv {
+            background-color: white;
+            height: 100%;
+            border-radius: 4px;
+            box-shadow: 0px 10px 30px 0px rgba(151, 197, 253, 0.36);
+            border-radius: 4px;
+
+            .image {
+                margin-left: 50px;
+                width: 70%;
+                height: 50%;
+            }
+
+            .attrbTable {
+                overflow: auto;
+                font-family: 'poppins' !important;
+                height: 50%;
+
+                .att_table {
+                    border-radius: 4px;
+
+                    .att_header {
+                        color: black;
+                        text-align: left;
+                        font-weight: 600;
+                    }
+
+                    .pad {
+                        padding-top: 8px;
+                    }
+
+                    .divider {
+                        width: 100%;
+                        margin-top: 20px;
+                    }
+
+                    .input {
+                        color: rgb(78, 72, 72);
+                        font-size: 12px;
+                        font-weight: bold;
+                        font-family: 'poppins' !important;
+                    }
+
+                    .input:focus {
+                        color: rgb(190, 189, 189);
+                        opacity: 1;
+                    }
+
+                    .mat-form-field-underline {
+                        display: none;
+                    }
+
+                    .plus {
+                        min-width: 170px;
+                    }
+
+                    .addicon {
+                        width: 14px;
+                        cursor: pointer;
+                    }
+
+                    .att_Td {
+                        text-align: left;
+                        width: 10%;
+                    }
+                }
+            }
+
+        }
+
+
+    }
+
+    ::placeholder {
+        color: white;
+        font-size: 10px;
+        font-weight: 500;
+        margin-left: 20px;
+        line-height: 27px;
+    }
+
+    table {
+        width: 100%;
+        border-radius: 20px;
+    }
+
+    tr.mat-header-row {
+        height: 42px;
+        border: none;
+        border-bottom-style: none;
+    }
+
+    th {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    th.mat-header-cell {
+        border-bottom-width: 0px;
+        border-bottom-style: solid black;
+        font-weight: 500;
+    }
+
+    td.mat-cell {
+        border-bottom-style: none;
+        font-size: 12px;
+        font-weight: bold;
+        //color: #98abc4;
+    }
+
+    .mat-row.highlighted .mat-cell input:disabled {
+        color: #2085fb !important;
+    }
+
+    .mat-menu-item:hover:not([disabled]),
+    .mat-menu-item.cdk-program-focused:not([disabled]),
+    .mat-menu-item.cdk-keyboard-focused:not([disabled]),
+    .mat-menu-item-highlighted:not([disabled]) {
+        background: transparent;
+        color: #2085fb;
+    }
+
+    .mat-menu-content:not(:empty) {
+        padding-top: 0px;
+        padding-bottom: 10px;
+    }
+
+}
+
+.center {
+    position: absolute !important;
+    top: 50% !important;
+    left: 30% !important;
+    -moz-transform: translateX(-50%) translateY(-50%) !important;
+    -webkit-transform: translateX(-50%) translateY(-50%) !important;
+    transform: translateX(-50%) translateY(-50%) !important;
+}
+
+.mat-paginator-range-label {
+    display: none !important;
+}
+
+.mat-paginator-icon {
+    width: 2px;
+    fill: currentColor;
+}
+
+.mat-paginator-icon {
+    width: 14px !important;
+    fill: currentColor;
+}

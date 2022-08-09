@@ -1,0 +1,48 @@
+<mat-card fxLayout="column" id="RejectReasonBody" fxLayoutGap="15px">
+    <div class="header">
+        <h2 class="head_Txt">Rejection Reason</h2>
+    </div>
+    <div fxLayout="row" fxLayoutGap="15px" class="content">
+        <!-- {{data["RejectData"]["Material"]}} -->
+        <div fxFlex="50" fxLayout="column" fxLayoutGap="15px">
+            <div fxLayout="row" fxLayoutGap="10px">
+                <span class="title" fxFlex="50" fxLayoutAlign="start">Material</span>
+                <span class="text" fxFlex="50" fxLayoutAlign="start">{{data["RejectData"]["Material"]}}</span>
+            </div>
+            <div fxLayout="row" fxLayoutGap="10px">
+                <span class="title" fxFlex="50" fxLayoutAlign="start">Noun</span>
+                <span class="text" fxFlex="50" fxLayoutAlign="start">{{data["RejectData"]["nounn"]}}</span>
+            </div>
+            <div fxLayout="row" fxLayoutGap="10px">
+                <span class="title" fxFlex="50" fxLayoutAlign="start">Modifier</span>
+                <span class="text" fxFlex="50" fxLayoutAlign="start">{{data["RejectData"]["modifier"]}}</span>
+            </div>
+        </div>
+        <div fxFlex="50" fxLayout="column" fxLayoutGap="15px">
+            <div fxLayout="row" fxLayoutGap="10px">
+                <span class="title" fxFlex="50" fxLayoutAlign="start">Po Text</span>
+                <span class="text" fxFlex="50" fxLayoutAlign="start">{{data["RejectData"]["Potext"]}}</span>
+            </div>
+            <div fxLayout="row" fxLayoutGap="10px">
+                <span class="title" fxFlex="50" fxLayoutAlign="start">Enrich Text</span>
+                <span class="text" fxFlex="50" fxLayoutAlign="start">{{data["RejectData"]["enrichtxt"]}}</span>
+            </div>
+            <div fxLayout="row" fxLayoutGap="10px">
+                <span class="title" fxFlex="50" fxLayoutAlign="start">Enrich Po Text</span>
+                <span class="text" fxFlex="50" fxLayoutAlign="start">{{data["RejectData"]["enrichpotxt"]}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="10px">
+        <span class="reason_Txt">Reason for Rejecting the Noun-Modifier <span style="color: red;">*</span></span>
+        <mat-form-field class="example-full-width" appearance="outline" >
+            <mat-label>Leave a comment</mat-label>
+            <textarea matInput placeholder="Ex. The reson for rejecting the..." [formControl]="Rejectreason"></textarea>
+        </mat-form-field>
+        <div class="btn_row" fxLayoutAlign="end" fxLayoutGap="15px">
+            <button mat-flat-button class="cancelBtn" (click)="Close('Close')">Cancel</button>
+            <button mat-flat-button class="submitBtn" (click)="Close('Submit')">Submit</button>
+        </div>
+    </div>
+</mat-card>

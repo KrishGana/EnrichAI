@@ -1,0 +1,84 @@
+.wholeDiv{
+    z-index: 1000;
+}
+
+.library_header{
+    color: black;
+    font-size: large;   
+    font-weight: 500;
+    margin-left: 15px;
+}
+.library_header_column,.tabledata1{
+    color: #2085fb;
+    font-size: medium;
+}
+.ogtext{
+    color: #2085fb;
+    font-size: medium;
+    margin-left: 6.6%;
+    margin-top: 18%;
+}
+.ogtext1{
+    color: #2085fb;
+    font-size: medium;
+}
+.passeddata{
+    color : #c1ccdc;
+    font-size: normal;
+}
+
+.imgcreate{
+     position: absolute;
+     right: 305px;
+    transform: scale(0.8);
+ }
+
+.textregion
+{
+    margin-top: 40px;
+}
+.headers{
+    margin-top: 20px;
+}
+.originaltext{
+    width: 40%;
+    height: 50px;
+    border: 2px solid #ebeef4;
+    color: #ebeef4;
+    padding-left: 20px;
+    padding-top: 15px;
+
+}
+.close{
+    position: fixed;
+    margin-left: 5%;
+}
+.col{
+    color: white;
+}
+.createbutton{
+    width: 50%;
+    background-color: #2085fb;
+    color: white;
+    font-size: medium;
+    margin-top: 9%;
+}
+.buttonclose{
+    margin-bottom: 20px;
+}
+.ogtexts{
+    width: 320px;
+}
+.horizontal{
+    width :75%;
+    height: 3px;
+    background-color:#eff2f6;
+    margin-top: 5%;
+}
+.add_button1{
+    background-color: #f7f7f7;
+    color:  #2085fb;
+    transform: scale(0.8);
+    box-shadow: none;
+    margin-top: 5px;
+}

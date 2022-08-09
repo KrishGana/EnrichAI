@@ -1,0 +1,73 @@
+#Background-login {
+    width: 100%;
+    height: 100vh;
+    background: url("/assets/images/BackgroundLogin.png");
+    background-size: 96% 99.5%;
+    background-repeat: no-repeat;
+
+    .size-div {
+        background-color: white;
+        height: 73.5%;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px 0 rgba(151, 197, 253, 0.36);
+
+
+        .Loginimg {
+            height: 100%;
+            padding: 20px 0 20px 20px;
+
+            img {
+                width: 93%;
+            }
+        }
+
+        .LoginForm {
+            padding: 20px 20px 0 0;
+
+            .Powered {
+                span {
+                    opacity: 0.6;
+                    color: #c4c4c4;
+                }
+            }
+
+            .logo {
+                img {
+                    width: 6rem;
+                }
+            }
+
+            .FormLogin {
+                padding-left: 10%;
+
+                .signin {
+                    color: #2085fb;
+                    font-weight: 600;
+                    font-size: 20px;
+                }
+
+                .signcontinue {
+                    color: #1e3e67;
+                    font-weight: 600;
+                }
+            }
+
+            .forgotPwd {
+                span {
+                    color: #2085fb;
+                    font-weight: 600;
+                    cursor: pointer;
+                }
+            }
+
+            .loginbutton {
+                background-color: #2085fb;
+                border-radius: 4px;
+                width: 40%;
+                color: white;
+            }
+        }
+
+
+    }
+}

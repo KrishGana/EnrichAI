@@ -1,0 +1,142 @@
+<div fxFlex="100" fxLayout="row" id="catelogueBody">
+    <div fxFlex="70" class="firstHalf">
+
+        <div fxLayout="row" class="filterRow" fxLayoutAlign="space-between center">
+            <div fxLayout="row" fxLayoutGap="10px">
+                <span class="catelogTxt">Catalogue</span>
+                <div class="total">{{dataSource.data.length}}</div>
+            </div>
+            <div fxLayout="row">
+                <img class="imgcreate" matTooltip="Scan here" src="./assets/images/barcode-scanner.png">
+                <div class="search-to-do">
+                    <input matInput class="search_input" type="text" placeholder="Search to - do" (keyup)="applyFilter($event)" #input>
+                </div>
+                <div class="searchplace">
+                    <img class="search_place" src="./assets/images/XMLID_223_.svg">
+                </div>
+            </div>
+        </div>
+
+        <div class="TableDiv">
+            <div class="catcontent">
+                <table mat-table [dataSource]="dataSource" class="MaterialTable mat-elevation-z8">
+                    <ng-container matColumnDef="Image" sticky>
+                        <th mat-header-cell *matHeaderCellDef class="tab_header"> Image </th>
+                        <td mat-cell *matCellDef="let element" class="tab_data">
+                            <img src="./assets/images/Group 8292.png" (mouseenter)="display($event)"
+                                (mouseleave)="hide()">
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Name">
+                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Description">
+                        <th mat-header-cell *matHeaderCellDef> Description </th>
+                        <td mat-cell *matCellDef="let element">
+                            <div fxLayout="row" fxLayoutGap="5px">
+                                <span>{{element.Description}} </span>
+                                <img matTooltip="{{Des}}" src="./assets/images/potexts.svg">
+                            </div>
+                        </td>
+                    </ng-container>
+
+
+                    <ng-container matColumnDef="Item">
+                        <th mat-header-cell *matHeaderCellDef> Item </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Item}} </td>
+                    </ng-container>
+
+
+                    <ng-container matColumnDef="Commodity">
+                        <th mat-header-cell *matHeaderCellDef> Commodity </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Commodity}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Model">
+                        <th mat-header-cell *matHeaderCellDef> Model </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Model}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="CPage">
+                        <th mat-header-cell *matHeaderCellDef> CPage </th>
+                        <td mat-cell *matCellDef="let element"> {{element.CPage}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="FullText" stickyEnd>
+                        <th mat-header-cell *matHeaderCellDef class="end_th"> FullText </th>
+                        <td mat-cell *matCellDef="let element">
+                            <div fxLayout="row" fxLayoutGap="5px">
+                                <span>{{element.FullText}} </span>
+                                <img matTooltip="{{Ft}}" src="./assets/images/potexts.svg">
+                            </div>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="SearchMaterial(row)"></tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    <div fxFlex="30" class="secondHalf" fxLayout="column" fxLayoutGap="20px">
+        <div class="First-div">
+            <div fxLayout="row" class="FirstRow" fxLayoutGap="15px">
+                <img class="Recently_Added_img" src="./assets/images/4091120.png">
+                <span class="Recently_Added_txt">Recently Added Materials</span>
+            </div>
+            <div class="SecondRow">
+                <div class="Content" *ngFor="let val of Recents">
+                    <div fxLayout="row" fxLayoutGap="13px">
+                        <span>{{val.Material}}</span>
+                        <div fxLayout="column">
+                            <span>{{val.Description}}</span>
+                            <span>{{val.ProjectName}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="Second-div">
+            <div fxLayout="row" class="FrstRow" fxLayoutGap="15px">
+                <img class="Suggested_online_img" src="./assets/images/Page-1.png">
+                <span class="Suggested_online_txt">Suggested Online Materials</span>
+            </div>
+
+            <div class="midRow">
+                <div class="resultContainer" *ngFor="let val of Suggested">
+                    <div class="wrapper" fxLayout="row" fxLayoutGap="15px">
+                        <img [src]="val.Image" fxFlex="60" class="resultImg">
+                        <div fxLayout="column" fxFlex="40" class="resultTxt" fxLayoutGap="15px">
+                            <a  href="{{val.Material}}" target="_blank" class="link">Click Here</a>
+                            <span class="price">{{val.Cost}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div fxLayout="row" class="LastRow" fxLayoutAlign="space-around center">
+                <div fxLayout="row" class="viewMore">
+                    <span class="viewMore_txt" style="color: #98abc4;font-size: 12px;">View more similar Products on
+                        Amazon</span>
+                </div>
+                <button class="shopNowBtn" mat-button>
+                    <a href="{{Url}}" target="_blank">Shop Now</a>
+                    <img class="shopNowImg" src="./assets/images/Layer 2.png">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="center">
+        <img src="{{image}}" class="image" id="image">
+    </div>
+
+    <mat-spinner *ngIf="Isloading" value=100 class="centerSpin">
+    </mat-spinner>
+</div>

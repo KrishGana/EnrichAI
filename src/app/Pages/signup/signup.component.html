@@ -1,0 +1,85 @@
+<div fxFlex="100" class="Background-login">
+    <div fxFlex="19">
+
+    </div>
+    <div fxFlex="62">
+        <div class="size-div" fxFlex>
+            <div fxFlex="38">
+                <img class="Loginimg" src="./assets/images/LoginLeft.png">
+            </div>
+            <div fxFlex="62">
+                <div fxLayout="row" fxLayoutAlign="end" style="padding-top: 20px;padding-right: 22px;">
+                    <span class="Powered">Powered By</span>
+                </div>
+                <div fxLayout="row" style="padding-left: 9%;padding-bottom: 1%;" fxLayoutAlign="space-between center">
+                    <mat-icon matRipple class="icon" (click)="backtologin()">arrow_back</mat-icon>
+                    <img src="../assets/images/image (28).png" style="width: 6rem;padding-right: 22px;">
+                </div>
+                <!-- <div fxLayout="row" style="padding-left: 9%;padding-bottom: 1%;">
+                    <mat-icon matRipple class="icon" (click)="backtologin()">arrow_back</mat-icon>
+                </div> -->
+                <div fxLayout="row" fxLayoutGap="15px" style="padding-left: 10%;padding-bottom: 1%;">
+                    <span class="signcontinue">Sign up</span>
+                </div>
+                <div fxLayout="row" fxLayoutGap="15px" style="padding-left: 10%;padding-bottom: 2%;">
+                    <span class="signup">Create a new account</span>
+                </div>
+               <form [formGroup]="SignupGroup">
+                <div fxLayout="column">
+                    <div fxLayout="row" fxLayoutGap="5%">
+                        <span style="padding-left: 10%;padding-top: 3%;">User Name</span>
+                        <mat-form-field fxFlex="68" class="form-field" appearance="outline" floatLabel="never">
+                            <mat-label>Please Enter User Name</mat-label>
+                            <input matInput type="text" formControlName="UserName" fxFlex required>
+                            <mat-error *ngIf="SignupGroup.get('UserName').touched && SignupGroup.get('UserName').hasError('required')">
+                                UserName is required</mat-error>
+                            <!-- <mat-error *ngIf="ForgotPassword.hasError('required')">
+                                Email Id is required to send the link.
+                            </mat-error> -->
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="8.5%">
+                        <span style="padding-left: 10%;padding-top: 3%;">Email Id</span>
+                        <mat-form-field fxFlex="68" class="form-field" appearance="outline" floatLabel="never">
+                            <mat-label>Please Enter Email Id</mat-label>
+                            <input matInput type="text" formControlName="EmailId" fxFlex required>
+                            <mat-error *ngIf="SignupGroup.get('EmailId').touched && SignupGroup.get('EmailId').hasError('required') && SignupGroup.get('EmailId').value == ''">
+                                EmailId is required</mat-error>
+                                <mat-error *ngIf="SignupGroup.get('EmailId').invalid && SignupGroup.get('EmailId').value != '' ">
+                                    Please Enter Valid EmailId</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="10%">
+                        <span style="padding-left: 10%;padding-top: 3%;">Mobile</span>
+                        <mat-form-field fxFlex="68" class="form-field" appearance="outline" floatLabel="never">
+                            <mat-label>Please Enter Mobile no</mat-label>
+                            <input matInput type="text" formControlName="Mobile" fxFlex required>
+                            <mat-error *ngIf="SignupGroup.get('Mobile').touched && SignupGroup.get('Mobile').hasError('required') && SignupGroup.get('Mobile').value == ''">
+                                Mobile No is required</mat-error>
+                                <mat-error *ngIf="SignupGroup.get('Mobile').invalid && SignupGroup.get('Mobile').value != '' ">
+                                   Please Enter Valid Mobile No</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="6%">
+                        <span style="padding-left: 10%;padding-top: 3%;">Password</span>
+                        <mat-form-field fxFlex="68" class="form-field" appearance="outline" floatLabel="never">
+                            <mat-label>Please Enter Password</mat-label>
+                            <input matInput type="text" formControlName="Password" fxFlex required>
+                            <mat-error *ngIf="SignupGroup.get('Password').touched && SignupGroup.get('Password').hasError('required') && SignupGroup.get('Password').value == '' ">
+                                Password  is required</mat-error>
+                                <mat-error *ngIf="SignupGroup.get('Password').invalid && SignupGroup.get('Password').value != '' ">
+                                    Password must contain atleast 8 characters including one special character,lower and upper case</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </form> 
+                <div fxLayout="row" fxLayoutAlign="center">
+                    <button class="loginbutton" mat-button (click)="SignUp()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div fxFlex="19">
+
+    </div>
+</div>

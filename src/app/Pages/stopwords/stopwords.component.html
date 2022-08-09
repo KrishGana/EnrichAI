@@ -1,0 +1,192 @@
+<div fxFlex="100" class="wholeDiv">
+
+    <div fxFlex="60">
+
+        <div fxLayout="row" class="head">
+            <mat-toolbar>
+                <div>
+                    <span class="library_header">Create Stopwords</span>
+                </div>
+            </mat-toolbar>
+        </div>
+
+        <div fxLayout="column" fxLayoutGap="15px">
+            <span class="ogtext">Select Type</span>
+
+            <mat-tab-group style="z-index: 0;">
+
+                <mat-tab label="Vendor">
+                    <div fxLayout="column" fxLayoutGap="15px">
+                        <div class="horizontal">
+                        </div>
+                        <form [formGroup]="FormVendor">
+                            <span class="ogtext1">New Text</span>
+                            <div fxLayout="row" fxLayoutGap="20px">
+                                <mat-form-field appearance="outline" floatLabel="never" class="ogtexts">
+                                    <mat-label>New text</mat-label>
+                                    <input matInput formControlName="formtext">
+                                    <mat-error
+                                        *ngIf="FormVendor.controls['formtext'].hasError('required') && FormVendor.controls['formtext'].touched">
+                                        Type Something..!
+                                    </mat-error>
+                                </mat-form-field>
+                                <button mat-fab type="button" class="add_button1" (click)="addnewtext()">
+                                    <mat-icon>add</mat-icon>
+                                </button>
+                            </div>
+                            <div *ngFor="let vendor of getVendorFormControls(); let i = index;" formArrayName="Vendor">
+                                <div fxLayout="row" fxLayoutGap="20px">
+                                    <mat-form-field appearance="outline" floatLabel="never" class="ogtexts">
+                                        <mat-label>New text</mat-label>
+                                        <input matInput [formControl]="FormVendor.controls['Vendor']['controls'][i]">
+                                        <mat-error
+                                            *ngIf="FormVendor.controls['Vendor']['controls'][i].hasError('required') && FormVendor.controls['Vendor']['controls'][i].touched">
+                                            Type Something..!
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <button mat-fab type="button" class="add_button1" (click)="removeVendor(i)">
+                                        <mat-icon>remove</mat-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <button mat-button class="createbutton" (click)="CreateVendor()">Create</button>
+                </mat-tab>
+
+                <mat-tab label="Attribute">
+                    <div fxLayout="column" fxLayoutGap="15px">
+                        <div class="horizontal">
+                        </div>
+                        <form [formGroup]="FormAttribute">
+                            <span class="ogtext1">New Text</span>
+                            <div fxLayout="row" fxLayoutGap="20px">
+                                <mat-form-field appearance="outline" floatLabel="never" class="ogtexts">
+                                    <mat-label>New text</mat-label>
+                                    <input matInput formControlName="formtextattribute" required>
+                                    <mat-error *ngIf="FormAttribute.controls['formtextattribute'].hasError('required')">
+                                        Type Something..!
+                                    </mat-error>
+                                </mat-form-field>
+                                <button mat-fab type="button" class="add_button1" (click)="addnewtextattribute()">
+                                    <mat-icon>add</mat-icon>
+                                </button>
+                            </div>
+                            <div *ngFor="let control of getAttributeFormControls(); let i=index;"
+                                formArrayName="Attribute">
+                                <div fxLayout="row" fxLayoutGap="20px">
+                                    <mat-form-field appearance="outline" floatLabel="never" class="ogtexts">
+                                        <mat-label>New text</mat-label>
+                                        <input matInput
+                                            [formControl]="FormAttribute.controls['Attribute']['controls'][i]" required>
+                                        <mat-error *ngIf="control.hasError('required')">
+                                            Type Something..!
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <button mat-fab type="button" class="add_button1" (click)="removeAttribute(i)">
+                                        <mat-icon>remove</mat-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <button mat-button class="createbutton" (click)="CreateAttributes()">Create</button>
+                </mat-tab>
+
+                <mat-tab label="Stopword">
+                    <div fxLayout="column" fxLayoutGap="15px">
+                        <div class="horizontal">
+                        </div>
+                        <form [formGroup]="FormStop">
+                            <span class="ogtext1">New Text</span>
+                            <div fxLayout="row" fxLayoutGap="20px">
+                                <mat-form-field appearance="outline" floatLabel="never" class="ogtexts">
+                                    <mat-label>New text</mat-label>
+                                    <input matInput formControlName="formtextstop" required>
+                                    <mat-error *ngIf="FormStop.controls['formtextstop'].hasError('required')">
+                                        Type Something..!
+                                    </mat-error>
+                                </mat-form-field>
+                                <button mat-fab type="button" class="add_button1" (click)="addnewtextstop()">
+                                    <mat-icon>add</mat-icon>
+                                </button>
+                            </div>
+                            <div *ngFor="let control of getStopFormControls(); let i = index;"
+                                formArrayName="Stopwords">
+                                <div fxLayout="row" fxLayoutGap="20px">
+                                    <mat-form-field appearance="outline" floatLabel="never" class="ogtexts">
+                                        <mat-label>New text</mat-label>
+                                        <input matInput [formControl]="FormStop.controls['Stopwords']['controls'][i]"
+                                            required>
+                                        <mat-error *ngIf="control.hasError('required')">
+                                            Type Something..!
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <button mat-fab type="button" class="add_button1" (click)="removeStop(i)">
+                                        <mat-icon>remove</mat-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <button mat-button class="createbutton" (click)="CreateStops()">Create</button>
+                </mat-tab>
+
+                <mat-tab label="Must be removed">
+                    <div fxLayout="column" fxLayoutGap="15px">
+                        <div class="horizontal">
+                        </div>
+                        <form [formGroup]="FormMustRemove">
+                            <span class="ogtext1">New Text</span>
+                            <div fxLayout="row" fxLayoutGap="20px">
+                                <mat-form-field appearance="outline" floatLabel="never" class="ogtexts">
+                                    <mat-label>New text</mat-label>
+                                    <input matInput formControlName="formtextmust" required>
+                                    <mat-error
+                                        *ngIf="FormMustRemove.controls['formtextmust'].hasError('required') && FormMustRemove.controls['formtextmust'].touched">
+                                        Type Something..!
+                                    </mat-error>
+                                </mat-form-field>
+                                <button mat-fab type="button" class="add_button1" (click)="addnewtextmust()">
+                                    <mat-icon>add</mat-icon>
+                                </button>
+                            </div>
+                            <div *ngFor="let control of getRemoveFormControls(); let i=index;"
+                                formArrayName="MustRemove">
+                                <div fxLayout="row" fxLayoutGap="20px">
+                                    <mat-form-field appearance="outline" floatLabel="never" class="ogtexts">
+                                        <mat-label>New text</mat-label>
+                                        <input matInput
+                                            [formControl]="FormMustRemove.controls['MustRemove']['controls'][i]"
+                                            required>
+                                        <mat-error *ngIf="control.hasError('required')">
+                                            Type Something..!
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <button mat-fab type="button" class="add_button1" (click)="removeMust(i)">
+                                        <mat-icon>remove</mat-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <button mat-button class="createbutton" (click)="CreateMust()">Create</button>
+                </mat-tab>
+
+            </mat-tab-group>
+        </div>
+
+    </div>
+
+    <div fxFlex="40" class="rightsw">
+        <div fxLayout="row " fxLayoutAlign="space-evenly center">
+            <div class="col">.</div>
+            <mat-dialog-actions>
+                <button mat-icon-button mat-dialog-close class="close">
+                    <mat-icon>cancel</mat-icon>
+                </button>
+            </mat-dialog-actions>
+        </div>
+        <img class="imgcreate" src="./assets/images/sw.png">
+    </div>
+</div>

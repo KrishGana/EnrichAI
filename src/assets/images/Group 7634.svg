@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="Group_7634" width="126.151" height="75.5" viewBox="0 0 126.151 75.5">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".5" x2=".5" y1="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="gray" stop-opacity=".251"/>
+            <stop offset=".54" stop-color="gray" stop-opacity=".122"/>
+            <stop offset="1" stop-color="gray" stop-opacity=".102"/>
+        </linearGradient>
+        <linearGradient id="linear-gradient-2" x1=".5" x2=".5" y1="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#b3b3b3" stop-opacity=".251"/>
+            <stop offset=".54" stop-color="#b3b3b3" stop-opacity=".102"/>
+            <stop offset="1" stop-color="#b3b3b3" stop-opacity=".051"/>
+        </linearGradient>
+        <style>
+            .cls-10,.cls-11,.cls-2{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:10px}.cls-2{stroke:#e0e0e0}.cls-13,.cls-7{fill:#6c63ff}.cls-9{fill:#e0e0e0}.cls-10,.cls-11{stroke:#bdbdbd}.cls-11{stroke-dasharray:0 22.87}.cls-13{opacity:.7}
+        </style>
+    </defs>
+    <path id="Path_6072" fill="none" stroke="#e0e0e0" stroke-dasharray="0 23" stroke-linecap="round" stroke-linejoin="round" stroke-width="10px" d="M801.638 222.881A29.855 29.855 0 0 0 799 203" transform="translate(-707.855 -188.773)"/>
+    <path id="Line_10" d="M0 0L0 0" class="cls-2" transform="translate(40.774 33.024)"/>
+    <path id="Path_6073" fill="none" stroke="#e0e0e0" stroke-dasharray="0 23.61" stroke-linecap="round" stroke-linejoin="round" stroke-width="10px" d="M336.526 235.016c.931-3.8 1.209-11.731-11.086-15.1" transform="translate(-298.418 -204.098)"/>
+    <path id="Line_11" d="M0 0L0 0" class="cls-2" transform="translate(16.813 15.5)"/>
+    <path id="Rectangle_6619" fill="url(#linear-gradient)" d="M0 0H115V42H0z" transform="translate(6.813 33.5)"/>
+    <path id="Rectangle_6620" fill="#fff" d="M0 0H113.714V39.808H0z" transform="translate(7.349 34.108)"/>
+    <circle id="Ellipse_46" cx="4" cy="4" r="4" fill="url(#linear-gradient-2)" transform="translate(26.813 36.5)"/>
+    <circle id="Ellipse_47" cx="3" cy="3" r="3" class="cls-7" transform="translate(27.813 37.5)"/>
+    <path id="Rectangle_6621" fill="#bdbdbd" d="M0 0H18V2H0z" transform="translate(45.813 39.5)"/>
+    <path id="Rectangle_6622" d="M0 0H96.296V1.884H0z" class="cls-9" transform="translate(17.387 51.398)"/>
+    <path id="Rectangle_6623" d="M0 0H96.296V1.884H0z" class="cls-9" transform="translate(17.387 47.252)"/>
+    <path id="Rectangle_6624" d="M0 0H96.296V1.884H0z" class="cls-9" transform="translate(17.387 55.543)"/>
+    <path id="Rectangle_6625" d="M0 0H96.296V1.884H0z" class="cls-9" transform="translate(17.387 59.689)"/>
+    <path id="Rectangle_6626" d="M0 0H96.296V1.884H0z" class="cls-9" transform="translate(17.387 63.835)"/>
+    <path id="Rectangle_6627" d="M0 0H96.296V1.884H0z" class="cls-9" transform="translate(17.387 67.981)"/>
+    <path id="Line_12" d="M0 0L0 0" class="cls-10" transform="translate(14.447 33.496)"/>
+    <path id="Path_6074" d="M271.768 316.445c.072-2.037-.177-5.082-1.958-7.105" class="cls-11" transform="translate(-257.108 -285.093)"/>
+    <path id="Line_13" d="M0 0L0 0" class="cls-10" transform="translate(11.919 23.508)"/>
+    <path id="Line_14" d="M0 0L0 0" class="cls-2" transform="translate(82.111 34.344)"/>
+    <path id="Path_6075" fill="none" stroke="#e0e0e0" stroke-dasharray="0 22.87" stroke-linecap="round" stroke-linejoin="round" stroke-width="10px" d="M723.768 325.445c.072-2.037-.177-5.082-1.958-7.105" transform="translate(-641.653 -293.245)"/>
+    <path id="Line_15" d="M0 0L0 0" class="cls-2" transform="translate(78.471 24.356)"/>
+    <path id="Line_16" d="M0 0L0 0" class="cls-10" transform="translate(113.683 33.496)"/>
+    <path id="Path_6076" d="M930.307 316.445c-.072-2.037.177-5.082 1.958-7.105" class="cls-11" transform="translate(-816.837 -285.093)"/>
+    <path id="Line_17" d="M0 0L0 0" class="cls-10" transform="translate(116.211 23.508)"/>
+    <path id="Rectangle_6628" d="M0 0H10.459V5.694H0z" class="cls-13" transform="translate(0 10.815)"/>
+    <path id="Rectangle_6629" d="M0 0H10.459V5.694H0z" class="cls-13" transform="translate(85.886 6.952)"/>
+    <path id="Rectangle_6630" d="M0 0H10.459V5.694H0z" class="cls-13" transform="translate(72.467 17.128)"/>
+    <path id="Rectangle_6631" d="M0 0H17.033V9.272H0z" class="cls-7" transform="translate(7.82 12.021)"/>
+    <path id="Rectangle_6632" d="M0 0H17.033V9.272H0z" class="cls-7" transform="translate(109.118 12.492)"/>
+    <path id="Rectangle_6633" d="M0 0H17.033V9.272H0z" class="cls-7" transform="translate(49.476)"/>
+    <path id="Line_18" d="M0 0L0 0" class="cls-10" transform="translate(56.158 33.401)"/>
+    <path id="Path_6077" fill="none" stroke="#bdbdbd" stroke-dasharray="0 24.01" stroke-linecap="round" stroke-linejoin="round" stroke-width="10px" d="M539.558 207.511a11.117 11.117 0 0 0-.878-8.548c-2.261-4.1-.228-8.094.928-9.833" transform="translate(-482.574 -176.209)"/>
+    <path id="Line_19" d="M0 0L0 0" class="cls-10" transform="translate(58.396 12.013)"/>
+</svg>

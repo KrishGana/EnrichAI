@@ -1,0 +1,424 @@
+#Body {
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    .toprow {
+        align-items: center;
+        height: 40px;
+
+        .mat-form-field {
+            cursor: pointer;
+        }
+
+        .mat-form-field-wrapper {
+            padding-bottom: 0px;
+        }
+
+        // Form Field CSS
+        .mat-form-field-flex>.mat-form-field-infix {
+            padding: 0.4em 0px !important;
+        }
+
+        .mat-form-field-label-wrapper {
+            top: -1.5em;
+        }
+
+        .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+            transform: translateY(-1.1em) scale(.75);
+            width: 133.33333%;
+        }
+
+        .mat-select-value-text {
+            position: relative;
+            bottom: 3px;
+        }
+
+        .perfom-span {
+            font-size: large;
+            color: #1e3e67;
+        }
+
+        .overview-span {
+            font-size: 12px;
+            color: #2085fb;
+            padding-left: 10px;
+            padding-right: 25.4%;
+        }
+
+        .labelname {
+            letter-spacing: 0.5px;
+        }
+
+        .prjNmeInp {
+            font-size: 12px
+        }
+
+        .clickarrow {
+            cursor: pointer;
+            color: #1e3e67;
+            transform: scale(1.5) !important;
+            position: relative;
+            left: 5px;
+            bottom: 1px;
+        }
+        .longBlue {
+            background-color: #2085fb;
+            width: 50px;
+            height: 7px;
+            margin-left: 10%;
+            border-radius: 4px;
+        }
+
+        .shortBlue {
+            background-color: #2085fb;
+            height: 7px;
+            width: 8px;
+            border-radius: 4px;
+            margin-left: 5px;
+        }
+        .dotDiv {
+            position: relative;
+            right: 10px;
+            white-space: nowrap;
+            
+            
+        }
+
+
+    }
+
+    .SecondRow {
+        .chart-table {
+            height: 230px;
+            width: 100%;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px 0 rgba(151, 197, 253, 0.36);
+
+            .frstRow {
+                padding-top: 6px;
+                padding-left: 19px;
+                padding-right: 15px;
+
+                .prjName {
+                    color: #1e3e67;
+                    font-size: small;
+                }
+
+                .gotoPrjView {
+                    color: #2085fb;
+                    font-size: x-small;
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .ims {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .LastRow {
+        height: calc(100vh - 315px);
+        overflow: auto;
+
+        .doughnut-table {
+
+            .chart-table {
+                width: 100%;
+                background-color: white;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px 0 rgba(151, 197, 253, 0.36);
+
+                .form-field {
+                    left: 10%;
+                    top: 10px;
+
+                    .mat-form-field-wrapper {
+                        padding-bottom: 0px;
+                    }
+
+                    // Form Field CSS
+                    .mat-form-field-flex>.mat-form-field-infix {
+                        padding: 0.4em 0px !important;
+                    }
+
+                    .mat-form-field-label-wrapper {
+                        top: -1.5em;
+                    }
+
+                    .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+                        transform: translateY(-1.1em) scale(.75);
+                        width: 133.33333%;
+                    }
+
+                    .mat-form-field-infix {
+                        position: relative;
+                        top: 3px;
+                    }
+
+                    .mat-select-value-text {
+                        position: relative;
+                        bottom: 3px;
+                    }
+                }
+
+                .Legends {
+                    margin: 10px 0 8px 22px;
+
+                    .legendTxt {
+                        align-items: center;
+                        font-size: small;
+                        color: #1e3e67;
+
+                        .openDot {
+                            background-color: #2085fb;
+                            height: 7px;
+                            width: 7px;
+                            border-radius: 4px;
+                        }
+
+                        .validateDot {
+                            background-color: #3030fb;
+                            height: 7px;
+                            width: 7px;
+                            border-radius: 4px;
+                        }
+
+                        .completeDot {
+                            background-color: #61fd9f;
+                            height: 7px;
+                            width: 7px;
+                            border-radius: 4px;
+                        }
+
+                        .rejectDot {
+                            background-color: #ff9393;
+                            height: 7px;
+                            width: 7px;
+                            border-radius: 4px;
+                        }
+                    }
+                }
+            }
+
+            .chart-tables {
+                background-color: white;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px 0 rgba(151, 197, 253, 0.36);
+                width: 48%;
+                margin-top: 2.4%;
+                cursor: pointer;
+
+                .createTxt {
+                    font-size: 12px;
+                    color: #1e3e67;
+                }
+
+                .arrow {
+                    width: 10px;
+                    transition: transform 200ms;
+                }
+            }
+
+            .chart-tables:hover {
+                .arrow {
+                    transform: translateX(10px);
+                }
+            }
+
+            .roleclass,
+            .roleselect {
+                font-family: "Poppins";
+                font-size: 12px;
+                font-weight: 500;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.5;
+                letter-spacing: normal;
+                text-align: left;
+                color: #1e3e67;
+            }
+        }
+
+        .Data-Table {
+            height: 98%;
+            overflow: auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px 0 rgba(151, 197, 253, 0.36);
+
+            .frstRow {
+                padding-top: 20px;
+
+                .container {
+                    width: 95%;
+                    margin-left: 2.5%;
+                    border: 1px solid #e5e5e5;
+                    border-radius: 10px;
+
+                    .inputDiv {
+                        padding-left: 15px;
+                        padding-right: 15px;
+                        padding-top: 15px;
+
+                        .mat-form-field-wrapper {
+                            padding-bottom: 0px;
+                        }
+
+                        // Form Field CSS
+                        .mat-form-field-flex>.mat-form-field-infix {
+                            padding: 0.4em 0px !important;
+                        }
+
+                        .mat-form-field-label-wrapper {
+                            top: -1.5em;
+                        }
+
+                        .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+                            transform: translateY(-1.1em) scale(.75);
+                            width: 133.33333%;
+                        }
+
+                        .mat-form-field-infix {
+                            position: relative;
+                            top: 3px;
+                        }
+
+                        .mat-select-value-text {
+                            position: relative;
+                            bottom: 3px;
+                        }
+
+                        mat-label {
+                            font-family: "Poppins";
+                            font-size: 12px !important;
+                            color: #1e3e67;
+                        }
+
+                        .materialStsTxt {
+                            font-size: 14px;
+                            color: #2085fb;
+                            padding-bottom: 15px;
+                        }
+
+                    }
+
+                    .statusUpdate {
+                        padding-left: 15px;
+                        padding-right: 15px;
+
+                        .statusTxt {
+                            color: #98abc4;
+                            font-size: x-small;
+                        }
+                    }
+                }
+            }
+
+            .secRow {
+                .convSts {
+                    padding-top: 10px;
+
+                    span {
+                        color: #1e3e67;
+                        font-size: small;
+                    }
+                }
+
+                .ListofUsed {
+                    padding-left: 25px;
+                    padding-right: 10px;
+                    overflow: auto;
+
+                    .tableWrapper {
+                        width: calc(100% - 10px);
+                        height: 100%;
+
+                        .headerTxtRow {
+                            width: 100%;
+                            border-left: 1px solid blue;
+                            border-right: 1px solid blue;
+                            border-top: 1px solid blue;
+                            border-top-right-radius: 10px;
+                            border-top-left-radius: 10px;
+                            background-color: #2085fb;
+                            color: white;
+
+                            .headerTxt {
+                                width: 25%;
+                                text-align: center;
+                            }
+                        }
+
+                        .listContainer {
+                            width: 100%;
+                            overflow: auto;
+                            border: 1px solid blue;
+                            border-bottom-right-radius: 10px;
+                            border-bottom-left-radius: 10px;
+
+                            .dataContainer {
+                                width: 25%;
+                                height: 100%;
+                                overflow: auto;
+                                text-align: center;
+                                padding-top: 15px;
+
+                                .List {
+                                    font-size: 13px;
+                                    font-weight: 400;
+                                }
+                            }
+
+                            .dataContainer:nth-child(1),
+                            .dataContainer:nth-child(2),
+                            .dataContainer:nth-child(3) {
+                                border-right: 1px solid blue;
+                            }
+
+                            .dataContainer::-webkit-scrollbar {
+                                display: none;
+                            }
+                        }
+
+                    }
+
+
+                }
+            }
+
+            .roleclass,
+            .roleselect {
+                font-family: "Poppins";
+                font-size: 12px;
+                font-weight: 500;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.5;
+                letter-spacing: normal;
+                text-align: left;
+                color: #1e3e67;
+            }
+
+        }
+    }
+
+    ::placeholder {
+        font-size: 12px;
+        font-family: "Poppins";
+        color: #1e3e67;
+    }
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}

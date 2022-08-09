@@ -1,0 +1,38 @@
+<mat-drawer-container class="page">
+  <mat-drawer *ngIf="islogin" #appDrawer mode="side" opened class="sidenav" fxHide.xs="true" fxHide.sm="true">
+    <div fxFlex=100 fxLayout="column" fxLayoutAlign="space-between center">
+      <div fxLayout="column" fxLayoutAlign="space-between center"
+        style="width:100%;margin-top: 1rem;margin-bottom: 1rem;height: 100vh;">
+        <div>
+          <img src="../assets/images/v-logo.png" style="margin-bottom: 0.6rem;transform: scale(0.9);position: relative; left: 15%;">
+
+          <div class="h-devider" style="margin-bottom: 0.4rem;"></div>
+          <mat-nav-list [disableRipple]="true" style="width: 100%;margin-bottom: 1rem;">
+            <app-menu-list-item *ngFor="let item of navItems" [item]="item"></app-menu-list-item>
+          </mat-nav-list>
+        </div>
+
+        <div style="width: 100%;">
+          <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1.5rem" class="Admin">
+            <img src="../assets/images/Admin.svg" width="13px">
+            <span class="logout">{{UserName}}</span>
+          </div>
+
+          <div fxLayout="row" matRipple fxLayoutAlign="start center" fxLayoutGap="1.5rem" class="Logout">
+            <img src="../assets/images/Logout.svg" width="13px">
+            <span class="logout" (click)="logout()">Log out</span>
+          </div>
+
+          <div fxLayout="row" fxLayoutGap="20px" style="display: flex; justify-content: center;">
+            <img style="transform: scale(0.8);" src="../assets/images/poweredbyexalca.svg">
+            <img class="filter-blue" src="../assets/images/mini_arrow.svg">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content class="drawer-content">
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

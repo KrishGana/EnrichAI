@@ -1,0 +1,71 @@
+<div fxFlex="100" class="wholeDiv">
+    <div fxFlex="60">
+
+        <div fxLayout="row" class="head">
+            <mat-toolbar>
+                <div class="headss">
+                    <span class="library_header">Create Library</span>
+                </div>
+            </mat-toolbar>
+        </div>
+
+        <div fxLayout="column" fxLayoutGap="15px" [formGroup]="LibraryForm">
+           
+                <span class="ogtext">Original Text</span>
+                <mat-form-field appearance="outline" floatLabel="never" class="ogtexts">
+                    <mat-label>original text</mat-label>
+                    <input matInput formControlName="Originaltext" required>
+                    <mat-error
+                        *ngIf="LibraryForm.controls['Originaltext'].hasError('required') && LibraryForm.controls['Originaltext'].touched">
+                        Type Something..!
+                    </mat-error>
+                </mat-form-field>
+                <div class="horizontal">
+                </div>
+                <span class="ogtext1">New Text</span>
+                <div fxLayout="row" fxLayoutGap="20px">
+                    <mat-form-field appearance="outline" floatLabel="never" class="ogtexts4">
+                        <mat-label>New text</mat-label>
+                        <input matInput formControlName="formtext" required>
+                        <mat-error
+                            *ngIf="LibraryForm.controls['formtext'].hasError('required') && LibraryForm.controls['formtext'].touched">
+                            Type Something..!
+                        </mat-error>
+                    </mat-form-field>
+                    <button mat-fab type="button" class="add_button1" (click)="addnewtextlib()">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+                <div *ngFor="let control of getLibraryFormControls(); let i = index;">
+                    <div fxLayout="row" fxLayoutGap="20px">
+                        <mat-form-field appearance="outline" floatLabel="never" class="ogtexts4">
+                            <mat-label>New text</mat-label>
+                            <input matInput [formControl]="LibraryForm.controls['Library']['controls'][i]" required>
+                            <mat-error
+                                *ngIf="LibraryForm.controls['Library']['controls'][i].hasError('required') && LibraryForm.controls['Library']['controls'][i].touched">
+                                Type Something..!
+                            </mat-error>
+                        </mat-form-field>
+                        <button mat-fab class="add_button1" (click)="remove(i)">
+                            <mat-icon>remove</mat-icon>
+                        </button>
+                    </div>
+                </div>
+         
+            <button mat-button type="button" class="createbutton" (click)="CreateLibrary()">Create</button>
+        </div>
+
+    </div>
+    <div fxFlex="40" class="rightlib">
+        <div fxLayout="row" fxLayoutAlign="space-evenly center">
+            <div class="col">.</div>
+            <mat-dialog-actions>
+                <button mat-icon-button mat-dialog-close class="close_button">
+                    <mat-icon>cancel</mat-icon>
+                </button>
+            </mat-dialog-actions>
+        </div>
+        <img class="imgcreate" src="./assets/images/lib.png">
+    </div>
+
+</div>

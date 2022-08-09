@@ -1,0 +1,447 @@
+#Outer {
+
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    .header-container {
+        height: 80px;
+
+        .Title {
+            font-size: x-large;
+            margin-left: 10px;
+        }
+
+        .vertical_line {
+            width: 2px;
+            height: 20px;
+            background-color: rgb(212, 192, 192);
+        }
+
+        .dates {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .opennchecked {
+            color: #2085fb;
+            margin-top: 1px;
+            font-family: "Poppins";
+        }
+
+        .openunchecked {
+            color: #000064;
+            margin-top: 1px;
+            font-family: "Poppins";
+        }
+
+        .number {
+            width: 40px;
+            height: 20px;
+            background-color: #2085fb;
+            text-align: center;
+            color: white;
+            margin-top: 3px;
+            border-radius: 3px;
+            font-family: "Poppins";
+        }
+
+        .unchecked {
+            width: 40px;
+            height: 20px;
+            background-color: #000064;
+            text-align: center;
+            color: white;
+            border-radius: 3px;
+            font-family: "Poppins";
+        }
+
+        .endbutton {
+            margin-right: 10px;
+        }
+
+        ::placeholder {
+            color: white;
+            font-size: 11px;
+        }
+
+        .Select_button {
+            color: #2085fb;
+            height: 36px;
+            margin-left: 10px;
+
+        }
+
+        .remove_button,
+        .add_button {
+            background-color: white !important;
+            color: #2085fb !important;
+            transform: scale(0.5) !important;
+            box-shadow: none !important;
+        }
+
+        .search_tablerow {
+            text-align: center;
+            width: 20px;
+            border: 1px solid white;
+            height: 20px;
+        }
+
+        .search-to-do {
+            width: 20%;
+            height: 25px;
+            background-color: #2085fb;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            display: flex;
+            align-items: center;
+            color: white;
+
+            .search_input {
+                height: 25px;
+                width: 90%;
+                border-radius: 3px;
+                color: white;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                font-family: "Poppins";
+                font-size: 12px;
+                font-weight: 500;
+                border: none;
+                margin-left: 1rem;
+                background: transparent;
+            }
+
+
+            .search_input:focus {
+                outline: none;
+            }
+        }
+
+
+        .searchplace {
+            width: 40px;
+            height: 25px;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .search_place {
+                transform: scale(0.8);
+            }
+        }
+
+        .filterselects {
+            padding: 0 5px 0 5px;
+
+            .column_filter {
+                transform: scale(0.7);
+                margin-left: 5px;
+                cursor: pointer;
+                position: relative;
+                top: 3px;
+            }
+
+            .filters {
+                color: #214169;
+                font-size: medium;
+                font-weight: 600;
+                padding: 10px 0 10px 10px !important;
+            }
+
+            .underline {
+                width: 80%;
+                height: 2px;
+                background-color: #e9f3fe;
+                margin-top: 10px;
+                margin-left: 10px;
+                margin-bottom: 10px;
+            }
+
+            .skips {
+                font-family: "Poppins";
+                color: red;
+            }
+
+        }
+
+
+
+        .more {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .libs,
+            .stops {
+                font-family: "Poppins";
+            }
+
+            .moreoption {
+                font-weight: 500;
+                font-size: medium;
+                cursor: pointer;
+            }
+
+            .option {
+                transform: scale(0.6);
+            }
+        }
+
+        .Confirm_button {
+            width: 24%;
+            background-color: #00ba56;
+            height: 26px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+
+        .Confirm1_button {
+            width: 24%;
+            background-color: #00ba56;
+            height: 26px;
+            margin-right: 10px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .Confirm2_button {
+            width: 24%;
+            background-color: #00ba56;
+            height: 26px;
+            margin-right: 10px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .Confirm4_button {
+            width: 28%;
+            background-color: #00ba56;
+            height: 26px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .Reject_button {
+            width: 24%;
+            margin-right: 20px;
+            background-color: rgb(236, 8, 8);
+            height: 26px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+    }
+
+    .example-container {
+        height: calc(100vh - 96px) !important;
+        width: 100%;
+        overflow: auto;
+        font-size: 12px;
+
+        .TableData {
+            font-family: "Poppins" !important;
+            font-size: medium !important;
+            width: 100%;
+            font-size: 12px;
+
+            th {
+                background-color: #2085fb !important;
+                color: white !important;
+                font-size: 12px !important;
+                font-family: "Poppins" !important;
+            }
+
+            td {
+                font-size: 12px !important;
+                color: rgb(78, 72, 72) !important;
+                font-family: "Poppins" !important;
+            }
+
+            .mat-header-cell {
+                text-align: left !important;
+                min-width: 80px !important;
+                min-height: 40px !important;
+            }
+
+            .mat-cell {
+                text-align: left !important;
+            }
+
+            th.mat-header-cell,
+            td.mat-cell,
+            td.mat-footer-cell {
+                padding-left: 10px !important;
+            }
+
+            th.mat-header-cell {
+                white-space: nowrap !important;
+            }
+
+            tr:hover td {
+                color: #2085fb !important;
+            }
+
+            .mat-form-field-wrapper {
+                padding-bottom: 0px !important;
+            }
+
+            .confirmation {
+                color: green !important;
+                padding-top: 12px !important;
+                cursor: pointer !important;
+            }
+
+            .clearedd {
+                color: red !important;
+                padding-top: 12px !important;
+            }
+
+            .default1 {
+                min-width: 50px !important;
+                border-top-left-radius: 4px !important;
+                border-bottom-left-radius: 4px !important;
+            }
+
+            .nounmodi {
+                min-height: 100px !important;
+            }
+
+            .write {
+                transform: scale(0.8) !important;
+            }
+
+            .nounfont,
+            .nounoptions {
+                font-family: "Poppins" !important;
+                font-size: small !important;
+            }
+
+            .progress {
+                display: flex;
+                align-items: center;
+            }
+
+            .hide {
+                display: none !important;
+                border-radius: 3px !important;
+            }
+
+            .show:hover+.hide {
+                display: block !important;
+            }
+
+            .potexting {
+                cursor: pointer;
+            }
+
+            .confirm {
+                width: 70px;
+            }
+
+            .radend,
+            .endrad {
+                border-top-right-radius: 4px !important;
+                border-bottom-right-radius: 4px !important;
+            }
+
+            .default {
+                max-width: 50px !important;
+                width: 50px !important;
+                overflow-x: hidden;
+
+                .potxt {
+                    white-space: nowrap;
+                }
+            }
+
+
+            .defaultwidth {
+                min-width: 130px !important;
+            }
+
+            .confirm {
+                position: relative;
+                top: 2px;
+            }
+
+            .description1 {
+                margin: 8px 0 0 0;
+            }
+
+            .description2 {
+                margin: -8px 0 0 0;
+            }
+
+            .descrip {
+                min-width: 200px !important;
+            }
+
+        }
+    }
+
+    .tick,
+    .confirm {
+        color: #2085fb !important;
+        cursor: pointer !important;
+        padding-top: 10px !important;
+    }
+
+    .tick1 {
+        color: white !important;
+        transform: scale(0.8) !important;
+        padding-bottom: 2px !important;
+    }
+
+    .tick2 {
+        color: green !important;
+        transform: scale(1) !important;
+        padding-top: 10px !important;
+        cursor: pointer !important;
+    }
+
+    .tick3 {
+        color: red !important;
+        transform: scale(1) !important;
+        padding-top: 10px !important;
+        cursor: pointer !important;
+    }
+
+    .tick4 {
+        color: white !important;
+        transform: scale(0.9) !important;
+        padding-top: 6px !important;
+    }
+
+    .tick5 {
+        color: green !important;
+        cursor: pointer !important;
+        padding-top: 10px !important;
+    }
+
+    .center {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        -moz-transform: translateX(-50%) translateY(-50%) !important;
+        -webkit-transform: translateX(-50%) translateY(-50%) !important;
+        transform: translateX(-50%) translateY(-50%) !important;
+    }
+
+
+}

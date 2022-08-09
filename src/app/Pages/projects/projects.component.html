@@ -1,0 +1,224 @@
+<div class="page">
+    <div fxLayout="row" class="container">
+        <div fxLayout="column" class="left-side">
+            <div fxLayout="row" fxLayoutAlign="space-between center" style="margin-top: 1rem;">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <label class="open_txt">Open</label>
+                    <div
+                        [ngClass]="{'open_count': ProjectList.length > 0 && ProjectList.length < 100, 'open_count1':ProjectList.length > 99 && ProjectList.length < 1000 ,'open_count2':ProjectList.length > 999 && ProjectList.length < 10000 , 'open_count3':ProjectList.length > 9999 && ProjectList.length < 100000 }">
+                        <label>{{ProjectList.length}}</label>
+                    </div>
+                </div>
+                <div matRipple (click)="NewClicked()" [ngClass]="isNewProject ? 'new_btn1' : 'new_btn' ">
+                    <span>New</span>
+                    <img src="/assets/images/Union 1.svg" style="width: 10px;"
+                        [ngClass]="isNewProject ? 'pluscolor1' : 'pluscolor' ">
+                </div>
+            </div>
+            <div fxLayout="row" style="margin-top: 1rem;align-items: center;cursor: pointer;">
+                <div class="search_input">
+                    <input class="search_input1" [(ngModel)]="typetext" (click)="setvalues()"
+                        placeholder="Search to - do">
+                </div>
+                <div class="search_img">
+                    <img src="/assets/images/XMLID_223_.svg" style="width: 14px;">
+                </div>
+            </div>
+            <span class="divider"></span>
+            <div class="list_wrapper">
+                <mat-selection-list [multiple]="false" [disableRipple]="true" class="matlist">
+                    <mat-list-option class="cards" *ngFor="let item of ProjectList | filter : typetext;let i=index;"
+                        [selected]="selectedProject.ProjectName==item.ProjectName" (click)="SelectProject(item)">
+                        <div class="item_wrapper" fxLayout="column" fxLayoutAlign="space-evenly start"
+                            style="height: 5rem;">
+                            <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 100%;">
+                                <div fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="start center">
+                                    <img src="/assets/images/Layer_x0020_1.png" class="list_icons">
+                                    <label class="list_headings">{{item.ProjectName}}</label>
+                                </div>
+                                <div fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="start center">
+                                    <img src="/assets/images/date.png" class="list_icons">
+                                    <label class="list_headings">{{item.Plan_Start | date :'dd/MM/yyyy'}}</label>
+                                </div>
+                            </div>
+                            <div fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="start center">
+                                <img src="/assets/images/Icons.png" class="list_icons">
+                                <label class="list_headings">{{item.Plan_End | date :'dd/MM/yyyy'}}</label>
+                            </div>
+                        </div>
+                    </mat-list-option>
+                </mat-selection-list>
+            </div>
+        </div>
+        <div fxLayout="column" class="right-side">
+            <div class="form-container">
+                <div fxLayout="row" fxLayoutAlign="space-between center"
+                    style="padding: 2rem;padding-left: 3rem;padding-bottom: 1rem;" *ngIf="!isNewProject">
+                    <div style="color: #1e3e67;font-size: small;">{{displayselectedproject}}</div>
+                    <span>{{isNewProject?'Create Project':''}}</span>
+                    <div matRipple> <img style="cursor: pointer;"
+                            (click)="isEdit=false;isReleased=false;iseditclicked=true;ProjectFormGroup.enable()"
+                            src="/assets/images/edit.svg"></div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between center"
+                    style="padding-top: 2rem;padding-left: 3rem;padding-right: 1.5rem;" *ngIf="isNewProject">
+                    <span matRipple class="rs-headings" style="cursor: pointer;"
+                        (click)="isEdit=false;isReleased=false;iseditclicked=true;ProjectFormGroup.enable()">{{isNewProject?'Create
+                        Project':'Edit Project'}}</span>
+                    <button mat-icon-button (click)="isNewProject=false;SelectProject(ProjectList[indexproject])">
+                        <mat-icon>cancel</mat-icon>
+                    </button>
+                </div>
+                <form [formGroup]="ProjectFormGroup" autocomplete="off">
+                    <div class="form-wrapper" fxLayout="column" fxLayoutAlign="start start">
+                        <div class="input-wrapper" fxLayout="row" fxLayoutAlign="space-between center">
+                            <label class="rs-headings1">Project</label>
+                            <mat-form-field fxFlex=65 class="ProjectformField">
+                                <input matInput type="text" fxFlex formControlName="ProjectName">
+                                <mat-error
+                                    *ngIf="ProjectFormGroup.get('ProjectName').touched && ProjectFormGroup.get('ProjectName').hasError('required')">
+                                    Project is required</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="space-between center" class="input-wrapper">
+                            <label class="rs-headings1">Project Manager</label>
+                            <mat-form-field fxFlex=65 class="ProjectformField">
+                                <mat-select formControlName="ProjectManager" fxFlex class="roleselect">
+                                    <mat-option *ngFor="let Role of Roles" [value]="Role.UserName" class="roles">
+                                        {{Role.UserName}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-icon matSuffix class="select-icon">expand_more</mat-icon>
+                                <mat-error
+                                    *ngIf="ProjectFormGroup.get('ProjectManager').touched && ProjectFormGroup.get('ProjectManager').hasError('required')">
+                                    Project manager is required</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="space-between center" class="input-wrapper">
+                            <label class="rs-headings1">Project Start Date</label>
+                            <mat-form-field fxFlex=65 class="ProjectformField" (click)="picker.open()">
+                                <input matInput [matDatepicker]="picker" fxFlex formControlName="Plan_Start">
+                                <mat-datepicker-toggle matPrefix [for]="picker">
+                                    <img src="assets/images/iconfinder_Calendar_728916.svg" matDatePickerToggleIcon>
+                                </mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                                <mat-error
+                                    *ngIf="ProjectFormGroup.get('Plan_Start').touched && ProjectFormGroup.get('Plan_Start').hasError('required')">
+                                    Project start date is required</mat-error>
+                                <mat-error
+                                    *ngIf="ProjectFormGroup.get('Plan_Start').invalid && ProjectFormGroup.get('Plan_Start').value != null">
+                                    Please add a valid start date</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="space-between center" class="input-wrapper">
+                            <label class="rs-headings1">Project End Date</label>
+                            <mat-form-field fxFlex=65 class="ProjectformField" (click)="picker1.open()">
+                                <input matInput [matDatepicker]="picker1" fxFlex formControlName="Plan_End">
+                                <mat-datepicker-toggle matPrefix [for]="picker1">
+                                    <img src="assets/images/iconfinder_Calendar_728916.svg" matDatePickerToggleIcon>
+                                </mat-datepicker-toggle>
+                                <mat-datepicker #picker1></mat-datepicker>
+                                <mat-error
+                                    *ngIf="ProjectFormGroup.get('Plan_End').touched && ProjectFormGroup.get('Plan_End').hasError('required')">
+                                    Project end date is required</mat-error>
+                                <mat-error
+                                    *ngIf="ProjectFormGroup.get('Plan_End').invalid && ProjectFormGroup.get('Plan_End').value != null">
+                                    Please add a valid end date</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="space-between center" class="input-wrapper"
+                            *ngIf="isNewProject || iseditclicked">
+                            <label class="rs-headings1">Data</label>
+                            <mat-form-field fxFlex=65 class="ProjectformField">
+                                <input matInput type="text" fxFlex formControlName="Data">
+                                <mat-error
+                                    *ngIf="ProjectFormGroup.get('Data').touched && ProjectFormGroup.get('Data').hasError('required')">
+                                    Data is required</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="space-between center" class="input-wrapper"
+                            *ngIf="isNewProject || iseditclicked">
+                            <label class="rs-headings1">Document</label>
+                            <input hidden type="file" #fileInput id="file" (change)="handleFileInput($event)"
+                                accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel"
+                                formControlName="Document" />
+                            <div class="custom-file-input" fxLayout="row" fxLayoutAlign="end center">
+                                <div fxFlex=100 fxLayout="row" fxLayoutAlign="center center">
+                                    <label *ngIf="file==undefined" class="rs-headings2">Drag and Place </label>
+                                    <label class="rs-headings3">{{file?.name}}</label>
+                                </div>
+                                <button type="button" class="foo_button1" style="margin-right: 4px;"
+                                    (click)="fileInput.click()">Upload</button>
+                            </div>
+                        </div>
+                        <div fxLayout="row" fxFlexOffset="4%" fxLayoutGap="23%" class="input-wrapper"
+                            *ngIf="!isNewProject && !iseditclicked">
+                            <label class="rs-headings1">Document</label>
+                            <div><span style="color: #90a0b3;font-size: 12px;">No document available</span></div>
+                        </div>
+                    </div>
+                </form>
+                <div fxLayout="row" fxLayoutAlign="center center"
+                    [ngClass]="isReleased ? 'projectedit' : 'projectcreate' ">
+                    <button class="foo_button3" mat-button (click)="SaveClicked()"
+                        *ngIf="!isEdit && !isReleased">Save</button>
+                    <button class="foo_button3" mat-button (click)="ReleaseClicked()"
+                        *ngIf="isEdit && isReleased">Release</button>
+                    <button class="foo_button3" mat-button (click)="ReleaseClicked()" *ngIf="isReleased">View
+                        Records</button>
+                </div>
+            </div>
+            <div style="height: 12rem;width: 97%;">
+                <div class="timeline-container" fxLayout="row" fxLayoutAlign="start center" fxFlex>
+                    <div class="timeline-wrapper" fxLayout="column" (click)="timeline_toggle()">
+                        <div class="tlb1" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="0.5rem">
+                            <div class="tl-img-wrapper">
+                                <img src="/assets/images/iconfinder_ic_timeline_48px_3669196.svg" style="width: 24px;">
+                            </div>
+                            <span class="rs-headings">Timeline</span>
+                        </div>
+                        <div class="tlb2" fxLayout="row" fxLayoutAlign="end center">
+                            <img [@rotate]="tl_state ? 'open' : 'closed'" src="/assets/images/Union 5.svg"
+                                style="width: 16px;">
+                        </div>
+                    </div>
+                    <div [@openClose]="tl_state ? 'open' : 'closed'" class="tl-expanded" fxFlex=100 flexLayout="row"
+                        fxLayoutAlign="space-evenly center">
+                        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="0.2rem">
+                            <img src="/assets/images/Group 7644.svg" style="width: 5rem;">
+                            <label class="rs-headings">Total Projects</label>
+                            <label class="tl-ex-smtxt">{{ProjectList.length}}</label>
+                        </div>
+                        <div class="v-devider"></div>
+                        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="0.2rem">
+                            <img src="/assets/images/Group 7634.svg" style="width: 5rem;">
+                            <label class="rs-headings">Created on </label>
+                            <label class="tl-ex-smtxt">{{createdOn | date}}</label>
+                        </div>
+                        <div class="v-devider"></div>
+                        <div fxLayout="column" fxLayoutAlign="center end" fxLayoutGap="0.5rem">
+                            <div fxLayout="row" fxLayoutGap="0.5rem">
+                                <label class="rs-headings">AI Executed Success</label>
+                                <div class="tl-ex-box">
+                                    <label class="tl-ex-box-txt">23</label>
+                                </div>
+                            </div>
+                            <div fxLayout="row" fxLayoutGap="0.5rem">
+                                <label class="rs-headings">No. of Assign</label>
+                                <div class="tl-ex-box">
+                                    <label class="tl-ex-box-txt">10</label>
+                                </div>
+                            </div>
+                            <div fxLayout="row" fxLayoutGap="0.5rem">
+                                <label class="rs-headings">Completed Process</label>
+                                <div class="tl-ex-box">
+                                    <label class="tl-ex-box-txt">10</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

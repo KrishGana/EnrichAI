@@ -1,0 +1,160 @@
+<div FxLayout="row" class="maindiv" id="NounModifierBody" fxLayoutGap="20px">
+
+  <!-- Noun Modifier Table data Column  -->
+
+  <div fxFlex="60" fxLayout="column" class="noundiv" fxLayoutGap="20px">
+
+    <!-- Search box ROW -->
+    <div fxLayout="row" fxLayoutGap="15px">
+      <label class="noun" fxFlex="25">Noun Modifier</label>
+
+      <div fxLayout="row" fxFlex="40">
+        <input matInput class="text" type="text" placeholder="Search-to-do" (keyup)="applyFilter($event)" #input>
+        <div class="search_icondiv" fxLayoutAlign="center center">
+          <img class="search_icon" src="./assets/images/XMLID_223_.svg">
+        </div>
+      </div>
+
+      <div fxLayout="row" fxFlex="20" fxLayoutAlign="space-between center">
+        <div class="create" (click)="save()">Save</div>
+        <div class="createbox" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
+          <div class="menudiv">
+            <mat-menu class="menubtn" #menu="matMenu" yPosition="below">
+              <button type="button" class="menu1 menubtn" (click)="Addnew()" mat-menu-item>New </button>
+              <button type="button" class="menu1 menubtn" (click)="Addreference()" mat-menu-item>With Reference</button>
+            </mat-menu>
+          </div>
+          <label class="create"> Create </label>
+          <div [matMenuTriggerFor]="menu" #t="matMenuTrigger">
+            <img [style.display]="t.menuOpen?'none':'block'" class="dropdown" src="./assets/images/Component 33.svg">
+            <img [style.display]="t.menuOpen?'block':'none'" class="cross"
+              src="./assets/images/iconfinder_Close_1031533.png">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Noun Modifier Table -->
+    <div class=" tableFixHead nountable">
+      <table mat-table [dataSource]="dataSource" class=" tableFixHead nountab">
+
+        <!-- Radio Button Column -->
+        <ng-container matColumnDef="radiobutton">
+          <th class="headerCell" mat-header-cell *matHeaderCellDef>
+          </th>
+          <td class="Td" mat-cell *matCellDef="let row">
+            <mat-radio-button type="button" [checked]="selection.isSelected(row)" (click)="radioclick(row)">
+            </mat-radio-button>
+          </td>
+        </ng-container>
+
+        <!-- Noun Modifier Column -->
+        <ng-container matColumnDef="nounmodifier">
+          <th class="headerCell" mat-header-cell *matHeaderCellDef> Noun
+            Modifier
+          </th>
+          <td mat-cell *matCellDef="let element;index as i" class="Td">
+            <mat-form-field>
+              <input class="tab_inp" [placeholder]="IsSelected && i==0?'Enter Noun Modifier':' '"
+                (keyup)="NounModifier_Input(myInput.value)" #myInput matInput [disabled]="editRow!=i"
+                 type="text" value="{{spaceNM(element.nounmodifier)}}">
+            </mat-form-field>
+          </td>
+        </ng-container>
+
+        <!-- Noun Column -->
+        <ng-container matColumnDef="noun">
+          <th class="headerCell" mat-header-cell *matHeaderCellDef> Noun
+          </th>
+          <td mat-cell *matCellDef="let element;index as i" class="Td">
+            <div>
+              {{splitData(element.nounmodifier)[0]}}
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Modifier Column -->
+        <ng-container matColumnDef="modifier">
+          <th class="headerCell" mat-header-cell *matHeaderCellDef>
+            Modifier
+          </th>
+          <td mat-cell *matCellDef="let element;index as i" class="pad">
+            <div>
+              {{splitData(element.nounmodifier)[1]}}
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Editable Column -->
+        <ng-container matColumnDef="editable">
+          <th class="headerCell" mat-header-cell *matHeaderCellDef>
+            Edit
+          </th>
+          <td style="padding-right: 46px;" *matCellDef="let element; index as i" class="pad">
+            <img (click)="editrow(i)" src="./assets/images/Path 6537.svg" class="editIcon">
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns  sticky: true"></tr>
+        <tr (click)="rowclicked(i)" [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}" mat-row
+          *matRowDef="let row,let i=index;columns: displayedColumns;">
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
+  <div fxFlex="40" fxLayout="column" class="attributediv" fxLayoutGap="20px">
+    <div class="tablediv">
+      <img fxLayoutAlign="center center" class="image" src="./assets/images/Image 9.png">
+      <div class="attrbTable">
+        <table mat-table [dataSource]="dataSourceatt" class="att_table">
+
+          <!-- Attreibutes Column -->
+          <ng-container matColumnDef="attributes">
+            <th class="att_header" mat-header-cell *matHeaderCellDef>Attributes
+              <!-- <mat-divider class="divider"></mat-divider> -->
+            </th>
+            <td mat-cell *matCellDef="let element">
+              <mat-form-field>
+                <input class="input" matInput type="text" [(ngModel)]="element.Attribute"
+                  value=" {{element.attributes}}">
+              </mat-form-field>
+            </td>
+          </ng-container>
+
+          <!-- Values Column -->
+          <ng-container matColumnDef="values">
+            <th class="att_header" mat-header-cell *matHeaderCellDef class="plus"> Values
+              <!-- <mat-divider class="divider"></mat-divider> -->
+            </th>
+            <td mat-cell *matCellDef="let element">
+              <mat-form-field>
+                <input class="input" matInput type="text" [(ngModel)]="element.Type" value=" {{element.values}}">
+              </mat-form-field>
+            </td>
+          </ng-container>
+
+          <!-- Add Column -->
+          <ng-container matColumnDef="add">
+            <th class="att_header" mat-header-cell *matHeaderCellDef>
+              <img class="addicon" (click)="Addattribute()" src="./assets/images/Group 7793.svg">
+              <!-- <mat-divider class="divider"></mat-divider> -->
+
+            </th>
+            <td class="att_Td" mat-cell *matCellDef="let i = index">
+              <img class="addicon" (click)="Removeattribute(i)" src="./assets/images/Group 7792.svg">
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns_att sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns_att;">
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<mat-spinner *ngIf="Isloading" value=100 color="primary" class="center">
+</mat-spinner>

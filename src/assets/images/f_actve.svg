@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="54" height="54" viewBox="0 0 54 54">
+  <defs>
+    <filter id="f_actve" x="0" y="0" width="54" height="54" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#2085fb" flood-opacity="0.4"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="f_actve-2" data-name="f_actve" transform="translate(-7565 -2541)">
+    <g transform="matrix(1, 0, 0, 1, 7565, 2541)" filter="url(#f_actve)">
+      <rect id="f_actve-3" data-name="f_actve" width="36" height="36" rx="4" transform="translate(9 6)" fill="#fff"/>
+    </g>
+    <g id="iconfinder_Filter_4737438_4_" data-name="iconfinder_Filter_4737438 (4)" transform="translate(7604.16 2579.734) rotate(180)">
+      <path id="Path_6519" data-name="Path 6519" d="M34.131,10.97a.97.97,0,0,0-.97-.97H22.97a.97.97,0,0,0,0,1.941H33.16A.97.97,0,0,0,34.131,10.97Z" transform="translate(-10.81 -2.059)" fill="#2085fb"/>
+      <path id="Path_6520" data-name="Path 6520" d="M1.97,9.882h2.6a2.911,2.911,0,1,0,0-1.941H1.97a.97.97,0,1,0,0,1.941ZM7.308,7.941a.97.97,0,1,1-.97.97A.97.97,0,0,1,7.308,7.941Z" fill="#2085fb"/>
+      <path id="Path_6521" data-name="Path 6521" d="M35.216,19.941H31.649a2.911,2.911,0,1,0,0,1.941h3.566a.97.97,0,0,0,0-1.941Zm-6.308,1.941a.97.97,0,1,1,.97-.97A.97.97,0,0,1,28.908,21.882Z" transform="translate(-12.866 -6.177)" fill="#2085fb"/>
+      <path id="Path_6522" data-name="Path 6522" d="M11.19,22H1.97a.97.97,0,1,0,0,1.941H11.19a.97.97,0,0,0,0-1.941Z" transform="translate(0 -8.237)" fill="#2085fb"/>
+      <path id="Path_6523" data-name="Path 6523" d="M35.219,34H26.97a.97.97,0,1,0,0,1.941h8.249a.97.97,0,1,0,0-1.941Z" transform="translate(-12.869 -14.414)" fill="#2085fb"/>
+      <path id="Path_6524" data-name="Path 6524" d="M9.249,30a2.911,2.911,0,0,0-2.742,1.941H1.97a.97.97,0,1,0,0,1.941H6.507A2.911,2.911,0,1,0,9.249,30Zm0,3.882a.97.97,0,1,1,.97-.97A.97.97,0,0,1,9.249,33.882Z" transform="translate(0 -12.355)" fill="#2085fb"/>
+    </g>
+  </g>
+</svg>
