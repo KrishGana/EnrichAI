@@ -63,8 +63,9 @@
                 <div fxLayout="row" fxLayoutAlign="space-between center"
                     style="padding-top: 2rem;padding-left: 3rem;padding-right: 1.5rem;" *ngIf="isNewProject">
                     <span matRipple class="rs-headings" style="cursor: pointer;"
-                        (click)="isEdit=false;isReleased=false;iseditclicked=true;ProjectFormGroup.enable()">{{isNewProject?'Create
-                        Project':'Edit Project'}}</span>
+                        (click)="isEdit=false;isReleased=false;iseditclicked=true;ProjectFormGroup.enable()">
+                        {{isNewProject?'Create Project':'Edit Project'}}
+                    </span>
                     <button mat-icon-button (click)="isNewProject=false;SelectProject(ProjectList[indexproject])">
                         <mat-icon>cancel</mat-icon>
                     </button>
@@ -192,27 +193,27 @@
                         <div class="v-devider"></div>
                         <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="0.2rem">
                             <img src="/assets/images/Group 7634.svg" style="width: 5rem;">
-                            <label class="rs-headings">Created on </label>
-                            <label class="tl-ex-smtxt">{{createdOn | date}}</label>
+                            <label class="rs-headings">Pending Projects</label>
+                            <label class="tl-ex-smtxt">{{PendingCount}}</label>
                         </div>
                         <div class="v-devider"></div>
                         <div fxLayout="column" fxLayoutAlign="center end" fxLayoutGap="0.5rem">
                             <div fxLayout="row" fxLayoutGap="0.5rem">
                                 <label class="rs-headings">AI Executed Success</label>
                                 <div class="tl-ex-box">
-                                    <label class="tl-ex-box-txt">23</label>
+                                    <label class="tl-ex-box-txt">{{AIcnt}}</label>
                                 </div>
                             </div>
                             <div fxLayout="row" fxLayoutGap="0.5rem">
                                 <label class="rs-headings">No. of Assign</label>
                                 <div class="tl-ex-box">
-                                    <label class="tl-ex-box-txt">10</label>
+                                    <label class="tl-ex-box-txt">{{AssignedCnt}}</label>
                                 </div>
                             </div>
                             <div fxLayout="row" fxLayoutGap="0.5rem">
                                 <label class="rs-headings">Completed Process</label>
                                 <div class="tl-ex-box">
-                                    <label class="tl-ex-box-txt">10</label>
+                                    <label class="tl-ex-box-txt">{{COMPLETEDCNT}}</label>
                                 </div>
                             </div>
                         </div>

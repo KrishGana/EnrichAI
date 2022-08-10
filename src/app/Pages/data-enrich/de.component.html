@@ -298,7 +298,7 @@
                         <mat-form-field floatLabel="never" appearance="outline" class="enrich">
                             <input matInput placeholder="Enrich Text"
                                 value="{{element.enrichtxt}}"
-                                [disabled]="TempFormArray.controls[i].get('disableinput').value?true:false"
+                                [disabled]="OpenTempFormArry.controls[i].get('disableinput').value?true:false"
                                 class="nounfont" formControlName="enrichtxt">
                         </mat-form-field>
                     </td>
@@ -310,7 +310,7 @@
                         <mat-form-field floatLabel="never" appearance="outline" class="enrich1">
                             <input matInput placeholder="Enrich PO Text"
                                 value="{{element.enrichpotxt}}"
-                                [disabled]="TempFormArray.controls[i].get('disableinput').value?true:false"
+                                [disabled]="OpenTempFormArry.controls[i].get('disableinput').value?true:false"
                                 class="nounfont" formControlName="enrichtxt">
                         </mat-form-field>
                     </td>

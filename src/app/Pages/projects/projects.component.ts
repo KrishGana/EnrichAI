@@ -48,7 +48,6 @@ export class ProjectsComponent implements OnInit {
   ProjectList: any[] = [];
   ProjectFormGroup: FormGroup;
   file: File;
-  // tslint:disable-next-line:variable-name
   tl_state = true;
   ExcelData: AOA;
   selectedProject: Project;
@@ -56,7 +55,6 @@ export class ProjectsComponent implements OnInit {
   isNewProject: boolean;
   isEdit = false;
   isReleased = true;
-  // len = 23423;
   previousFile: string;
   projectid = 0;
   projectnamefilter: string[] = [];
@@ -72,6 +70,12 @@ export class ProjectsComponent implements OnInit {
   displayselectedproject: string;
   iseditclicked = false;
   createdOn: string;
+  PendingCount: number;
+  completedCount: number;
+  AIcnt: number;
+  COMPLETEDCNT: number;
+  AssignedCnt: number;
+
   constructor(
     private fb: FormBuilder,
     private service: EnrichServiceService,
@@ -93,17 +97,16 @@ export class ProjectsComponent implements OnInit {
 
   GetRoles(UserName): void {
     this.service.GetUserRoles(UserName).subscribe(data => {
+      console.log(data)
       this.Roles = data;
-      this.Roles.forEach(element1 => {
-        localStorage.setItem('UserRole', element1.RoleName);
+      this.Roles.forEach(element => {
+        localStorage.setItem('UserRole', element.RoleName);
       });
-      console.log(this.Roles);
     });
   }
 
   setvalues(): void {
     localStorage.setItem('FilterName', 'false');
-    console.log(localStorage.getItem('FilterName'));
   }
   InitializeProjectFormGroup(): void {
     this.ProjectFormGroup = this.fb.group({
@@ -120,9 +123,7 @@ export class ProjectsComponent implements OnInit {
     [key: string]: any;
   } | null => {
     let invalid = false;
-    // tslint:disable-next-line:variable-name
     const Plan_Start = this.ProjectFormGroup && this.ProjectFormGroup.get('Plan_Start').value;
-    // tslint:disable-next-line:variable-name
     const Plan_End = this.ProjectFormGroup && this.ProjectFormGroup.get('Plan_End').value;
     if (Plan_Start && Plan_End) {
       invalid = new Date(Plan_Start).valueOf() > new Date(Plan_End).valueOf();
@@ -134,13 +135,59 @@ export class ProjectsComponent implements OnInit {
     this.service.GetAllProjects().subscribe(data => {
       this.ProjectList = data.details;
       this.ProjectList.reverse();
+      this.PendingCount = this.ProjectList.length;
+      this.COMPLETEDCNT = 0;
+      this.AssignedCnt = 0;
+      this.AIcnt = 0;
       for (let ind = 0; ind < this.ProjectList.length; ind++) {
         this.projectnamefilter.push(this.ProjectList[ind].ProjectName);
+        this.completedCount = 0;
+        this.GetAllDatas(this.ProjectList[ind].ProjectName).then(
+          (data: any) => {
+            this.assignCounts(data);
+          }
+        )
       }
       if (this.ProjectList.length > 0) {
         this.SelectProject(this.ProjectList[0]);
       }
     });
+  }
+
+  assignCounts(data) {
+    data.forEach(element => {
+      element.Status === 50 ? this.completedCount++ : this.completedCount;
+    });
+    this.completedCount === data.length ? this.PendingCount-- : this.PendingCount;
+    this.completedCount === data.length ? this.AIcnt++ : {};
+
+    if (this.Roles[0].RoleName == 'User') {
+      data.forEach(ele => {
+        if (ele.Status === 20 || ele.Status === 30) {
+          this.AssignedCnt++;
+          return;
+        }
+        else { }
+      })
+    }
+    if (this.Roles[0].RoleName == 'Validator') {
+      data.forEach(ele => {
+        if (ele.Status === 40) {
+          this.AssignedCnt++;
+          return;
+        }
+        else { }
+      })
+    }
+    if (this.Roles[0].RoleName == 'Project Manager') {
+      data.forEach(ele => {
+        if (ele.Status === 60) {
+          this.AssignedCnt++;
+          return;
+        }
+        else { }
+      })
+    }
   }
 
   GetAllProjectsafterupdate(): void {
@@ -152,6 +199,21 @@ export class ProjectsComponent implements OnInit {
       }
     });
   }
+
+  GetAllDatas(PrName): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this.service.GetRequiredProjectDetails(PrName).subscribe(
+        (response: any) => {
+          resolve(response)
+        },
+        (err: any) => {
+          reject(err)
+        }
+      )
+    })
+  }
+
+
   timeline_toggle(): void {
     this.tl_state = !this.tl_state;
   }
@@ -172,7 +234,6 @@ export class ProjectsComponent implements OnInit {
         /* save data */
         this.ExcelData = ((XLSX.utils.sheet_to_json(ws)) as AOA);
         this.ProjectFormGroup.get('Data').setValue(this.ExcelData.length);
-        // console.log(JSON.stringify(this.ExcelData));
       };
       reader.readAsBinaryString(this.file);
     }
@@ -208,7 +269,6 @@ export class ProjectsComponent implements OnInit {
         project.DocumentName = this.file.name;
         project.table_data = this.ExcelData;
         this.CreateProject(project);
-        console.log(this.projectid);
       }
     }
     else {
@@ -217,7 +277,6 @@ export class ProjectsComponent implements OnInit {
     if (!this.isNewProject) {
       this.isEdit = !this.isEdit;
       this.isReleased = true;
-      console.log(this.projectid);
       const projectUpdates = new ProjectUpdate();
       projectUpdates.ProjectID = this.projectid;
       projectUpdates.ProjectName = this.ProjectFormGroup.get('ProjectName').value;
@@ -239,9 +298,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   CreateProject(project: Project): void {
-    console.log(project);
     this.service.CreateProject(project).subscribe(data => {
-      console.log('success', data);
       if (data !== undefined) {
         this._snackBar.open('Project saved successfully', '', {
           duration: 4000,
@@ -256,7 +313,6 @@ export class ProjectsComponent implements OnInit {
 
   UpdateProject(project: ProjectUpdate): void {
     this.service.UpdateProject(project).subscribe(data => {
-      console.log('success', data);
       this.GetAllProjectsafterupdate();
       this.ResetProject();
     });
@@ -270,7 +326,6 @@ export class ProjectsComponent implements OnInit {
     this.iseditclicked = false;
     this.selectedProject = project;
     this.displayselectedproject = this.selectedProject.ProjectName;
-    console.log(this.selectedProject);
     this.previousFile = project.DocumentName;
     if (this.isNewProject && this.isEdit) {
       this.isReleased = false;

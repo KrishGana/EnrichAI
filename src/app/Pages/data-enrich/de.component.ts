@@ -110,7 +110,10 @@ export class DeComponent implements OnInit, OnDestroy {
   ValidateEnrichFormArray: FormArray = this.fb.array([]);
   CompletedEnrichFormArray: FormArray = this.fb.array([]);
   RejectedEnrichFormArray: FormArray = this.fb.array([]);
-  TempFormArray: FormArray = this.fb.array([]);
+  OpenTempFormArry: FormArray = this.fb.array([]);
+  ValidatedTempFormArry: FormArray = this.fb.array([]);
+  CompletedTempFormArry: FormArray = this.fb.array([]);
+  RejectedTempFormArry: FormArray = this.fb.array([]);
 
 
   // Boolean variables
@@ -302,10 +305,10 @@ export class DeComponent implements OnInit, OnDestroy {
               this.InsertEnrichdataRejected(tablevalues);
             }
           }
-          this.values == 'open' ? this.TempFormArray = this.EnrichFormArray : {};
-          this.values == 'Validate' ? this.TempFormArray = this.ValidateEnrichFormArray : {};
-          this.values == 'Completed' ? this.TempFormArray = this.CompletedEnrichFormArray : {};
-          this.values == 'Rejected' ? this.TempFormArray = this.RejectedEnrichFormArray : {};
+          this.OpenTempFormArry = this.EnrichFormArray;
+          this.ValidatedTempFormArry = this.ValidateEnrichFormArray;
+          this.CompletedTempFormArry = this.CompletedEnrichFormArray;
+          this.RejectedTempFormArry = this.RejectedEnrichFormArray;
 
 
 
@@ -609,7 +612,11 @@ export class DeComponent implements OnInit, OnDestroy {
       accept: [rowdata.accept],
       disableinput: [rowdata.disableinput],
     });
-    this.TempFormArray.push(row);
+    this.values == 'open' ? this.OpenTempFormArry.push(row) : {};
+    this.values == 'Validate' ? this.ValidatedTempFormArry.push(row) : {};
+    this.values == 'Completed' ? this.CompletedTempFormArry.push(row) : {};
+    this.values == 'Rejected' ? this.RejectedTempFormArry.push(row) : {};
+    
   }
 
   // Button Functions
@@ -664,11 +671,11 @@ export class DeComponent implements OnInit, OnDestroy {
     else {
       this.click2 = !this.click2;
       for (let i = 0; i < this.selectionValidate.selected.length; i++) {
-        this.TempFormArray.controls[i].get('status').patchValue('true');
-        this.ValidateDataSource.data[i]['status'] = 'true';
+        this.ValidatedTempFormArry.controls[i].get('status').patchValue('true');
+        // this.ValidateDataSource.data[i]['status'] = 'true';
       }
       for (let ind = 0; ind < this.selectionValidate.selected.length; ind++) {
-        if (this.TempFormArray.controls[ind].get('status').value === 'true') {
+        if (this.ValidatedTempFormArry.controls[ind].get('status').value === 'true') {
           this.updatetovalidate(ind);
         }
       }
@@ -690,10 +697,10 @@ export class DeComponent implements OnInit, OnDestroy {
     else {
       this.Isloading = true;
       for (let i = 0; i < this.selectionValidate.selected.length; i++) {
-        this.ValidateDataSource.data[i]['status1'] = 'true';
+        this.ValidatedTempFormArry.controls[i].get('status1').patchValue('true');
       }
       for (let ind = 0; ind < this.selectionValidate.selected.length; ind++) {
-        if (this.ValidateDataSource.data[ind]['status1'] === 'true') {
+        if (this.ValidatedTempFormArry.controls[ind].get('status1').value === 'true') {
           const dialogRef = this.dialog.open(RejectReasonComponent, {
             height: '63%',
             width: '60%',
@@ -734,10 +741,10 @@ export class DeComponent implements OnInit, OnDestroy {
     }
     else {
       for (let i = 0; i < this.selectionRejected.selected.length; i++) {
-        this.TempFormArray.controls[i].get('status').patchValue('true');
+        this.RejectedTempFormArry.controls[i].get('status').patchValue('true');
       }
       for (let ind = 0; ind < this.selectionRejected.selected.length; ind++) {
-        if (this.TempFormArray.controls[ind].get('status').value === 'true') {
+        if (this.RejectedTempFormArry.controls[ind].get('status').value === 'true') {
           this.updatetoopen(ind);
         }
       }
@@ -782,8 +789,8 @@ export class DeComponent implements OnInit, OnDestroy {
       this.changeacceptstatus(ind);
       const UpdateEnrichTexts = new UpdateEnrichText();
       UpdateEnrichTexts.ProjectName = this.ProjectName.passingdata;
-      UpdateEnrichTexts.Material = this.TempFormArray.controls[ind].get('Material').value;
-      UpdateEnrichTexts.NounModifier = this.TempFormArray.controls[ind].get('nounn').value + ',' + this.TempFormArray.controls[ind].get('modifier').value;
+      UpdateEnrichTexts.Material = this.OpenTempFormArry.controls[ind].get('Material').value;
+      UpdateEnrichTexts.NounModifier = this.OpenTempFormArry.controls[ind].get('nounn').value + ',' + this.OpenTempFormArry.controls[ind].get('modifier').value;
       UpdateEnrichTexts.EnrichText = ' ';
       UpdateEnrichTexts.EnrichPoText = ' ';
       UpdateEnrichTexts.RejectReason = '';
@@ -821,10 +828,10 @@ export class DeComponent implements OnInit, OnDestroy {
     if (this.ProjectName.passingdata !== undefined) {
       const UpdateEnrichTexts = new UpdateEnrichText();
       UpdateEnrichTexts.ProjectName = this.ProjectName.passingdata;
-      UpdateEnrichTexts.Material = this.TempFormArray.controls[ind].get('Material').value;
-      UpdateEnrichTexts.NounModifier = this.TempFormArray.controls[ind].get('nounn').value + ',' + this.TempFormArray.controls[ind].get('modifier').value;
-      UpdateEnrichTexts.EnrichText = this.TempFormArray.controls[ind].get('enrichtxt').value;
-      UpdateEnrichTexts.EnrichPoText = this.TempFormArray.controls[ind].get('enrichpotxt').value;
+      UpdateEnrichTexts.Material = this.OpenTempFormArry.controls[ind].get('Material').value;
+      UpdateEnrichTexts.NounModifier = this.OpenTempFormArry.controls[ind].get('nounn').value + ',' + this.OpenTempFormArry.controls[ind].get('modifier').value;
+      UpdateEnrichTexts.EnrichText = this.OpenTempFormArry.controls[ind].get('enrichtxt').value;
+      UpdateEnrichTexts.EnrichPoText = this.OpenTempFormArry.controls[ind].get('enrichpotxt').value;
       UpdateEnrichTexts.RejectReason = '';
       UpdateEnrichTexts.Status = 'Confirm';
       this.Isloading = true;
@@ -862,10 +869,10 @@ export class DeComponent implements OnInit, OnDestroy {
     if (this.ProjectName.passingdata !== undefined) {
       const UpdateEnrichTexts = new UpdateEnrichText();
       UpdateEnrichTexts.ProjectName = this.ProjectName.passingdata;
-      UpdateEnrichTexts.Material = this.TempFormArray.controls[ind].get('Material').value;
-      UpdateEnrichTexts.NounModifier = this.TempFormArray.controls[ind].get('nounn').value + ',' + this.TempFormArray.controls[ind].get('modifier').value;
-      UpdateEnrichTexts.EnrichText = this.TempFormArray.controls[ind].get('enrichtxt').value;
-      UpdateEnrichTexts.EnrichPoText = this.TempFormArray.controls[ind].get('enrichpotxt').value;
+      UpdateEnrichTexts.Material = this.ValidatedTempFormArry.controls[ind].get('Material').value;
+      UpdateEnrichTexts.NounModifier = this.ValidatedTempFormArry.controls[ind].get('nounn').value + ',' + this.ValidatedTempFormArry.controls[ind].get('modifier').value;
+      UpdateEnrichTexts.EnrichText = this.ValidatedTempFormArry.controls[ind].get('enrichtxt').value;
+      UpdateEnrichTexts.EnrichPoText = this.ValidatedTempFormArry.controls[ind].get('enrichpotxt').value;
       UpdateEnrichTexts.RejectReason = '';
       UpdateEnrichTexts.Status = 'Validate';
       this.Isloading = true;
@@ -924,10 +931,10 @@ export class DeComponent implements OnInit, OnDestroy {
     if (this.ProjectName.passingdata !== undefined) {
       const UpdateEnrichTexts = new UpdateEnrichText();
       UpdateEnrichTexts.ProjectName = this.ProjectName.passingdata;
-      UpdateEnrichTexts.Material = this.TempFormArray.controls[ind].get('Material').value;
-      UpdateEnrichTexts.NounModifier = this.TempFormArray.controls[ind].get('nounn').value + ',' + this.TempFormArray.controls[ind].get('modifier').value;
-      UpdateEnrichTexts.EnrichText = this.TempFormArray.controls[ind].get('enrichtxt').value;
-      UpdateEnrichTexts.EnrichPoText = this.TempFormArray.controls[ind].get('enrichpotxt').value;
+      UpdateEnrichTexts.Material = this.ValidatedTempFormArry.controls[ind].get('Material').value;
+      UpdateEnrichTexts.NounModifier = this.ValidatedTempFormArry.controls[ind].get('nounn').value + ',' + this.ValidatedTempFormArry.controls[ind].get('modifier').value;
+      UpdateEnrichTexts.EnrichText = this.ValidatedTempFormArry.controls[ind].get('enrichtxt').value;
+      UpdateEnrichTexts.EnrichPoText = this.ValidatedTempFormArry.controls[ind].get('enrichpotxt').value;
       UpdateEnrichTexts.RejectReason = val;
       UpdateEnrichTexts.Status = 'Reject';
       this.Isloading = true;
@@ -967,10 +974,10 @@ export class DeComponent implements OnInit, OnDestroy {
     if (this.ProjectName.passingdata !== undefined) {
       const UpdateEnrichTexts = new UpdateEnrichText();
       UpdateEnrichTexts.ProjectName = this.ProjectName.passingdata;
-      UpdateEnrichTexts.Material = this.TempFormArray.controls[ind].get('Material').value;
-      UpdateEnrichTexts.NounModifier = this.TempFormArray.controls[ind].get('nounn').value + ',' + this.TempFormArray.controls[ind].get('modifier').value;
-      UpdateEnrichTexts.EnrichText = this.TempFormArray.controls[ind].get('enrichtxt').value;
-      UpdateEnrichTexts.EnrichPoText = this.TempFormArray.controls[ind].get('enrichpotxt').value;
+      UpdateEnrichTexts.Material = this.RejectedTempFormArry.controls[ind].get('Material').value;
+      UpdateEnrichTexts.NounModifier = this.RejectedTempFormArry.controls[ind].get('nounn').value + ',' + this.RejectedTempFormArry.controls[ind].get('modifier').value;
+      UpdateEnrichTexts.EnrichText = this.RejectedTempFormArry.controls[ind].get('enrichtxt').value;
+      UpdateEnrichTexts.EnrichPoText = this.RejectedTempFormArry.controls[ind].get('enrichpotxt').value;
       UpdateEnrichTexts.RejectReason = '';
       UpdateEnrichTexts.Status = 'Open';
       this.Isloading = true;
@@ -1001,7 +1008,7 @@ export class DeComponent implements OnInit, OnDestroy {
     if (this.ProjectName.passingdata !== undefined) {
       let Delete = [{
         ProjName: this.ProjectName.passingdata,
-        Material: this.TempFormArray.controls[ind].get('Material').value
+        Material: this.CompletedTempFormArry.controls[ind].get('Material').value
       }]
       console.log(Delete)
     }
@@ -1036,12 +1043,12 @@ export class DeComponent implements OnInit, OnDestroy {
     let newStr = this.OpenDataSource.data[ind]['nounn'] + ',' + this.OpenDataSource.data[ind]['modifier'];
     for (let indx = 0; indx < this.enrichtexts.length; indx++) {
       if (newStr === this.enrichtexts[indx].CodeNMText) {
-        this.TempFormArray.controls[ind].get('Material').value
+        this.OpenTempFormArry.controls[ind].get('Material').value
         this.OpenDataSource.data[ind]['enrichtxt'] = this.enrichtexts[indx].PropMatText;
         this.OpenDataSource.data[ind]['enrichpotxt'] = this.enrichtexts[indx].PropPOText;
         this.OpenDataSource.data[ind]['commodity'] = this.enrichtexts[indx].UNSPSC;
-        this.TempFormArray.controls[ind].get('accept').patchValue(true)
-        this.TempFormArray.controls[ind].get('disableinput').patchValue(false);
+        this.OpenTempFormArry.controls[ind].get('accept').patchValue(true)
+        this.OpenTempFormArry.controls[ind].get('disableinput').patchValue(false);
         break;
       }
     }
@@ -1336,7 +1343,10 @@ export class DeComponent implements OnInit, OnDestroy {
 
   applyFilter(event: Event): void {
     this.filtertyped = true;
-    this.TempFormArray = this.fb.array([]);
+    this.OpenTempFormArry = this.fb.array([]);
+    this.ValidatedTempFormArry = this.fb.array([]);
+    this.CompletedTempFormArry = this.fb.array([]);
+    this.RejectedTempFormArry = this.fb.array([]);
     const filterValue = (event.target as HTMLInputElement).value;
     const queryLower = filterValue.trim().toLowerCase();
     console.log('let  ', queryLower)
@@ -1402,7 +1412,7 @@ export class DeComponent implements OnInit, OnDestroy {
     this.openvalidate = false;
     this.values = 'Completed';
     this.requiredcolumn = ['select', 'nounn', 'modifier', 'enrichtxt', 'enrichpotxt', 'Material', 'description', 'Type', 'UOM', 'Vendorname', 'Group', 'hsn', 'match', 'Potext', 'commodity', 'rejectreason'];
-    this.TempFormArray = this.CompletedEnrichFormArray;
+    this.CompletedTempFormArry = this.CompletedEnrichFormArray;
     if (this.CompletedDataSource.data.length == 0) {
       this._snackBar.open('There is no data to show', '', {
         duration: 8000,
@@ -1417,7 +1427,7 @@ export class DeComponent implements OnInit, OnDestroy {
     this.openvalidate = false;
     this.opencompleted = false;
     this.values = 'Rejected';
-    this.TempFormArray = this.RejectedEnrichFormArray;
+    this.RejectedTempFormArry = this.RejectedEnrichFormArray;
     this.requiredcolumn = ['select', 'nounn', 'modifier', 'enrichtxt', 'enrichpotxt', 'Material', 'description', 'Type', 'UOM', 'Vendorname', 'Group', 'hsn', 'match', 'Potext', 'commodity', 'rejectreason', 'action'];
     if (this.RejectedDataSource.data.length == 0) {
       this._snackBar.open('There is no data to show', '', {

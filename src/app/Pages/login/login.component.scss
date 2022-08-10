@@ -22,6 +22,7 @@
         }
 
         .LoginForm {
+            height: 100% !important;
             padding: 20px 20px 0 0;
 
             .Powered {
@@ -38,7 +39,6 @@
             }
 
             .FormLogin {
-                padding-left: 10%;
 
                 .signin {
                     color: #2085fb;
@@ -49,6 +49,18 @@
                 .signcontinue {
                     color: #1e3e67;
                     font-weight: 600;
+                }
+            }
+
+            .formgroup {
+                padding: 10px 0;
+
+                .mat-form-field-wrapper {
+                    padding-bottom: 0px;
+                }
+
+                .mat-form-field-subscript-wrapper {
+                    margin-top: 2em;
                 }
             }
 
