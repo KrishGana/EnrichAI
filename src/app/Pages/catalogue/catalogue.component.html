@@ -9,7 +9,8 @@
             <div fxLayout="row">
                 <img class="imgcreate" matTooltip="Scan here" src="./assets/images/barcode-scanner.png">
                 <div class="search-to-do">
-                    <input matInput class="search_input" type="text" placeholder="Search to - do" (keyup)="applyFilter($event)" #input>
+                    <input matInput class="search_input" type="text" placeholder="Search to - do"
+                        (keyup)="applyFilter($event)" #input>
                 </div>
                 <div class="searchplace">
                     <img class="search_place" src="./assets/images/XMLID_223_.svg">
@@ -23,7 +24,7 @@
                     <ng-container matColumnDef="Image" sticky>
                         <th mat-header-cell *matHeaderCellDef class="tab_header"> Image </th>
                         <td mat-cell *matCellDef="let element" class="tab_data">
-                            <img src="./assets/images/Group 8292.png" (mouseenter)="display($event)"
+                            <img src="{{element.Image}}" (mouseenter)="display($event,element)"
                                 (mouseleave)="hide()">
                         </td>
                     </ng-container>
@@ -113,7 +114,7 @@
                     <div class="wrapper" fxLayout="row" fxLayoutGap="15px">
                         <img [src]="val.Image" fxFlex="60" class="resultImg">
                         <div fxLayout="column" fxFlex="40" class="resultTxt" fxLayoutGap="15px">
-                            <a  href="{{val.Material}}" target="_blank" class="link">Click Here</a>
+                            <a href="{{val.Material}}" target="_blank" class="link">Click Here</a>
                             <span class="price">{{val.Cost}}</span>
                         </div>
                     </div>
@@ -133,7 +134,7 @@
         </div>
     </div>
 
-    <div id="center">
+    <div id="HoverZoom">
         <img src="{{image}}" class="image" id="image">
     </div>
 

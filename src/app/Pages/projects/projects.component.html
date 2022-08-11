@@ -159,7 +159,7 @@
                         </div>
                     </div>
                 </form>
-                <div fxLayout="row" fxLayoutAlign="center center"
+                <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px"
                     [ngClass]="isReleased ? 'projectedit' : 'projectcreate' ">
                     <button class="foo_button3" mat-button (click)="SaveClicked()"
                         *ngIf="!isEdit && !isReleased">Save</button>
@@ -213,7 +213,7 @@
                             <div fxLayout="row" fxLayoutGap="0.5rem">
                                 <label class="rs-headings">Completed Process</label>
                                 <div class="tl-ex-box">
-                                    <label class="tl-ex-box-txt">{{COMPLETEDCNT}}</label>
+                                    <label class="tl-ex-box-txt">{{completedCount}}</label>
                                 </div>
                             </div>
                         </div>

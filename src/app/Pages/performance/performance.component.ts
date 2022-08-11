@@ -183,7 +183,7 @@ export class PerformanceComponent implements OnInit {
         }
         this.MType.setValue(this.MaterialTypes[0])
         this.MGroup.setValue(this.MaterialGroups[0])
-        this.MaterialGroups.push('Others');
+        !this.MaterialGroups.includes('Others') ? this.MaterialGroups.push('Others') : {};
         this.AssignBarChart();
         this.donutchart();
         this.FindMaterialByGroup();

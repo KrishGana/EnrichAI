@@ -30,9 +30,7 @@
                     opacity: 0.6;
                     color: #c4c4c4;
                 }
-            }
 
-            .logo {
                 img {
                     width: 6rem;
                 }
@@ -55,12 +53,31 @@
             .formgroup {
                 padding: 10px 0;
 
+                .mat-error {
+                    font-size: 0.65rem !important;
+                }
+
                 .mat-form-field-wrapper {
                     padding-bottom: 0px;
                 }
 
                 .mat-form-field-subscript-wrapper {
-                    margin-top: 2em;
+                    margin-top: 0;
+
+                }
+
+                .mat-input-element {
+                    color: #2085fb;
+                    font: inherit;
+                    font-weight: 500;
+                }
+
+                .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+                    color: #2085fb;
+                }
+
+                .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
+                    color: red;
                 }
             }
 

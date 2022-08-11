@@ -63,12 +63,10 @@ export class NounModifierComponent implements OnInit {
 
   ngOnInit(): void {
     this.GetAllDatas().then(data => {
-      console.log("data : ", data)
       this.dataSource = new MatTableDataSource(data);
       const cls = new Noun()
       cls.CodeNM = data[0].codenm;
       this.GetAttributesDatas(cls).then(data => {
-        console.log("att", data)
         this.dataSourceatt = new MatTableDataSource(data);
         this.Isloading = false;
       })
@@ -80,7 +78,6 @@ export class NounModifierComponent implements OnInit {
     return new Promise<any>((resolve, reject) => {
       this.noundataservice.GetAllData1().subscribe(
         (response: any) => {
-          console.log("Length", response.length)
           resolve(response);
         },
         (err: any) => {
@@ -118,7 +115,6 @@ export class NounModifierComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-    console.log("fil", this.dataSource)
   }
 
   splitData(text: string) {
@@ -172,11 +168,10 @@ export class NounModifierComponent implements OnInit {
         const dat = new Noun();
         dat.CodeNM = '';
         dat.NounModifier = this.dataSource.data[i].nounmodifier;
-        dat.Noun = this.dataSource.data[i].noun;
-        dat.Modifier = this.dataSource.data[i].modifier;
+        this.splitData(dat.NounModifier)[0] ? dat.Noun = this.splitData(dat.NounModifier)[0] : dat.Noun = "";
+        this.splitData(dat.NounModifier)[1] ? dat.Modifier = this.splitData(dat.NounModifier)[1] : dat.Modifier = ""
         dat.attridata = this.dataSourceatt.data;
         dat.ref = "2";
-        console.log("Att", JSON.stringify(dat))
         this.UpdateDatas(dat).then(
           (data) => {
             if (data != "CodeNM is not Defined") {
@@ -209,11 +204,10 @@ export class NounModifierComponent implements OnInit {
         const dat = new Noun();
         dat.CodeNM = this.Reference.codenm;
         this.NounModifier ? dat.NounModifier = this.NounModifier : dat.NounModifier = this.Reference.nounmodifier;
-        this.NounVal ? dat.Noun = this.NounVal : dat.Noun = this.Reference.noun;
-        this.ModifierVal ? dat.Modifier = this.ModifierVal : dat.Modifier = this.Reference.modifier;
+        this.splitData(dat.NounModifier)[0] ? dat.Noun = this.splitData(dat.NounModifier)[0] : dat.Noun = "";
+        this.splitData(dat.NounModifier)[1] ? dat.Modifier = this.splitData(dat.NounModifier)[1] : dat.Modifier = ""
         dat.attridata = this.dataSourceatt.data;
         dat.ref = "2";
-        console.log("Att", JSON.stringify(dat))
         this.UpdateDatas(dat).then(
           (data) => {
             if (data != "CodeNM is not Defined") {
@@ -251,14 +245,13 @@ export class NounModifierComponent implements OnInit {
   }
 
   NounModifier_Input(val: string) {
-    console.log(val);
     this.NounModifier = val;
     this.dataSource.data[0].nounmodifier = val;
-    console.log(this.dataSource.data[0])
+    this.splitData(val)[0] ? this.NounVal = this.splitData(val)[0] : {}
+    this.splitData(val)[1] ? this.ModifierVal = this.splitData(val)[0] : {}
   }
 
   radioclick(row: any) {
-    console.log('Row ',row)
     this.Reference = row;
     const cls = new Noun()
     cls.CodeNM = row.codenm;

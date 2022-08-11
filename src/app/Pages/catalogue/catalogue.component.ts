@@ -35,25 +35,26 @@ export interface catalogue {
   Model: string;
   CPage: number;
   FullText: string;
+  Image: string;
 }
 
 const ELEMENT_DATA: catalogue[] = [
   {
-    Name: 'Water Bottle', Description: 'Socket Set Screw, Cup, 1/8 ', Item: '46t65ff', Commodity: '4767547', Model: '56t65ff',
+    Image: './assets/images/catelogue/waterBottle.jpg', Name: 'Water Bottle', Description: 'Socket Set Screw, Cup, 1/8 ', Item: '46t65ff', Commodity: '4767547', Model: '56t65ff',
     CPage: 98, FullText: 'A set screw can be used...'
   },
   {
-    Name: 'DC Drive Motor', Description: 'Socket Set Screw, Cup, 1/8 ', Item: '46t65ff', Commodity: '4767547', Model: '56t65ff',
+    Image: 'https://m.media-amazon.com/images/I/51+9dm50prL._SX466_.jpg', Name: 'DC Drive Motor', Description: 'Socket Set Screw, Cup, 1/8 ', Item: '46t65ff', Commodity: '4767547', Model: '56t65ff',
     CPage: 98, FullText: 'A set screw can be used...'
   },
   {
-    Name: 'Halogen Lamp', Description: 'Socket Set Screw, Cup, 1/8 ', Item: '46t65ff', Commodity: '4767547', Model: '56t65ff',
+    Image: 'https://m.media-amazon.com/images/I/21RWTKu96SL._AC_UL320_.jpg', Name: 'Halogen Lamp', Description: 'Socket Set Screw, Cup, 1/8 ', Item: '46t65ff', Commodity: '4767547', Model: '56t65ff',
     CPage: 98, FullText: 'A set screw can be used...'
   },
   {
-    Name: 'Capacitor', Description: 'Socket Set Screw, Cup, 1/8 ', Item: '46t65ff', Commodity: '4767547', Model: '56t65ff',
+    Image: './assets/images/catelogue/capacitor.jpg', Name: 'Capacitor', Description: 'Socket Set Screw, Cup, 1/8 ', Item: '46t65ff', Commodity: '4767547', Model: '56t65ff',
     CPage: 98, FullText: 'A set screw can be used...'
-  }
+  },
 ];
 
 
@@ -80,7 +81,7 @@ export class CatalogueComponent implements OnInit {
   // Global Variables
   Recents: recentmaterials[] = [];
   Suggested: suggested[] = [];
-  image: string;
+  image: string = '';
   LinkList = [];
   ImageList = [];
   PriceList = [];
@@ -104,36 +105,29 @@ export class CatalogueComponent implements OnInit {
   }
 
 
-  display(e: MouseEvent): void {
-    const popupHeight = 320;
-    let popupYPosition;
-
-    if (e.clientY + popupHeight > window.innerHeight && (e.pageY - popupHeight) > 0 && (e.pageY - popupHeight) < window.innerHeight) {
-      popupYPosition = e.pageY - popupHeight;
-      console.log("IF", popupYPosition)
-    }
-    else {
-      popupYPosition = e.pageY;
-      console.log("Else", popupYPosition)
-    }
-    const card = document.getElementById('center') as HTMLDivElement;
+  display(e: MouseEvent, ele): void {
+    const card = document.getElementById('HoverZoom') as HTMLDivElement;
     const imag = document.getElementById('image') as HTMLImageElement;
-    if (card != null) {
-      card.style.display = 'block';
-      card.style.zIndex = '1000';
-      imag.style.position = 'absolute';
-      imag.style.top = popupYPosition + 'px';
-      imag.style.left = '20%';
-      imag.style.transform = "scale(2)";
-      this.image = './assets/images/Component 355.png';
-    }
 
+    if (card != null) {
+      card.style.visibility = 'visible';
+      card.style.transition = '0.8s'
+      card.style.opacity = '1';
+      imag.style.visibility = 'visible';
+      imag.style.transition = '0.4s'
+      imag.style.opacity = '1';
+      this.image = ele.Image;
+    }
   }
 
   hide(): void {
-    const card = document.getElementById('center') as HTMLDivElement;
+    const card = document.getElementById('HoverZoom') as HTMLDivElement;
+    const imag = document.getElementById('image') as HTMLImageElement;
     if (card != null) {
-      card.style.display = 'none';
+      card.style.visibility = 'hidden';
+      card.style.opacity = '0';
+      imag.style.visibility = 'hidden';
+      imag.style.opacity = '0';
     }
   }
 
@@ -182,11 +176,4 @@ export class CatalogueComponent implements OnInit {
     )
   }
 
-  // async SearchMaterial(row) {
-  //   const browser = await puppeteer.launch()
-  //   const page = await browser.newPage()
-  //   await page.goto("https://www.amazon.com")
-  //   await page.screenshot({path:"Pictures.png"})
-  //   await browser.close()
-  // }
 }

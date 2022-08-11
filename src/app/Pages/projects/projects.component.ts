@@ -73,7 +73,6 @@ export class ProjectsComponent implements OnInit {
   PendingCount: number;
   completedCount: number;
   AIcnt: number;
-  COMPLETEDCNT: number;
   AssignedCnt: number;
 
   constructor(
@@ -135,15 +134,16 @@ export class ProjectsComponent implements OnInit {
     this.service.GetAllProjects().subscribe(data => {
       this.ProjectList = data.details;
       this.ProjectList.reverse();
-      this.PendingCount = this.ProjectList.length;
-      this.COMPLETEDCNT = 0;
-      this.AssignedCnt = 0;
+      this.PendingCount = 0;
       this.AIcnt = 0;
+      this.AssignedCnt = 0;
+      this.completedCount = 0;
       for (let ind = 0; ind < this.ProjectList.length; ind++) {
         this.projectnamefilter.push(this.ProjectList[ind].ProjectName);
-        this.completedCount = 0;
         this.GetAllDatas(this.ProjectList[ind].ProjectName).then(
           (data: any) => {
+            // console.log(data.some(item => item.Status === 40))
+            // console.log(data.every(itm => itm.Status === 20 || itm.Status === 30 || itm.Status === 50 || itm.Status === 60))
             this.assignCounts(data);
           }
         )
@@ -155,38 +155,20 @@ export class ProjectsComponent implements OnInit {
   }
 
   assignCounts(data) {
-    data.forEach(element => {
-      element.Status === 50 ? this.completedCount++ : this.completedCount;
-    });
-    this.completedCount === data.length ? this.PendingCount-- : this.PendingCount;
-    this.completedCount === data.length ? this.AIcnt++ : {};
+    data.some(item => item.Status != 50) ? this.PendingCount++ : this.PendingCount;
+    data.every(item => item.Status === 50) ? this.AIcnt++ : this.AIcnt;
 
     if (this.Roles[0].RoleName == 'User') {
-      data.forEach(ele => {
-        if (ele.Status === 20 || ele.Status === 30) {
-          this.AssignedCnt++;
-          return;
-        }
-        else { }
-      })
+      data.some(item => item.Status === 20 || item.Status === 30) ? this.AssignedCnt++ : this.AssignedCnt;
+      data.every(item => item.Status != 20 && item.Status != 30) ? this.completedCount++ : this.completedCount;
     }
     if (this.Roles[0].RoleName == 'Validator') {
-      data.forEach(ele => {
-        if (ele.Status === 40) {
-          this.AssignedCnt++;
-          return;
-        }
-        else { }
-      })
+      data.some(item => item.Status === 40) ? this.AssignedCnt++ : this.AssignedCnt;
+      data.every(item => item.Status != 20 && item.Status != 30 && item.Status != 40) ? this.completedCount++ : this.completedCount;
     }
     if (this.Roles[0].RoleName == 'Project Manager') {
-      data.forEach(ele => {
-        if (ele.Status === 60) {
-          this.AssignedCnt++;
-          return;
-        }
-        else { }
-      })
+      data.some(item => item.Status === 60) ? this.AssignedCnt++ : this.AssignedCnt;
+      data.every(item => item.Status === 50) ? this.completedCount++ : this.completedCount;
     }
   }
 

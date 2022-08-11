@@ -444,25 +444,25 @@ export class DeComponent implements OnInit, OnDestroy {
     this.Isloading = false;
 
     if (this.values == 'open' && this.OpenDataSource.data.length == 0) {
-      this._snackBar.open('There is no data to show', '', {
+      this._snackBar.open('There is no data to show', 'close', {
         duration: 8000,
         panelClass: ['snackbarstyle']
       });
     }
-    if (this.values == 'Valiadte' && this.ValidateDataSource.data.length == 0) {
-      this._snackBar.open('There is no data to show', '', {
+    if (this.values == 'Validate' && this.ValidateDataSource.data.length == 0) {
+      this._snackBar.open('There is no data to show', 'close', {
         duration: 8000,
         panelClass: ['snackbarstyle']
       });
     }
     if (this.values == 'Completed' && this.CompletedDataSource.data.length == 0) {
-      this._snackBar.open('There is no data to show', '', {
+      this._snackBar.open('There is no data to show', 'close', {
         duration: 8000,
         panelClass: ['snackbarstyle']
       });
     }
     if (this.values == 'Rejected' && this.RejectedDataSource.data.length == 0) {
-      this._snackBar.open('There is no data to show', '', {
+      this._snackBar.open('There is no data to show', 'close', {
         duration: 8000,
         panelClass: ['snackbarstyle']
       });
@@ -797,14 +797,14 @@ export class DeComponent implements OnInit, OnDestroy {
       UpdateEnrichTexts.Status = 'Accept';
       this.updateStatus(UpdateEnrichTexts).then(result => {
         if (result) {
-          this._snackBar.open('Material is Accepted, Waiting for Confirmation', '', {
+          this._snackBar.open('Material is Accepted, Waiting for Confirmation', 'close', {
             duration: 4000,
             panelClass: ['snackbarstyle']
           });
         }
         else {
           this.Isloading = false;
-          this._snackBar.open('Something went wrong, Please try again later', '', {
+          this._snackBar.open('Something went wrong, Please try again later', 'close', {
             duration: 4000,
             panelClass: ['doesnotwork']
           });
@@ -838,14 +838,14 @@ export class DeComponent implements OnInit, OnDestroy {
       this.EmptyDatasource();
       await this.updateStatus(UpdateEnrichTexts).then(result => {
         if (result) {
-          this._snackBar.open('Material is confirmed and moved for validation', '', {
+          this._snackBar.open('Material is confirmed and moved for validation', 'close', {
             duration: 4000,
             panelClass: ['snackbarstyle']
           });
         }
         else {
           this.Isloading = false;
-          this._snackBar.open('Something went wrong, Please try again later', '', {
+          this._snackBar.open('Something went wrong, Please try again later', 'close', {
             duration: 4000,
             panelClass: ['doesnotwork']
           });
@@ -879,7 +879,7 @@ export class DeComponent implements OnInit, OnDestroy {
       this.EmptyDatasource();
       await this.updateStatus(UpdateEnrichTexts).then(result => {
         if (result) {
-          this._snackBar.open('Material is confirmed and moved for approval', '', {
+          this._snackBar.open('Material is confirmed and moved for approval', 'close', {
             duration: 4000,
             panelClass: ['snackbarstyle']
           });
@@ -887,7 +887,7 @@ export class DeComponent implements OnInit, OnDestroy {
         }
         else {
           this.Isloading = false;
-          this._snackBar.open('Something went wrong, Please try again later', '', {
+          this._snackBar.open('Something went wrong, Please try again later', 'close', {
             duration: 4000,
             panelClass: ['doesnotwork']
           });
@@ -941,7 +941,7 @@ export class DeComponent implements OnInit, OnDestroy {
       this.EmptyDatasource();
       await this.updateStatus(UpdateEnrichTexts).then(result => {
         if (result) {
-          this._snackBar.open('Material is rejected and moved for re-assign', '', {
+          this._snackBar.open('Material is rejected and moved for re-assign', 'close', {
             duration: 4000,
             panelClass: ['doesnotwork']
           });
@@ -949,7 +949,7 @@ export class DeComponent implements OnInit, OnDestroy {
         }
         else {
           this.Isloading = false;
-          this._snackBar.open('Something went wrong, Please try again later', '', {
+          this._snackBar.open('Something went wrong, Please try again later', 'close', {
             duration: 4000,
             panelClass: ['doesnotwork']
           });
@@ -984,14 +984,14 @@ export class DeComponent implements OnInit, OnDestroy {
       this.EmptyDatasource();
       await this.updateStatus(UpdateEnrichTexts).then(result => {
         if (result) {
-          this._snackBar.open('Material is Re-Assigned', '', {
+          this._snackBar.open('Material is Re-Assigned', 'close', {
             duration: 4000,
             panelClass: ['snackbarstyle']
           });
         }
         else {
           this.Isloading = false;
-          this._snackBar.open('Something went wrong, Please try again later', '', {
+          this._snackBar.open('Something went wrong, Please try again later', 'close', {
             duration: 4000,
             panelClass: ['doesnotwork']
           });
@@ -1061,7 +1061,7 @@ export class DeComponent implements OnInit, OnDestroy {
       this.selectionOpen.toggle(this.OpenDataSource.data[index])
     }
     if (this.opentotal > this.OpenDataSource.data.length) {
-      this._snackBar.open('you are ahead of maximun rows in the table, please select items from the table', '', {
+      this._snackBar.open('you are ahead of maximun rows in the table, please select items from the table', 'close', {
         duration: 4000,
         panelClass: ['snackbarstyle']
       });
@@ -1076,7 +1076,7 @@ export class DeComponent implements OnInit, OnDestroy {
       this.selectionValidate.toggle(this.ValidateDataSource.data[index])
     }
     if (this.validatetotal > this.ValidateDataSource.data.length) {
-      this._snackBar.open('you are ahead of maximun rows in the table, please select items from the table', '', {
+      this._snackBar.open('you are ahead of maximun rows in the table, please select items from the table', 'close', {
         duration: 4000,
         panelClass: ['snackbarstyle']
       });
@@ -1091,7 +1091,7 @@ export class DeComponent implements OnInit, OnDestroy {
       this.selectionCompleted.toggle(this.CompletedDataSource.data[index])
     }
     if (this.completetotal > this.CompletedDataSource.data.length) {
-      this._snackBar.open('you are ahead of maximun rows in the table, please select items from the table', '', {
+      this._snackBar.open('you are ahead of maximun rows in the table, please select items from the table', 'close', {
         duration: 4000,
         panelClass: ['snackbarstyle']
       });
@@ -1106,7 +1106,7 @@ export class DeComponent implements OnInit, OnDestroy {
       this.selectionRejected.toggle(this.RejectedDataSource.data[index])
     }
     if (this.rejecttotal > this.RejectedDataSource.data.length) {
-      this._snackBar.open('you are ahead of maximun rows in the table, please select items from the table', '', {
+      this._snackBar.open('you are ahead of maximun rows in the table, please select items from the table', 'close', {
         duration: 4000,
         panelClass: ['snackbarstyle']
       });
@@ -1414,7 +1414,7 @@ export class DeComponent implements OnInit, OnDestroy {
     this.requiredcolumn = ['select', 'nounn', 'modifier', 'enrichtxt', 'enrichpotxt', 'Material', 'description', 'Type', 'UOM', 'Vendorname', 'Group', 'hsn', 'match', 'Potext', 'commodity', 'rejectreason'];
     this.CompletedTempFormArry = this.CompletedEnrichFormArray;
     if (this.CompletedDataSource.data.length == 0) {
-      this._snackBar.open('There is no data to show', '', {
+      this._snackBar.open('There is no data to show', 'close', {
         duration: 8000,
         panelClass: ['snackbarstyle']
       });
@@ -1430,7 +1430,7 @@ export class DeComponent implements OnInit, OnDestroy {
     this.RejectedTempFormArry = this.RejectedEnrichFormArray;
     this.requiredcolumn = ['select', 'nounn', 'modifier', 'enrichtxt', 'enrichpotxt', 'Material', 'description', 'Type', 'UOM', 'Vendorname', 'Group', 'hsn', 'match', 'Potext', 'commodity', 'rejectreason', 'action'];
     if (this.RejectedDataSource.data.length == 0) {
-      this._snackBar.open('There is no data to show', '', {
+      this._snackBar.open('There is no data to show', 'close', {
         duration: 8000,
         panelClass: ['snackbarstyle']
       });

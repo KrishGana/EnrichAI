@@ -5,34 +5,38 @@
                 <img src="./assets/images/loginimg.png">
             </div>
             <div fxFlex="60" class="LoginForm" fxLayout="column" fxLayoutGap="10px">
-                <div fxLayout="row" fxLayoutAlign="end" class="Powered">
+                <div fxLayout="column" fxLayoutAlign="center end" class="Powered">
                     <span>Powered By</span>
-                </div>
-                <div fxLayout="row" fxLayoutAlign="end" class="logo">
                     <img src="../assets/images/image (28).png">
                 </div>
                 <div fxLayout="column" fxLayoutGap="15px" class="FormLogin">
                     <span class="signin">Sign In</span>
                     <span class="signcontinue">Sign In to Continue</span>
                 </div>
-                <form [formGroup]="LoginFormGroup" class="formgroup" fxLayout="column" fxLayoutGap="10px">
-                    <div fxLayout="column" fxLayoutGap="7px">
-                        <div fxLayout="row">
+                <form [formGroup]="LoginFormGroup" class="formgroup" fxLayout="column" fxLayoutGap="15px">
+                    <div fxLayout="column" fxLayoutGap="2px">
+                        <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 90%;">
                             <span class="signcontinue">UserName</span>
+                            <mat-error  @fade
+                                *ngIf="LoginFormGroup.get('Username').touched && LoginFormGroup.get('Username').hasError('required')">
+                                UserName is required
+                            </mat-error>
                         </div>
                         <div fxLayout="row">
                             <mat-form-field fxFlex="90" class="form-field" appearance="outline" floatLabel="never">
                                 <mat-label>Enter UserName</mat-label>
                                 <input matInput type="text" formControlName="Username" fxFlex>
-                                <mat-error
-                                    *ngIf="LoginFormGroup.get('Username').touched && LoginFormGroup.get('Username').hasError('required')">
-                                    UserName is required</mat-error>
+
                             </mat-form-field>
                         </div>
                     </div>
-                    <div fxLayout="column" fxLayoutGap="7px">
-                        <div fxLayout="row">
+                    <div fxLayout="column" fxLayoutGap="2px">
+                        <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 90%;">
                             <span class="signcontinue">Password</span>
+                            <mat-error @fade
+                                *ngIf="LoginFormGroup.get('Password').touched && LoginFormGroup.get('Password').hasError('required')">
+                                Password is required
+                            </mat-error>
                         </div>
                         <div fxLayout="row">
                             <mat-form-field fxFlex="90" class="form-field" appearance="outline" floatLabel="never">
@@ -42,9 +46,6 @@
                                     [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 </button>
-                                <mat-error
-                                    *ngIf="LoginFormGroup.get('Password').touched && LoginFormGroup.get('Password').hasError('required')">
-                                    Password is required</mat-error>
                             </mat-form-field>
                         </div>
                     </div>
