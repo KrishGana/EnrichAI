@@ -633,6 +633,7 @@ export class DeComponent implements OnInit, OnDestroy {
       for (let ind = 0; ind < this.selectionOpen.selected.length; ind++) {
         this.selectacceptrow(ind);
       }
+      this.selectionOpen.clear();
       setTimeout(() => {
         this.InitializeFormControls();
         this.release_project();
@@ -653,6 +654,7 @@ export class DeComponent implements OnInit, OnDestroy {
       for (let ind = 0; ind < this.selectionOpen.selected.length; ind++) {
         this.updatetoconfirm(ind);
       }
+      this.selectionOpen.clear();
       setTimeout(() => {
         this.InitializeFormControls();
         this.release_project();
@@ -672,13 +674,13 @@ export class DeComponent implements OnInit, OnDestroy {
       this.click2 = !this.click2;
       for (let i = 0; i < this.selectionValidate.selected.length; i++) {
         this.ValidatedTempFormArry.controls[i].get('status').patchValue('true');
-        // this.ValidateDataSource.data[i]['status'] = 'true';
       }
       for (let ind = 0; ind < this.selectionValidate.selected.length; ind++) {
         if (this.ValidatedTempFormArry.controls[ind].get('status').value === 'true') {
           this.updatetovalidate(ind);
         }
       }
+      this.selectionValidate.clear();
       setTimeout(() => {
         this.InitializeFormControls();
         this.release_project();
@@ -728,6 +730,7 @@ export class DeComponent implements OnInit, OnDestroy {
           });
         }
       }
+      this.selectionValidate.clear();
     }
   }
 
@@ -748,6 +751,7 @@ export class DeComponent implements OnInit, OnDestroy {
           this.updatetoopen(ind);
         }
       }
+      this.selectionRejected.clear();
       setTimeout(() => {
         this.InitializeFormControls();
         this.release_project();
@@ -776,6 +780,7 @@ export class DeComponent implements OnInit, OnDestroy {
           }]
         }
       }
+      this.selectionCompleted.clear();
       setTimeout(() => {
         this.InitializeFormControls();
         this.release_project();

@@ -17,13 +17,11 @@ export class EnrichServiceService {
       'Content-Type': 'application/json'
     })
   };
-  // tslint:disable-next-line:variable-name
   constructor(private _httpClient: HttpClient) {
-    // this.baseAddress = environment.baseAddress;
   }
+
   // Error Handler
   errorHandler(error: HttpErrorResponse): Observable<string> {
-    // tslint:disable-next-line:max-line-length
     return throwError(error.error instanceof Object ? error.error.Message ? error.error.Message : error.error : error.error || error.message || 'Server Error');
   }
 
@@ -109,7 +107,7 @@ export class EnrichServiceService {
       .pipe(catchError(this.errorHandler));
   }
   SearchData(SearchString:any):Observable<any>{
-    return this._httpClient.post(`http://127.0.0.1:5000/SearchMaterial`, SearchString, this.httpOptions)
+    return this._httpClient.post(`${this.baseAddress}/mr/SearchMaterial`, SearchString, this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
   // DowloandAttachment(ProjectName: string,DocumentName:string): Observable<Blob | string> {

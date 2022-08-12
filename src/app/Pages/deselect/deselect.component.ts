@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { EnrichServiceService } from 'src/app/Services/enrich-service.service';
 import { Router } from '@angular/router';
@@ -6,7 +6,8 @@ import { LoginServiceService } from 'src/app/Services/login-service.service';
 @Component({
   selector: 'app-deselect',
   templateUrl: './deselect.component.html',
-  styleUrls: ['./deselect.component.scss']
+  styleUrls: ['./deselect.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class DeselectComponent implements OnInit {
   myControl1 = new FormControl();
