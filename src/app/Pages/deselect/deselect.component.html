@@ -5,21 +5,23 @@
     <div fxFlex="50" fxLayout="column">
       <p>Data Enrich</p>
       <span class="data1">Enter Your Project Name </span>
-      <p class="data2">And Start Enrich</p>
+      <p>And Start Enrich</p>
 
-      <mat-form-field class="mat_form_field" appearance="outline">
-        <mat-label >Enter Your Project Name </mat-label>
-        <input (ngModelChange)="filterItem($event)" autocomplete="off" [matAutocomplete]="auto"
-          [formControl]="myControl1" matInput placeholder="Enter Your Project Name ">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of items" [value]="option.Name">
-            {{option.Value}}
-          </mat-option>
-        </mat-autocomplete>
-        <mat-icon class="clickarrow" matSuffix (click)="routetode()">arrow_right_alt</mat-icon>
-      </mat-form-field>
+      <div fxLayout="row">
+        <mat-form-field class="mat_form_field" fxFlex="90" appearance="outline">
+          <mat-label >Enter Your Project Name </mat-label>
+          <input (ngModelChange)="filterItem($event)" autocomplete="off" [matAutocomplete]="auto"
+            [formControl]="myControl1" matInput placeholder="Enter Your Project Name ">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of items" [value]="option.Name">
+              {{option.Value}}
+            </mat-option>
+          </mat-autocomplete>
+          <mat-icon class="clickarrow" matSuffix (click)="routetode()">arrow_right_alt</mat-icon>
+        </mat-form-field>
+      </div>
 
-      <P class="release" (click)="routetoproject()">Or go to Projects & Release</P>
+      <P (click)="routetoproject()">Or go to Projects & Release</P>
     </div>
 
     <div fxFlex="50">

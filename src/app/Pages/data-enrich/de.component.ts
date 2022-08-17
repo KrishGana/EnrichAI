@@ -616,7 +616,7 @@ export class DeComponent implements OnInit, OnDestroy {
     this.values == 'Validate' ? this.ValidatedTempFormArry.push(row) : {};
     this.values == 'Completed' ? this.CompletedTempFormArry.push(row) : {};
     this.values == 'Rejected' ? this.RejectedTempFormArry.push(row) : {};
-    
+
   }
 
   // Button Functions
@@ -1392,6 +1392,16 @@ export class DeComponent implements OnInit, OnDestroy {
       });
       this.RejectedDataSource = new MatTableDataSource(ENRICH_DATA_REJ);
     }
+  }
+
+  PotextCrop(text) {
+    if (text.length > 15) {
+      return text.substring(0, 14) + '...';
+    }
+    else {
+      return text.substring(0, 14)
+    }
+
   }
 
   open() {

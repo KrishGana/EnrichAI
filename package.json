@@ -1,6 +1,7 @@
 {
   "name": "enrich-ai",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -29,6 +30,7 @@
     "protractor": "^7.0.0",
     "puppeteer": "^15.5.0",
     "rxjs": "~7.5.0",
+    "searx-api": "^1.0.5",
     "tslib": "^2.3.0",
     "xlsx": "^0.18.5",
     "zone.js": "~0.11.4"

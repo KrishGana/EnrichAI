@@ -59,57 +59,59 @@
         </div>
 
         <!-- OPEN Status - Header part with Filter and Confirm -->
-        <div fxLayout="row" fxLayoutAlign="start center" *ngIf="values=='open'">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" *ngIf="values=='open'">
 
-            <button mat-button class="Select_button" (click)="selectrows()">Select</button>
+
             <div fxLayout="row" fxLayoutAlign="start center">
-
                 <button (click)="getdecrement()" mat-fab class="remove_button">
                     <mat-icon>remove</mat-icon>
                 </button>
-                <div>
+                <div class="selectCountDiv">
                     <input class="search_tablerow" #getvalue [(ngModel)]="opentotal" (click)="gettotal(getvalue.value)">
                 </div>
                 <button (click)="getincrement()" mat-fab class="add_button">
                     <mat-icon>add</mat-icon>
                 </button>
+                <button mat-button class="Select_button" (click)="selectrows()">Select</button>
             </div>
 
-            <div class="search-to-do">
-                <input class="search_input" placeholder="Search by Description..." (keyup)="applyFilter($event)">
-            </div>
+            <div fxLayout="row" fxFlex fxLayoutAlign="start center">
+                <div class="search-to-do">
+                    <input class="search_input" placeholder="Search by Description..." (keyup)="applyFilter($event)">
+                </div>
 
-            <div class="searchplace">
-                <img class="search_place" src="./assets/images/XMLID_223_.svg">
-            </div>
+                <div class="searchplace">
+                    <img class="search_place" src="./assets/images/XMLID_223_.svg">
+                </div>
 
 
-            <div class="filterselects">
-                <img class="column_filter" src="./assets/images/f.svg" #menuTrigger="matMenuTrigger"
-                    [matMenuTriggerFor]="mainMenuButton">
-            </div>
+                <div class="filterselects">
+                    <img class="column_filter" src="./assets/images/f.svg" #menuTrigger="matMenuTrigger"
+                        [matMenuTriggerFor]="mainMenuButton">
+                </div>
 
-            <mat-menu #mainMenuButton="matMenu" class="columnMenu">
-                <span (click)="$event.stopPropagation()" *ngFor="let column of columnShowHideList;index as i">
-                    <mat-checkbox [(ngModel)]="column.checked" (change)="FilterColumns(column)">{{column.name}}
-                    </mat-checkbox>
-                </span>
-            </mat-menu>
-
-            <div class="more" [matMenuTriggerFor]="menu2" #t="matMenuTrigger"
-                [style.color]="t.menuOpen?'#1e3e67':'#2085fb'">
-                <span class="moreoption">More</span>
-                <button mat-icon-button aria-label="Example icon-button with a menu">
-                    <mat-icon class="option">more_vert</mat-icon>
-                </button>
-                <mat-menu #menu2="matMenu" xPosition="after">
-                    <button mat-menu-item (click)="openDialog('Library')">
-                        <span class="libs">Create Library</span>
-                    </button>
-                    <button mat-menu-item (click)="openDialog('Stopwords')">
-                        <span class="stops">Create Stopwords</span>
-                    </button>
+                <mat-menu #mainMenuButton="matMenu" class="columnMenu">
+                    <span (click)="$event.stopPropagation()" *ngFor="let column of columnShowHideList;index as i">
+                        <mat-checkbox [(ngModel)]="column.checked" (change)="FilterColumns(column)">{{column.name}}
+                        </mat-checkbox>
+                    </span>
                 </mat-menu>
+
+                <div class="more" [matMenuTriggerFor]="menu2" #t="matMenuTrigger"
+                    [style.color]="t.menuOpen?'#1e3e67':'#2085fb'">
+                    <span class="moreoption">More</span>
+                    <button mat-icon-button aria-label="Example icon-button with a menu">
+                        <mat-icon class="option">more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu2="matMenu" xPosition="after">
+                        <button mat-menu-item (click)="openDialog('Library')">
+                            <span class="libs">Create Library</span>
+                        </button>
+                        <button mat-menu-item (click)="openDialog('Stopwords')">
+                            <span class="stops">Create Stopwords</span>
+                        </button>
+                    </mat-menu>
+                </div>
             </div>
 
             <div fxLayout="row" fxLayoutAlign="end" class="confirms" fxFlex fxLayoutGap="20px">
@@ -123,37 +125,42 @@
         </div>
 
         <!-- VALIDATE Status - Header part with Filter and Confirm -->
-        <div fxLayout="row" fxLayoutAlign="start center" *ngIf="values=='Validate'">
-            <button mat-button class="Select_button" (click)="selectrowsvalidates()">Select</button>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" *ngIf="values=='Validate'">
+
             <div fxLayout="row" fxLayoutAlign="start center">
                 <button mat-fab (click)="getdecrement()" class="remove_button">
                     <mat-icon>remove</mat-icon>
                 </button>
-                <div>
+                <div class="selectCountDiv">
                     <input class="search_tablerow" #getvalue [(ngModel)]="validatetotal"
                         (click)="gettotal(getvalue.value)">
                 </div>
                 <button mat-fab (click)="getincrement()" class="add_button">
                     <mat-icon>add</mat-icon>
                 </button>
-            </div>
-            <div class="search-to-do">
-                <input class="search_input" placeholder="Search by Description..." (keyup)="applyFilter($event)">
-            </div>
-            <div class="searchplace">
-                <img class="search_place" src="./assets/images/XMLID_223_.svg">
-            </div>
-            <div class="filterselects">
-                <img class="column_filter" src="./assets/images/f.svg" #menuTrigger="matMenuTrigger"
-                    [matMenuTriggerFor]="mainMenuButton">
+                <button mat-button class="Select_button" (click)="selectrowsvalidates()">Select</button>
             </div>
 
-            <mat-menu #mainMenuButton="matMenu" class="columnMenu">
-                <span (click)="$event.stopPropagation()" *ngFor="let column of columnShowHideList;index as i">
-                    <mat-checkbox [(ngModel)]="column.checked" (change)="FilterColumns(column)">{{column.name}}
-                    </mat-checkbox>
-                </span>
-            </mat-menu>
+            <div fxLayout="row" fxFlex fxLayoutAlign="start center">
+                <div class="search-to-do">
+                    <input class="search_input" placeholder="Search by Description..." (keyup)="applyFilter($event)">
+                </div>
+                <div class="searchplace">
+                    <img class="search_place" src="./assets/images/XMLID_223_.svg">
+                </div>
+                <div class="filterselects">
+                    <img class="column_filter" src="./assets/images/f.svg" #menuTrigger="matMenuTrigger"
+                        [matMenuTriggerFor]="mainMenuButton">
+                </div>
+
+                <mat-menu #mainMenuButton="matMenu" class="columnMenu">
+                    <span (click)="$event.stopPropagation()" *ngFor="let column of columnShowHideList;index as i">
+                        <mat-checkbox [(ngModel)]="column.checked" (change)="FilterColumns(column)">{{column.name}}
+                        </mat-checkbox>
+                    </span>
+                </mat-menu>
+            </div>
+
             <div fxLayout="row" fxLayoutAlign="end" class="confirms2" fxFlex>
                 <button mat-button (click)="clickvalidateReject()" class="Reject_button">Reject</button>
                 <button (click)="clickvalidateConfirm()" mat-button class="Confirm_button">Confirm</button>
@@ -161,76 +168,83 @@
         </div>
 
         <!-- COMPLETED Status - Header part with Filter and Confirm -->
-        <div fxLayout="row" fxLayoutAlign="start center" *ngIf="values=='Completed'">
-            <button mat-button class="Select_button" (click)="selectrowscompletes()">Select</button>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" *ngIf="values=='Completed'">
             <div fxLayout="row" fxLayoutAlign="start center">
                 <button mat-fab (click)="getdecrement()" class="remove_button">
                     <mat-icon>remove</mat-icon>
                 </button>
-                <div>
+                <div class="selectCountDiv">
                     <input class="search_tablerow" #getvalue [(ngModel)]="completetotal"
                         (click)="gettotal(getvalue.value)">
                 </div>
                 <button mat-fab (click)="getincrement()" class="add_button">
                     <mat-icon>add</mat-icon>
                 </button>
-            </div>
-            <div class="search-to-do">
-                <input class="search_input" placeholder="Search by Description..." (keyup)="applyFilter($event)">
-            </div>
-            <div class="searchplace">
-                <img class="search_place" src="./assets/images/XMLID_223_.svg">
-            </div>
-            <div class="filterselects">
-                <img class="column_filter" src="./assets/images/f.svg" #menuTrigger="matMenuTrigger"
-                    [matMenuTriggerFor]="mainMenuButton">
+                <button mat-button class="Select_button" (click)="selectrowscompletes()">Select</button>
             </div>
 
-            <mat-menu #mainMenuButton="matMenu" class="columnMenu">
-                <span (click)="$event.stopPropagation()" *ngFor="let column of columnShowHideList;index as i">
-                    <mat-checkbox [(ngModel)]="column.checked" (change)="FilterColumns(column)">{{column.name}}
-                    </mat-checkbox>
-                </span>
-            </mat-menu>
+            <div fxLayout="row" fxFlex fxLayoutAlign="start center">
+                <div class="search-to-do">
+                    <input class="search_input" placeholder="Search by Description..." (keyup)="applyFilter($event)">
+                </div>
+                <div class="searchplace">
+                    <img class="search_place" src="./assets/images/XMLID_223_.svg">
+                </div>
+                <div class="filterselects">
+                    <img class="column_filter" src="./assets/images/f.svg" #menuTrigger="matMenuTrigger"
+                        [matMenuTriggerFor]="mainMenuButton">
+                </div>
+
+                <mat-menu #mainMenuButton="matMenu" class="columnMenu">
+                    <span (click)="$event.stopPropagation()" *ngFor="let column of columnShowHideList;index as i">
+                        <mat-checkbox [(ngModel)]="column.checked" (change)="FilterColumns(column)">{{column.name}}
+                        </mat-checkbox>
+                    </span>
+                </mat-menu>
+            </div>
+
             <div fxLayout="row" fxLayoutAlign="end" class="confirms2" fxFlex>
-                <button mat-button class="Reject_button" (click)="CickClear()">Clear</button>
                 <button (click)="DownloadExcel()" *ngIf="click4==false" mat-button class="Confirm_button"> Download <img
                         class="search_place" src="./assets/images/download.svg"></button>
             </div>
         </div>
 
         <!-- REJECTED Status - Header part with Filter and Confirm -->
-        <div fxLayout="row" fxLayoutAlign="start center" *ngIf="values=='Rejected'">
-            <button mat-button class="Select_button" (click)="selectrowsrejects()">Select</button>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" *ngIf="values=='Rejected'">
             <div fxLayout="row" fxLayoutAlign="start center">
                 <button mat-fab (click)="getdecrement()" class="remove_button">
                     <mat-icon>remove</mat-icon>
                 </button>
-                <div>
+                <div class="selectCountDiv">
                     <input class="search_tablerow" #getvalue [(ngModel)]="rejecttotal"
                         (click)="gettotal(getvalue.value)">
                 </div>
                 <button mat-fab (click)="getincrement()" class="add_button">
                     <mat-icon>add</mat-icon>
                 </button>
-            </div>
-            <div class="search-to-do">
-                <input class="search_input" placeholder="Search by Description..." (keyup)="applyFilter($event)">
-            </div>
-            <div class="searchplace">
-                <img class="search_place" src="./assets/images/XMLID_223_.svg">
-            </div>
-            <div class="filterselects">
-                <img class="column_filter" src="./assets/images/f.svg" #menuTrigger="matMenuTrigger"
-                    [matMenuTriggerFor]="mainMenuButton">
+                <button mat-button class="Select_button" (click)="selectrowsrejects()">Select</button>
             </div>
 
-            <mat-menu #mainMenuButton="matMenu" class="columnMenu">
-                <span (click)="$event.stopPropagation()" *ngFor="let column of columnShowHideList;index as i">
-                    <mat-checkbox [(ngModel)]="column.checked" (change)="FilterColumns(column)">{{column.name}}
-                    </mat-checkbox>
-                </span>
-            </mat-menu>
+            <div fxLayout="row" fxFlex fxLayoutAlign="start center">
+                <div class="search-to-do">
+                    <input class="search_input" placeholder="Search by Description..." (keyup)="applyFilter($event)">
+                </div>
+                <div class="searchplace">
+                    <img class="search_place" src="./assets/images/XMLID_223_.svg">
+                </div>
+                <div class="filterselects">
+                    <img class="column_filter" src="./assets/images/f.svg" #menuTrigger="matMenuTrigger"
+                        [matMenuTriggerFor]="mainMenuButton">
+                </div>
+
+                <mat-menu #mainMenuButton="matMenu" class="columnMenu">
+                    <span (click)="$event.stopPropagation()" *ngFor="let column of columnShowHideList;index as i">
+                        <mat-checkbox [(ngModel)]="column.checked" (change)="FilterColumns(column)">{{column.name}}
+                        </mat-checkbox>
+                    </span>
+                </mat-menu>
+            </div>
+
             <div fxLayout="row" fxLayoutAlign="end" class="confirms" (click)="ClickReassign()" fxFlex>
                 <button mat-button class="Confirm_button">Re-Assign</button>
             </div>
@@ -250,8 +264,8 @@
                             [indeterminate]="selectionOpen.hasValue() && !isAllSelected()">
                         </mat-checkbox>
                     </th>
-                    <td mat-cell *matCellDef="let row;let i=index;" [formGroupName]="i">
-                        <mat-checkbox #checkref class="rowcheckbox" (click)="$event.stopPropagation()"
+                    <td mat-cell *matCellDef="let row;let i=index;" [formGroupName]="i" [ngClass]="row.rejectreason ? 'redborder' : 'nothing'">
+                        <mat-checkbox class="rowcheckbox" (click)="$event.stopPropagation()"
                             (change)="$event ? selectionOpen.toggle(row)  : null"
                             [checked]="selectionOpen.isSelected(row)">
                         </mat-checkbox>
@@ -259,12 +273,13 @@
                 </ng-container>
 
                 <ng-container matColumnDef="nounn">
-                    <th mat-header-cell *matHeaderCellDef> Noun </th>
+                    <th mat-header-cell *matHeaderCellDef>
+                        <p>Noun</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="nounmodi">
                         <mat-form-field floatLabel="never" appearance="outline" class="enrichnoun">
-                            <input matInput placeholder="Noun Modifier"
-                                value="{{element.nounn}}" [matAutocomplete]="auto"
-                                formControlName="nounn" class="nounfont">
+                            <input matInput placeholder="Noun Modifier" value="{{element.nounn}}"
+                                [matAutocomplete]="auto" formControlName="nounn" class="nounfont">
                             <mat-autocomplete #auto="matAutocomplete">
                                 <mat-option *ngFor="let option of nounarray" [value]="option" class="nounoptions">
                                     {{option}}
@@ -276,12 +291,13 @@
                 </ng-container>
 
                 <ng-container matColumnDef="modifier">
-                    <th mat-header-cell *matHeaderCellDef> Modifier </th>
+                    <th mat-header-cell *matHeaderCellDef>
+                        <p>Modifier</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="nounmodi">
                         <mat-form-field floatLabel="never" appearance="outline" class="enrichnoun">
-                            <input matInput placeholder="Noun Modifier"
-                                value="{{element.modifier}}" [matAutocomplete]="auto1"
-                                class="nounfont" formControlName="modifier">
+                            <input matInput placeholder="Noun Modifier" value="{{element.modifier}}"
+                                [matAutocomplete]="auto1" class="nounfont" formControlName="modifier">
                             <mat-autocomplete #auto1="matAutocomplete">
                                 <mat-option *ngFor="let options of modifierarray" [value]="options" class="nounoptions">
                                     {{options}}
@@ -293,31 +309,37 @@
                 </ng-container>
 
                 <ng-container matColumnDef="enrichtxt">
-                    <th mat-header-cell *matHeaderCellDef> Enrich Text </th>
+                    <th mat-header-cell *matHeaderCellDef>
+                        <p>Enrich Text</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
                         <mat-form-field floatLabel="never" appearance="outline" class="enrich">
-                            <input matInput placeholder="Enrich Text"
-                                value="{{element.enrichtxt}}"
+                            <textarea type="text" matInput value="{{element.enrichtxt}}"
                                 [disabled]="OpenTempFormArry.controls[i].get('disableinput').value?true:false"
-                                class="nounfont" formControlName="enrichtxt">
+                                class="nounfont" formControlName="enrichtxt" placeholder="Enrich Text">
+                                </textarea>
                         </mat-form-field>
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="enrichpotxt">
-                    <th mat-header-cell *matHeaderCellDef class="default"> Enrich PO Text </th>
+                    <th mat-header-cell *matHeaderCellDef class="default">
+                        <p>Enrich PO Text</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
                         <mat-form-field floatLabel="never" appearance="outline" class="enrich1">
-                            <input matInput placeholder="Enrich PO Text"
-                                value="{{element.enrichpotxt}}"
+                            <textarea type="text" matInput value="{{element.enrichpotxt}}"
                                 [disabled]="OpenTempFormArry.controls[i].get('disableinput').value?true:false"
-                                class="nounfont" formControlName="enrichtxt">
+                                class="nounfont" formControlName="enrichpotxt" placeholder="Enrich PO Text">
+                                </textarea>
                         </mat-form-field>
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="match">
-                    <th mat-header-cell *matHeaderCellDef [hidden]="matchBool"> Match </th>
+                    <th mat-header-cell *matHeaderCellDef [hidden]="matchBool">
+                        <p>Match</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" style="min-width: 100px;"
                         [hidden]="matchBool">
                         <div fxLayout="row" class="progress" fxLayoutGap="7px">
@@ -331,7 +353,9 @@
                 </ng-container>
 
                 <ng-container matColumnDef="action" stickyEnd>
-                    <th mat-header-cell *matHeaderCellDef class="radend"> Action </th>
+                    <th mat-header-cell *matHeaderCellDef class="radend">
+                        <p>Action</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
                         <div fxLayout="row" class="confirm1" (click)="selectacceptrow(i)"
                             *ngIf="!element.accept && AcceptArr[i]==20">
@@ -351,14 +375,18 @@
                 </ng-container>
 
                 <ng-container matColumnDef="Type">
-                    <th mat-header-cell *matHeaderCellDef class="default" [hidden]="typeBool"> Type </th>
+                    <th mat-header-cell *matHeaderCellDef class="default" [hidden]="typeBool">
+                        <p>Type</p>
+                    </th>
                     <td [hidden]="typeBool" mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
                         {{element.Type}}
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="Material">
-                    <th mat-header-cell *matHeaderCellDef class="defaultwidth"> Material </th>
+                    <th mat-header-cell *matHeaderCellDef class="defaultwidth">
+                        <p>Material</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="default">
                         {{element.Material}}
                     </td>
@@ -366,14 +394,18 @@
                 </ng-container>
 
                 <ng-container matColumnDef="description">
-                    <th mat-header-cell *matHeaderCellDef class="descrip"> Description </th>
+                    <th mat-header-cell *matHeaderCellDef class="descrip">
+                        <p>Description</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="defaultwidth">
                         {{element.description}}
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="UOM">
-                    <th mat-header-cell *matHeaderCellDef class="default" [hidden]="uomBool"> UOM </th>
+                    <th mat-header-cell *matHeaderCellDef class="default" [hidden]="uomBool">
+                        <p>UOM</p>
+                    </th>
                     <td [hidden]="uomBool" mat-cell *matCellDef="let element;let i=index" [formGroupName]="i"
                         class="default">
                         {{element.UOM}}
@@ -382,7 +414,9 @@
                 </ng-container>
 
                 <ng-container matColumnDef="Vendorname">
-                    <th mat-header-cell *matHeaderCellDef [hidden]="vNameBool">VendorName</th>
+                    <th mat-header-cell *matHeaderCellDef [hidden]="vNameBool">
+                        <p>VendorName</p>
+                    </th>
                     <td [hidden]="vNameBool" mat-cell *matCellDef="let element;let i=index" [formGroupName]="i"
                         class="default">
                         {{element.Vendorname}}
@@ -390,7 +424,9 @@
                 </ng-container>
 
                 <ng-container matColumnDef="Group">
-                    <th [hidden]="grpBool" mat-header-cell *matHeaderCellDef> Group </th>
+                    <th [hidden]="grpBool" mat-header-cell *matHeaderCellDef>
+                        <p>Group</p>
+                    </th>
                     <td [hidden]="grpBool" mat-cell *matCellDef="let element;let i=index" [formGroupName]="i"
                         class="default">
                         {{element.Group}}
@@ -399,7 +435,9 @@
                 </ng-container>
 
                 <ng-container matColumnDef="hsn">
-                    <th [hidden]="hsnBool" mat-header-cell *matHeaderCellDef> HSN </th>
+                    <th [hidden]="hsnBool" mat-header-cell *matHeaderCellDef>
+                        <p>HSN</p>
+                    </th>
                     <td [hidden]="hsnBool" mat-cell *matCellDef="let element;let i=index" [formGroupName]="i"
                         class="default">
                         {{element.hsn}}
@@ -408,7 +446,9 @@
                 </ng-container>
 
                 <ng-container matColumnDef="commodity">
-                    <th mat-header-cell *matHeaderCellDef> Commodity </th>
+                    <th mat-header-cell *matHeaderCellDef class="defaultwidth">
+                        <p>Commodity</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="default">
                         {{element.commodity}}
                     </td>
@@ -416,7 +456,9 @@
                 </ng-container>
 
                 <ng-container matColumnDef="rejectreason">
-                    <th mat-header-cell *matHeaderCellDef> Reject Reason </th>
+                    <th mat-header-cell *matHeaderCellDef class="defaultwidth">
+                        <p>Reject Reason</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="default">
                         {{element.rejectreason}}
                     </td>
@@ -424,13 +466,17 @@
                 </ng-container>
 
                 <ng-container matColumnDef="Potext">
-                    <th mat-header-cell *matHeaderCellDef class="defaultwidth"> Po Text </th>
-                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="default">
-                        <img class="potexting" src="./assets/images/potexts.svg" *ngIf="element.Potext!=''"
-                            matTooltip="{{element.Potext}}">
-                        <span class="potxt">
-                            {{element.Potext}}
-                        </span>
+                    <th mat-header-cell *matHeaderCellDef class="defaultwidth">
+                        <p>Po Text</p>
+                    </th>
+                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="defaultwidth">
+                        <div fxLayout="row" fxLayoutGap="10px">
+                            <img class="potexting" src="./assets/images/potexts.svg" *ngIf="element.Potext!=''"
+                                matTooltip="{{element.Potext}}">
+                            <span class="potxt">
+                                {{PotextCrop(element.Potext)}}
+                            </span>
+                        </div>
                     </td>
 
                 </ng-container>
@@ -454,7 +500,7 @@
                         </mat-checkbox>
                     </th>
                     <td mat-cell *matCellDef="let row;index as i;" [formGroupName]="i">
-                        <mat-checkbox #checkref class="rowcheckbox" (click)="$event.stopPropagation()"
+                        <mat-checkbox class="rowcheckbox" (click)="$event.stopPropagation()"
                             (change)="$event ? selectionValidate.toggle(row)  : null"
                             [checked]="selectionValidate.isSelected(row)">
                         </mat-checkbox>
@@ -462,62 +508,45 @@
                 </ng-container>
 
                 <ng-container matColumnDef="nounn">
-                    <th mat-header-cell *matHeaderCellDef> Noun </th>
-                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="nounmodi">
-                        <mat-form-field floatLabel="never" appearance="outline" class="enrichnoun">
-                            <input matInput placeholder="Noun Modifier"
-                                value="{{element.nounn}}" [matAutocomplete]="auto"
-                                formControlName="nounn" class="nounfont">
-                            <mat-autocomplete #auto="matAutocomplete">
-                                <mat-option *ngFor="let option of nounarray" [value]="option" class="nounoptions">
-                                    {{option}}
-                                </mat-option>
-                            </mat-autocomplete>
-                            <mat-icon matSuffix class="write">create</mat-icon>
-                        </mat-form-field>
+                    <th mat-header-cell *matHeaderCellDef class="default">
+                        <p>Noun</p>
+                    </th>
+                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="default">
+                        <span>{{element.nounn}}</span>
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="modifier">
-                    <th mat-header-cell *matHeaderCellDef> Modifier </th>
-                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="nounmodi">
-                        <mat-form-field floatLabel="never" appearance="outline" class="enrichnoun">
-                            <input matInput placeholder="Noun Modifier"
-                                value="{{element.modifier}}" [matAutocomplete]="auto1"
-                                formControlName="modifier" class="nounfont">
-                            <mat-autocomplete #auto1="matAutocomplete">
-                                <mat-option *ngFor="let options of modifierarray" [value]="options" class="nounoptions">
-                                    {{options}}
-                                </mat-option>
-                            </mat-autocomplete>
-                            <mat-icon matSuffix class="write">create</mat-icon>
-                        </mat-form-field>
+                    <th mat-header-cell *matHeaderCellDef class="default">
+                        <p>Modifier</p>
+                    </th>
+                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="default">
+                        <span>{{element.modifier}}</span>
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="enrichtxt">
-                    <th mat-header-cell *matHeaderCellDef> Enrich Text </th>
-                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
-                        <mat-form-field floatLabel="never" appearance="outline" class="enrich">
-                            <input matInput placeholder="Enrich Text"
-                                value="{{element.enrichtxt}}" class="nounfont"
-                                formControlName="enrichtxt">
-                        </mat-form-field>
+                    <th mat-header-cell *matHeaderCellDef class="enrichColwidth">
+                        <p>Enrich Text</p>
+                    </th>
+                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="enrichColwidth">
+                        <span>{{element.enrichtxt}}</span>
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="enrichpotxt">
-                    <th mat-header-cell *matHeaderCellDef class="default"> Enrich PO Text </th>
-                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
-                        <mat-form-field floatLabel="never" appearance="outline" class="enrich1">
-                            <input matInput placeholder="Enrich PO Text"
-                                value="{{element.enrichpotxt}}" class="nounfont">
-                        </mat-form-field>
+                    <th mat-header-cell *matHeaderCellDef class="enrichColwidth">
+                        <p>Enrich PO Text</p>
+                    </th>
+                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="enrichColwidth">
+                        <span>{{element.enrichpotxt}}</span>
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="match">
-                    <th mat-header-cell *matHeaderCellDef [hidden]="matchBool"> Match </th>
+                    <th mat-header-cell *matHeaderCellDef [hidden]="matchBool">
+                        <p>Match</p>
+                    </th>
                     <td [hidden]="matchBool" mat-cell *matCellDef="let element;let i=index" [formGroupName]="i"
                         style="min-width: 100px;">
                         <div fxLayout="row" class="progress" fxLayoutGap="7px">
@@ -530,7 +559,9 @@
                 </ng-container>
 
                 <ng-container matColumnDef="action" stickyEnd>
-                    <th mat-header-cell *matHeaderCellDef> Action </th>
+                    <th mat-header-cell *matHeaderCellDef>
+                        <p>Action</p>
+                    </th>
                     <td mat-cell *matCellDef="let element; let i=index">
 
                         <div fxLayout="row" fxLayoutGap="2px" class="confirm1">
@@ -540,33 +571,24 @@
                                 check_circle</mat-icon>
                         </div>
 
-                        <!-- <div fxLayout="row" class="confirm2"
-                            *ngIf="ValidateControl.get('Noun_Modifier_Validate')['controls'][i].get('status')?.value">
 
-                            <mat-icon class="tick2">check_circle</mat-icon>
-                            <p class="confirmation" fxFlexOffset="2">Confirmed</p>
-
-                        </div>
-                        <div fxLayout="row" class="confirm2"
-                            *ngIf="ValidateControl.get('Noun_Modifier_Validate')['controls'][i].get('status1')?.value">
-
-                            <mat-icon class="tick3">cancel</mat-icon>
-                            <p class="clearedd" fxFlexOffset="2">Rejected</p>
-
-                        </div> -->
 
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="Type">
-                    <th mat-header-cell *matHeaderCellDef class="default" [hidden]="typeBool"> Type </th>
+                    <th mat-header-cell *matHeaderCellDef class="default" [hidden]="typeBool">
+                        <p>Type</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" [hidden]="typeBool">
                         {{element.Type}}
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="Material">
-                    <th mat-header-cell *matHeaderCellDef class="defaultwidth"> Material </th>
+                    <th mat-header-cell *matHeaderCellDef class="defaultwidth">
+                        <p>Material</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="default">
                         {{element.Material}}
                     </td>
@@ -574,7 +596,10 @@
                 </ng-container>
 
                 <ng-container matColumnDef="description">
-                    <th mat-header-cell *matHeaderCellDef class="descrip"> Description </th>
+                    <th mat-header-cell *matHeaderCellDef class="descrip">
+                        <p>Description</p>
+                    </th>
+
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="default">
                         {{element.description}}
                     </td>
@@ -582,7 +607,9 @@
                 </ng-container>
 
                 <ng-container matColumnDef="UOM">
-                    <th mat-header-cell *matHeaderCellDef class="default" [hidden]="uomBool"> UOM </th>
+                    <th mat-header-cell *matHeaderCellDef class="default" [hidden]="uomBool">
+                        <p>UOM</p>
+                    </th>
                     <td [hidden]="uomBool" mat-cell *matCellDef="let element;let i=index" [formGroupName]="i"
                         class="default">
                         {{element.UOM}}
@@ -590,7 +617,9 @@
                 </ng-container>
 
                 <ng-container matColumnDef="Vendorname">
-                    <th mat-header-cell *matHeaderCellDef [hidden]="vNameBool">VendorName</th>
+                    <th mat-header-cell *matHeaderCellDef [hidden]="vNameBool">
+                        <p>VendorName</p>
+                    </th>
                     <td [hidden]="vNameBool" mat-cell *matCellDef="let element;let i=index" [formGroupName]="i"
                         class="default">
                         {{element.Vendorname}}
@@ -598,7 +627,9 @@
                 </ng-container>
 
                 <ng-container matColumnDef="Group">
-                    <th [hidden]="grpBool" mat-header-cell *matHeaderCellDef> Group </th>
+                    <th [hidden]="grpBool" mat-header-cell *matHeaderCellDef>
+                        <p>Group</p>
+                    </th>
                     <td [hidden]="grpBool" mat-cell *matCellDef="let element;let i=index" [formGroupName]="i"
                         class="default">
                         {{element.Group}}
@@ -606,7 +637,9 @@
                 </ng-container>
 
                 <ng-container matColumnDef="hsn">
-                    <th [hidden]="hsnBool" mat-header-cell *matHeaderCellDef> HSN </th>
+                    <th [hidden]="hsnBool" mat-header-cell *matHeaderCellDef>
+                        <p>HSN</p>
+                    </th>
                     <td [hidden]="hsnBool" mat-cell *matCellDef="let element;let i=index" [formGroupName]="i"
                         class="default">
                         {{element.hsn}}
@@ -614,7 +647,9 @@
                 </ng-container>
 
                 <ng-container matColumnDef="commodity">
-                    <th mat-header-cell *matHeaderCellDef> Commodity </th>
+                    <th mat-header-cell *matHeaderCellDef class="defaultwidth">
+                        <p>Commodity</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="default">
                         {{element.commodity}}
                     </td>
@@ -622,20 +657,26 @@
                 </ng-container>
 
                 <ng-container matColumnDef="rejectreason">
-                    <th mat-header-cell *matHeaderCellDef> Reject Reason </th>
+                    <th mat-header-cell *matHeaderCellDef class="defaultwidth">
+                        <p>Reject Reason</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="default">
                         {{element.rejectreason}}
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="Potext">
-                    <th mat-header-cell *matHeaderCellDef class="defaultwidth"> Po Text </th>
-                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="default">
-                        <img src="./assets/images/potexts.svg" *ngIf="element.Potext!=''"
-                            matTooltip="{{element.Potext}}">
-                        <span class="potxt">
-                            {{element.Potext}}
-                        </span>
+                    <th mat-header-cell *matHeaderCellDef class="defaultwidth">
+                        <p>Po Text</p>
+                    </th>
+                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="defaultwidth">
+                        <div fxLayout="row" fxLayoutGap="10px">
+                            <img class="potexting" src="./assets/images/potexts.svg" *ngIf="element.Potext!=''"
+                                matTooltip="{{element.Potext}}">
+                            <span class="potxt">
+                                {{PotextCrop(element.Potext)}}
+                            </span>
+                        </div>
                     </td>
                 </ng-container>
 
@@ -658,7 +699,7 @@
                         </mat-checkbox>
                     </th>
                     <td mat-cell *matCellDef="let row;index as i;" [formGroupName]="i">
-                        <mat-checkbox #checkref class="rowcheckbox" (click)="$event.stopPropagation()"
+                        <mat-checkbox class="rowcheckbox" (click)="$event.stopPropagation()"
                             (change)="$event ? selectionCompleted.toggle(row)  : null"
                             [checked]="selectionCompleted.isSelected(row)">
                         </mat-checkbox>
@@ -666,58 +707,41 @@
                 </ng-container>
 
                 <ng-container matColumnDef="nounn">
-                    <th mat-header-cell *matHeaderCellDef> Noun </th>
-                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="nounmodi">
-                        <mat-form-field floatLabel="never" appearance="outline" class="enrichnoun">
-                            <input matInput placeholder="Noun Modifier"
-                                value="{{element.nounn}}" class="nounfont"
-                                [matAutocomplete]="auto" formControlName="nounn">
-                            <mat-autocomplete #auto="matAutocomplete">
-                                <mat-option *ngFor="let option of nounarray" [value]="option" class="nounoptions">
-                                    {{option}}
-                                </mat-option>
-                            </mat-autocomplete>
-                            <mat-icon matSuffix class="write">create</mat-icon>
-                        </mat-form-field>
+                    <th mat-header-cell *matHeaderCellDef class="default">
+                        <p>Noun</p>
+                    </th>
+                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="default">
+                        <span>{{element.nounn}}</span>
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="modifier">
-                    <th mat-header-cell *matHeaderCellDef> Modifier </th>
-                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="nounmodi">
-                        <mat-form-field floatLabel="never" appearance="outline" class="enrichnoun">
-                            <input matInput placeholder="Noun Modifier"
-                                value="{{element.modifier}}" class="nounfont"
-                                [matAutocomplete]="auto1" formControlName="modifier">
-                            <mat-autocomplete #auto1="matAutocomplete">
-                                <mat-option *ngFor="let options of modifierarray" [value]="options" class="nounoptions">
-                                    {{options}}
-                                </mat-option>
-                            </mat-autocomplete>
-                            <mat-icon matSuffix class="write">create</mat-icon>
-                        </mat-form-field>
+                    <th mat-header-cell *matHeaderCellDef class="default">
+                        <p>Modifier</p>
+                    </th>
+                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="default">
+                        <span>{{element.modifier}}</span>
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="enrichtxt">
-                    <th mat-header-cell *matHeaderCellDef> Enrich Text </th>
-                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
-                        <mat-form-field floatLabel="never" appearance="outline" class="enrich">
-                            <input matInput placeholder="Enrich Text"
-                                value="{{element.enrichtxt}}" class="nounfont"
-                                formControlName="enrichtxt">
-                        </mat-form-field>
+                    <th mat-header-cell *matHeaderCellDef class="enrichColwidth">
+                        <p>Enrich Text</p>
+                    </th>
+                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="enrichColwidth">
+                        <span>{{element.enrichtxt}}</span>
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="enrichpotxt">
-                    <th mat-header-cell *matHeaderCellDef> Enrich PO Text </th>
-                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
-                        <mat-form-field floatLabel="never" appearance="outline" class="enrich1">
-                            <input matInput placeholder="Enrich PO Text"
-                                value="{{element.enrichpotxt}}" class="nounfont">
-                        </mat-form-field>
+                    <th mat-header-cell *matHeaderCellDef class="enrichColwidth">
+                        <p>Enrich PO Text</p>
+                    </th>
+                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="enrichColwidth">
+                        <span>{{element.enrichpotxt}}</span>
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="match">
-                    <th mat-header-cell *matHeaderCellDef [hidden]="matchBool"> Match </th>
+                    <th mat-header-cell *matHeaderCellDef [hidden]="matchBool">
+                        <p>Match</p>
+                    </th>
                     <td [hidden]="matchBool" mat-cell *matCellDef="let element;let i=index" [formGroupName]="i"
                         style="min-width: 100px;">
                         <div fxLayout="row" class="progress" fxLayoutGap="7px">
@@ -732,63 +756,81 @@
 
                 <ng-container matColumnDef="Type">
 
-                    <th mat-header-cell *matHeaderCellDef [hidden]="typeBool"> Type </th>
+                    <th mat-header-cell *matHeaderCellDef [hidden]="typeBool"> 
+                        <p>Type</p>
+                     </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" [hidden]="typeBool">
                         {{element.Type}}
                     </td>
 
                 </ng-container>
                 <ng-container matColumnDef="Material">
-                    <th mat-header-cell *matHeaderCellDef class="defaultwidth"> Material </th>
+                    <th mat-header-cell *matHeaderCellDef class="defaultwidth">
+                        <p>Material</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
                         {{element.Material}}
                     </td>
 
                 </ng-container>
                 <ng-container matColumnDef="description">
-                    <th mat-header-cell *matHeaderCellDef class="descrip"> Description </th>
+                    <th mat-header-cell *matHeaderCellDef class="descrip">
+                        <p>Description</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
                         {{element.description}}
                     </td>
 
                 </ng-container>
                 <ng-container matColumnDef="UOM">
-                    <th [hidden]="uomBool" mat-header-cell *matHeaderCellDef> UOM </th>
+                    <th [hidden]="uomBool" mat-header-cell *matHeaderCellDef>
+                        <p>UOM</p>
+                    </th>
                     <td [hidden]="uomBool" mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
                         {{element.UOM}}
                     </td>
 
                 </ng-container>
                 <ng-container matColumnDef="Vendorname">
-                    <th [hidden]="vNameBool" mat-header-cell *matHeaderCellDef>VendorName</th>
+                    <th [hidden]="vNameBool" mat-header-cell *matHeaderCellDef>
+                        <p>VendorName</p>
+                    </th>
                     <td [hidden]="vNameBool" mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
                         {{element.Vendorname}}
                     </td>
 
                 </ng-container>
                 <ng-container matColumnDef="Group">
-                    <th [hidden]="grpBool" mat-header-cell *matHeaderCellDef> Group </th>
+                    <th [hidden]="grpBool" mat-header-cell *matHeaderCellDef>
+                        <p>Group</p>
+                    </th>
                     <td [hidden]="grpBool" mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
                         {{element.Group}}
                     </td>
 
                 </ng-container>
                 <ng-container matColumnDef="hsn">
-                    <th [hidden]="hsnBool" mat-header-cell *matHeaderCellDef> HSN </th>
+                    <th [hidden]="hsnBool" mat-header-cell *matHeaderCellDef>
+                        <p>HSN</p>
+                    </th>
                     <td [hidden]="hsnBool" mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
                         {{element.hsn}}
                     </td>
 
                 </ng-container>
                 <ng-container matColumnDef="commodity">
-                    <th mat-header-cell *matHeaderCellDef> Commodity </th>
+                    <th mat-header-cell *matHeaderCellDef class="defaultwidth">
+                        <p>Commodity</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
                         {{element.commodity}}
                     </td>
 
                 </ng-container>
                 <ng-container matColumnDef="rejectreason">
-                    <th mat-header-cell *matHeaderCellDef> Reject Reason </th>
+                    <th mat-header-cell *matHeaderCellDef class="defaultwidth">
+                        <p>Reject Reason</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="default">
                         {{element.rejectreason}}
                     </td>
@@ -796,13 +838,17 @@
                 </ng-container>
                 <ng-container matColumnDef="Potext">
 
-                    <th mat-header-cell *matHeaderCellDef class="defaultwidth"> Po Text </th>
-                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="default">
-                        <img src="./assets/images/potexts.svg" *ngIf="element.Potext!=''"
-                            matTooltip="{{element.Potext}}">
-                        <span class="potxt">
-                            {{element.Potext}}
-                        </span>
+                    <th mat-header-cell *matHeaderCellDef class="defaultwidth">
+                        <p>Po Text</p>
+                    </th>
+                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="defaultwidth">
+                        <div fxLayout="row" fxLayoutGap="10px">
+                            <img class="potexting" src="./assets/images/potexts.svg" *ngIf="element.Potext!=''"
+                                matTooltip="{{element.Potext}}">
+                            <span class="potxt">
+                                {{PotextCrop(element.Potext)}}
+                            </span>
+                        </div>
                     </td>
 
                 </ng-container>
@@ -825,7 +871,7 @@
                         </mat-checkbox>
                     </th>
                     <td mat-cell *matCellDef="let row;index as i;" [formGroupName]="i">
-                        <mat-checkbox #checkref class="rowcheckbox" (click)="$event.stopPropagation()"
+                        <mat-checkbox class="rowcheckbox" (click)="$event.stopPropagation()"
                             (change)="$event ? selectionRejected.toggle(row)  : null"
                             [checked]="selectionRejected.isSelected(row)">
                         </mat-checkbox>
@@ -833,58 +879,41 @@
                 </ng-container>
 
                 <ng-container matColumnDef="nounn">
-                    <th mat-header-cell *matHeaderCellDef> Noun </th>
-                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="nounmodi">
-                        <mat-form-field floatLabel="never" appearance="outline" class="enrichnoun">
-                            <input matInput placeholder="Noun Modifier"
-                                value="{{element.nounn}}" class="nounfont"
-                                [matAutocomplete]="auto" formControlName="nounn">
-                            <mat-autocomplete #auto="matAutocomplete">
-                                <mat-option *ngFor="let option of nounarray" [value]="option" class="nounoptions">
-                                    {{option}}
-                                </mat-option>
-                            </mat-autocomplete>
-                            <mat-icon matSuffix class="write">create</mat-icon>
-                        </mat-form-field>
+                    <th mat-header-cell *matHeaderCellDef class="default">
+                        <p>Noun</p>
+                    </th>
+                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="default">
+                        <span>{{element.nounn}}</span>
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="modifier">
-                    <th mat-header-cell *matHeaderCellDef> Modifier </th>
-                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="nounmodi">
-                        <mat-form-field floatLabel="never" appearance="outline" class="enrichnoun">
-                            <input matInput placeholder="Noun Modifier"
-                                value="{{element.modifier}}" class="nounfont"
-                                [matAutocomplete]="auto1" formControlName="modifier">
-                            <mat-autocomplete #auto1="matAutocomplete">
-                                <mat-option *ngFor="let options of modifierarray" [value]="options" class="nounoptions">
-                                    {{options}}
-                                </mat-option>
-                            </mat-autocomplete>
-                            <mat-icon matSuffix class="write">create</mat-icon>
-                        </mat-form-field>
+                    <th mat-header-cell *matHeaderCellDef class="default">
+                        <p>Modifier</p>
+                    </th>
+                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="default">
+                        <span>{{element.modifier}}</span>
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="enrichtxt">
-                    <th mat-header-cell *matHeaderCellDef> Enrich Text </th>
-                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
-                        <mat-form-field floatLabel="never" appearance="outline" class="enrich">
-                            <input matInput placeholder="Enrich Text"
-                                value="{{element.enrichtxt}}" class="nounfont"
-                                formControlName="enrichtxt">
-                        </mat-form-field>
+                    <th mat-header-cell *matHeaderCellDef class="enrichColwidth">
+                        <p>Enrich Text</p>
+                    </th>
+                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="enrichColwidth">
+                        <span>{{element.enrichtxt}}</span>
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="enrichpotxt">
-                    <th mat-header-cell *matHeaderCellDef> Enrich PO Text </th>
-                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
-                        <mat-form-field floatLabel="never" appearance="outline" class="enrich1">
-                            <input matInput placeholder="Enrich PO Text"
-                                value="{{element.enrichpotxt}}" class="nounfont">
-                        </mat-form-field>
+                    <th mat-header-cell *matHeaderCellDef class="enrichColwidth">
+                        <p>Enrich PO Text</p>
+                    </th>
+                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="enrichColwidth">
+                        <span>{{element.enrichpotxt}}</span>
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="match">
-                    <th mat-header-cell *matHeaderCellDef [hidden]="matchBool"> Match </th>
+                    <th mat-header-cell *matHeaderCellDef [hidden]="matchBool">
+                        <p>Match</p>
+                    </th>
                     <td [hidden]="matchBool" mat-cell *matCellDef="let element;let i=index" [formGroupName]="i"
                         style="min-width: 100px;">
                         <div fxLayout="row" class="progress" fxLayoutGap="7px">
@@ -897,7 +926,9 @@
                     </td>
                 </ng-container>
                 <ng-container matColumnDef="action" stickyEnd>
-                    <th mat-header-cell *matHeaderCellDef class="nounmodi"> Action </th>
+                    <th mat-header-cell *matHeaderCellDef class="nounmodi">
+                        <p>Action</p>
+                    </th>
                     <td mat-cell *matCellDef="let element; let i=index">
 
                         <div fxLayout="row" class="confirm1" (click)="clickReassignRow(i)">
@@ -917,63 +948,81 @@
                 </ng-container>
                 <ng-container matColumnDef="Type">
 
-                    <th mat-header-cell *matHeaderCellDef [hidden]="typeBool"> Type </th>
+                    <th mat-header-cell *matHeaderCellDef [hidden]="typeBool"> 
+                        <p>Type</p>
+                     </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" [hidden]="typeBool">
                         {{element.Type}}
                     </td>
 
                 </ng-container>
                 <ng-container matColumnDef="Material">
-                    <th mat-header-cell *matHeaderCellDef class="defaultwidth"> Material </th>
+                    <th mat-header-cell *matHeaderCellDef class="defaultwidth">
+                        <p>Material</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
                         {{element.Material}}
                     </td>
 
                 </ng-container>
                 <ng-container matColumnDef="description">
-                    <th mat-header-cell *matHeaderCellDef class="descrip"> Description </th>
+                    <th mat-header-cell *matHeaderCellDef class="descrip">
+                        <p>Description</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
                         {{element.description}}
                     </td>
 
                 </ng-container>
                 <ng-container matColumnDef="UOM">
-                    <th [hidden]="uomBool" mat-header-cell *matHeaderCellDef> UOM </th>
+                    <th [hidden]="uomBool" mat-header-cell *matHeaderCellDef>
+                        <p>UOM</p>
+                    </th>
                     <td [hidden]="uomBool" mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
                         {{element.UOM}}
                     </td>
 
                 </ng-container>
                 <ng-container matColumnDef="Vendorname">
-                    <th [hidden]="vNameBool" mat-header-cell *matHeaderCellDef>VendorName</th>
+                    <th [hidden]="vNameBool" mat-header-cell *matHeaderCellDef>
+                        <p>VendorName</p>
+                    </th>
                     <td [hidden]="vNameBool" mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
                         {{element.Vendorname}}
                     </td>
 
                 </ng-container>
                 <ng-container matColumnDef="Group">
-                    <th [hidden]="grpBool" mat-header-cell *matHeaderCellDef> Group </th>
+                    <th [hidden]="grpBool" mat-header-cell *matHeaderCellDef>
+                        <p>Group</p>
+                    </th>
                     <td [hidden]="grpBool" mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
                         {{element.Group}}
                     </td>
 
                 </ng-container>
                 <ng-container matColumnDef="hsn">
-                    <th [hidden]="hsnBool" mat-header-cell *matHeaderCellDef> HSN </th>
+                    <th [hidden]="hsnBool" mat-header-cell *matHeaderCellDef>
+                        <p>HSN</p>
+                    </th>
                     <td [hidden]="hsnBool" mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
                         {{element.hsn}}
                     </td>
 
                 </ng-container>
                 <ng-container matColumnDef="commodity">
-                    <th mat-header-cell *matHeaderCellDef> Commodity </th>
+                    <th mat-header-cell *matHeaderCellDef class="defaultwidth">
+                        <p>Commodity</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i">
                         {{element.commodity}}
                     </td>
 
                 </ng-container>
                 <ng-container matColumnDef="rejectreason">
-                    <th mat-header-cell *matHeaderCellDef> Reject Reason </th>
+                    <th mat-header-cell *matHeaderCellDef class="defaultwidth">
+                        <p>Reject Reason</p>
+                    </th>
                     <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="default">
                         {{element.rejectreason}}
                     </td>
@@ -981,13 +1030,17 @@
                 </ng-container>
                 <ng-container matColumnDef="Potext">
 
-                    <th mat-header-cell *matHeaderCellDef class="defaultwidth"> Po text </th>
-                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="default">
-                        <img src="./assets/images/potexts.svg" *ngIf="element.Potext!=''"
-                            matTooltip="{{element.Potext}}">
-                        <span class="potxt">
-                            {{element.Potext}}
-                        </span>
+                    <th mat-header-cell *matHeaderCellDef class="defaultwidth">
+                        <p>Po Text</p>
+                    </th>
+                    <td mat-cell *matCellDef="let element;let i=index" [formGroupName]="i" class="defaultwidth">
+                        <div fxLayout="row" fxLayoutGap="10px">
+                            <img class="potexting" src="./assets/images/potexts.svg" *ngIf="element.Potext!=''"
+                                matTooltip="{{element.Potext}}">
+                            <span class="potxt">
+                                {{PotextCrop(element.Potext)}}
+                            </span>
+                        </div>
                     </td>
 
                 </ng-container>

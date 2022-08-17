@@ -1,12 +1,11 @@
-import { Component, OnInit, ViewEncapsulation, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { LoginServiceService } from 'src/app/Services/login-service.service';
-import { NgxImgZoomService } from 'ngx-img-zoom';
 import { SafePipe } from '../../filter/Safepipe';
 import { EnrichServiceService } from 'src/app/Services/enrich-service.service';
 import { MatTableDataSource } from '@angular/material/table';
-// import * as puppeteer from 'puppeteer';
+import {Searxuser} from 'searx-api';
 
 export interface PeriodicElement {
   name: string;
@@ -87,6 +86,7 @@ export class CatalogueComponent implements OnInit {
   PriceList = [];
   Url: string;
 
+
   constructor(public nav: LoginServiceService, private _snackBar: MatSnackBar, public EnrichService: EnrichServiceService, private domSanitizer: DomSanitizer, private safe: SafePipe) {
     this.nav.islogin(true);
   }
@@ -148,32 +148,36 @@ export class CatalogueComponent implements OnInit {
     })
   }
 
+  // SearchMaterial(row) {
+  //   this.Isloading = true;
+  //   this.Suggested = [];
+  //   this.WebSearch({ "SearchString": row.Name }).then(
+  //     (data: any) => {
+  //       for (let i = 0; i < data["LinkList"].length; i++) {
+  //         const val = new suggested();
+  //         val.Material = data["LinkList"][i];
+  //         val.Cost = data["PriceList"][i];
+  //         val.Image = data["ImageLinks"][i];
+  //         this.Suggested.push(val);
+  //       }
+  //       this.Url = data["Url"];
+  //       this.Isloading = false;
+  //     }
+  //   ).catch(
+  //     (err: any) => {
+  //       this.Isloading = false;
+  //       this.Suggested = [];
+  //       this.Url = '';
+  //       this._snackBar.open('Something went wrong, Try again', '', {
+  //         duration: 4000,
+  //         panelClass: ['doesnotwork']
+  //       })
+  //     }
+  //   )
+  // }
+
   SearchMaterial(row) {
-    this.Isloading = true;
-    this.Suggested = [];
-    this.WebSearch({ "SearchString": row.Name }).then(
-      (data: any) => {
-        for (let i = 0; i < data["LinkList"].length; i++) {
-          const val = new suggested();
-          val.Material = data["LinkList"][i];
-          val.Cost = data["PriceList"][i];
-          val.Image = data["ImageLinks"][i];
-          this.Suggested.push(val);
-        }
-        this.Url = data["Url"];
-        this.Isloading = false;
-      }
-    ).catch(
-      (err: any) => {
-        this.Isloading = false;
-        this.Suggested = [];
-        this.Url = '';
-        this._snackBar.open('Something went wrong, Try again', '', {
-          duration: 4000,
-          panelClass: ['doesnotwork']
-        })
-      }
-    )
+   
   }
 
 }
