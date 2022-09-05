@@ -122,20 +122,12 @@ export class DeComponent implements OnInit, OnDestroy {
   opencompleted: Boolean;
   openrejected: Boolean;
   Isclickedaccept: boolean;
-  clicked: boolean;
-  allcomplete = false;
-  allComplete = true;
   Isloading = true;
   checkstatuscompleted: boolean;
   checkstatusvalidated: boolean;
   checkstatusrejected: boolean;
   filtertyped: Boolean = false;
-  all: Boolean;
   IsSeperated: Boolean = false;
-  click1: Boolean = false;
-  click2: Boolean = false;
-  click3: Boolean = false;
-  click4: Boolean = false;
   matchBool: Boolean = true;
   hsnBool: Boolean = true;
   grpBool: Boolean = true;
@@ -650,7 +642,6 @@ export class DeComponent implements OnInit, OnDestroy {
       return;
     }
     else {
-      this.clicked = !this.clicked;
       for (let ind = 0; ind < this.selectionOpen.selected.length; ind++) {
         this.updatetoconfirm(ind);
       }
@@ -671,7 +662,6 @@ export class DeComponent implements OnInit, OnDestroy {
       return;
     }
     else {
-      this.click2 = !this.click2;
       for (let i = 0; i < this.selectionValidate.selected.length; i++) {
         this.ValidatedTempFormArry.controls[i].get('status').patchValue('true');
       }
@@ -760,8 +750,7 @@ export class DeComponent implements OnInit, OnDestroy {
   }
 
   CickClear() {
-    console.log(this.CompletedDataSource)
-    if (this.selectionCompleted.selected.length === 0) {
+    if (this.selectionOpen.selected.length === 0) {
       this._snackBar.open('Please select something to Clear/Delete.', 'close', {
         duration: 4000,
         panelClass: ['doesnotwork']
@@ -769,22 +758,19 @@ export class DeComponent implements OnInit, OnDestroy {
       return;
     }
     else {
-      for (let i = 0; i < this.selectionCompleted.selected.length; i++) {
-        this.CompletedDataSource.data[i]['status'] = 'true';
+
+      for (let ind = 0; ind < this.selectionOpen.selected.length; ind++) {
+        let Delete = [{
+          ProjName: this.ProjectName.passingdata,
+          Material: this.OpenDataSource.data[ind]['Material']
+        }]
+        console.log(Delete)
       }
-      for (let ind = 0; ind < this.selectionCompleted.selected.length; ind++) {
-        if (this.CompletedDataSource.data[ind]['status'] === 'true') {
-          let Delete = [{
-            ProjName: this.ProjectName.passingdata,
-            Material: this.CompletedDataSource.data[ind]['Material']
-          }]
-        }
-      }
-      this.selectionCompleted.clear();
-      setTimeout(() => {
-        this.InitializeFormControls();
-        this.release_project();
-      }, 3000);
+      this.selectionOpen.clear();
+      // setTimeout(() => {
+      //   this.InitializeFormControls();
+      //   this.release_project();
+      // }, 3000);
     }
   }
 
@@ -888,7 +874,6 @@ export class DeComponent implements OnInit, OnDestroy {
             duration: 4000,
             panelClass: ['snackbarstyle']
           });
-          this.click2 = false;
         }
         else {
           this.Isloading = false;
@@ -950,7 +935,6 @@ export class DeComponent implements OnInit, OnDestroy {
             duration: 4000,
             panelClass: ['doesnotwork']
           });
-          this.click1 = false;
         }
         else {
           this.Isloading = false;
@@ -1009,15 +993,7 @@ export class DeComponent implements OnInit, OnDestroy {
     }
   }
 
-  deleteData(ind: number) {
-    if (this.ProjectName.passingdata !== undefined) {
-      let Delete = [{
-        ProjName: this.ProjectName.passingdata,
-        Material: this.CompletedTempFormArry.controls[ind].get('Material').value
-      }]
-      console.log(Delete)
-    }
-  }
+
 
   // Sub Functions
   UpdateEnrichDataText(projectupdatetext: UpdateEnrichText): void {
@@ -1072,7 +1048,6 @@ export class DeComponent implements OnInit, OnDestroy {
       });
     }
     this.Isclickedaccept = false;
-    this.clicked = false;
   }
 
   selectrowsvalidates() {
@@ -1086,8 +1061,6 @@ export class DeComponent implements OnInit, OnDestroy {
         panelClass: ['snackbarstyle']
       });
     }
-    this.click1 = false;
-    this.click2 = false;
   }
 
   selectrowscompletes() {
@@ -1101,8 +1074,6 @@ export class DeComponent implements OnInit, OnDestroy {
         panelClass: ['snackbarstyle']
       });
     }
-    this.click3 = false;
-    this.click4 = false;
   }
 
   selectrowsrejects() {

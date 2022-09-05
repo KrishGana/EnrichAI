@@ -115,6 +115,9 @@
             </div>
 
             <div fxLayout="row" fxLayoutAlign="end" class="confirms" fxFlex fxLayoutGap="20px">
+                <button (click)="CickClear()" mat-button class="Delete_button">
+                    Delete
+                </button>
                 <button (click)="ClickAccept()" mat-button class="Confirm_button">
                     Accept
                 </button>
@@ -204,7 +207,7 @@
             </div>
 
             <div fxLayout="row" fxLayoutAlign="end" class="confirms2" fxFlex>
-                <button (click)="DownloadExcel()" *ngIf="click4==false" mat-button class="Confirm_button"> Download <img
+                <button (click)="DownloadExcel()" mat-button class="Confirm_button"> Download <img
                         class="search_place" src="./assets/images/download.svg"></button>
             </div>
         </div>

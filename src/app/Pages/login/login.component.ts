@@ -31,6 +31,7 @@ export class LoginInto {
     ])
   ]
 })
+
 export class LoginComponent implements OnInit {
   hide = true;
   LoginFormGroup: FormGroup
@@ -56,8 +57,9 @@ export class LoginComponent implements OnInit {
   forgotpass() {
     this.router.navigate(['forgotpassword']);
   }
+
   SignIn() {
-    let user = this.LoginFormGroup.get('Username').value
+    let user = this.LoginFormGroup.get('Username').value;
     localStorage.setItem('User', user);
     const log = new LoginInto()
     log.UserName = this.LoginFormGroup.get('Username').value

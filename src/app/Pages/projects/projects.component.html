@@ -51,8 +51,8 @@
             </div>
         </div>
         <div fxLayout="column" class="right-side">
-            <div class="form-container">
-                <div fxLayout="row" fxLayoutAlign="space-between center"
+            <div class="form-container" fxLayout="column" fxFlex="80">
+                <div fxLayout="row wrap" fxLayoutAlign="space-between center"
                     style="padding: 2rem;padding-left: 3rem;padding-bottom: 1rem;" *ngIf="!isNewProject">
                     <div style="color: #1e3e67;font-size: small;">{{displayselectedproject}}</div>
                     <span>{{isNewProject?'Create Project':''}}</span>
@@ -60,7 +60,7 @@
                             (click)="isEdit=false;isReleased=false;iseditclicked=true;ProjectFormGroup.enable()"
                             src="/assets/images/edit.svg"></div>
                 </div>
-                <div fxLayout="row" fxLayoutAlign="space-between center"
+                <div fxLayout="row wrap" fxLayoutAlign="space-between center"
                     style="padding-top: 2rem;padding-left: 3rem;padding-right: 1.5rem;" *ngIf="isNewProject">
                     <span matRipple class="rs-headings" style="cursor: pointer;"
                         (click)="isEdit=false;isReleased=false;iseditclicked=true;ProjectFormGroup.enable()">
@@ -70,9 +70,9 @@
                         <mat-icon>cancel</mat-icon>
                     </button>
                 </div>
-                <form [formGroup]="ProjectFormGroup" autocomplete="off">
+                <form fxLayout="column" [formGroup]="ProjectFormGroup" fxLayoutAlign="space-between center"  autocomplete="off">
                     <div class="form-wrapper" fxLayout="column" fxLayoutAlign="start start">
-                        <div class="input-wrapper" fxLayout="row" fxLayoutAlign="space-between center">
+                        <div class="input-wrapper" fxLayout="row wrap" fxLayoutAlign="space-between center">
                             <label class="rs-headings1">Project</label>
                             <mat-form-field fxFlex=65 class="ProjectformField">
                                 <input matInput type="text" fxFlex formControlName="ProjectName">
@@ -81,7 +81,7 @@
                                     Project is required</mat-error>
                             </mat-form-field>
                         </div>
-                        <div fxLayout="row" fxLayoutAlign="space-between center" class="input-wrapper">
+                        <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="input-wrapper">
                             <label class="rs-headings1">Project Manager</label>
                             <mat-form-field fxFlex=65 class="ProjectformField">
                                 <mat-select formControlName="ProjectManager" fxFlex class="roleselect">
@@ -95,7 +95,7 @@
                                     Project manager is required</mat-error>
                             </mat-form-field>
                         </div>
-                        <div fxLayout="row" fxLayoutAlign="space-between center" class="input-wrapper">
+                        <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="input-wrapper">
                             <label class="rs-headings1">Project Start Date</label>
                             <mat-form-field fxFlex=65 class="ProjectformField" (click)="picker.open()">
                                 <input matInput [matDatepicker]="picker" fxFlex formControlName="Plan_Start">
@@ -111,7 +111,7 @@
                                     Please add a valid start date</mat-error>
                             </mat-form-field>
                         </div>
-                        <div fxLayout="row" fxLayoutAlign="space-between center" class="input-wrapper">
+                        <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="input-wrapper">
                             <label class="rs-headings1">Project End Date</label>
                             <mat-form-field fxFlex=65 class="ProjectformField" (click)="picker1.open()">
                                 <input matInput [matDatepicker]="picker1" fxFlex formControlName="Plan_End">
@@ -127,7 +127,7 @@
                                     Please add a valid end date</mat-error>
                             </mat-form-field>
                         </div>
-                        <div fxLayout="row" fxLayoutAlign="space-between center" class="input-wrapper"
+                        <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="input-wrapper"
                             *ngIf="isNewProject || iseditclicked">
                             <label class="rs-headings1">Data</label>
                             <mat-form-field fxFlex=65 class="ProjectformField">
@@ -137,7 +137,7 @@
                                     Data is required</mat-error>
                             </mat-form-field>
                         </div>
-                        <div fxLayout="row" fxLayoutAlign="space-between center" class="input-wrapper"
+                        <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="input-wrapper"
                             *ngIf="isNewProject || iseditclicked">
                             <label class="rs-headings1">Document</label>
                             <input hidden type="file" #fileInput id="file" (change)="handleFileInput($event)"
@@ -152,24 +152,26 @@
                                     (click)="fileInput.click()">Upload</button>
                             </div>
                         </div>
-                        <div fxLayout="row" fxFlexOffset="4%" fxLayoutGap="23%" class="input-wrapper"
+                        <div fxLayout="row wrap" fxFlexOffset="4%" fxLayoutGap="23%" class="input-wrapper"
                             *ngIf="!isNewProject && !iseditclicked">
                             <label class="rs-headings1">Document</label>
                             <div><span style="color: #90a0b3;font-size: 12px;">No document available</span></div>
                         </div>
                     </div>
+
+                    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px"
+                        [ngClass]="isReleased ? 'projectedit' : 'projectcreate' ">
+                        <button class="foo_button3" mat-button (click)="SaveClicked()"
+                            *ngIf="!isEdit && !isReleased">Save</button>
+                        <button class="foo_button3" mat-button (click)="ReleaseClicked()"
+                            *ngIf="isEdit && isReleased">Release</button>
+                        <button class="foo_button3" mat-button (click)="ReleaseClicked()" *ngIf="isReleased">View
+                            Records</button>
+                    </div>
                 </form>
-                <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px"
-                    [ngClass]="isReleased ? 'projectedit' : 'projectcreate' ">
-                    <button class="foo_button3" mat-button (click)="SaveClicked()"
-                        *ngIf="!isEdit && !isReleased">Save</button>
-                    <button class="foo_button3" mat-button (click)="ReleaseClicked()"
-                        *ngIf="isEdit && isReleased">Release</button>
-                    <button class="foo_button3" mat-button (click)="ReleaseClicked()" *ngIf="isReleased">View
-                        Records</button>
-                </div>
+
             </div>
-            <div style="height: 12rem;width: 97%;">
+            <div fxFlex style="width: 97%;">
                 <div class="timeline-container" fxLayout="row" fxLayoutAlign="start center" fxFlex>
                     <div class="timeline-wrapper" fxLayout="column" (click)="timeline_toggle()">
                         <div class="tlb1" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="0.5rem">

@@ -1,3 +1,28 @@
+@mixin formField {
+    .mat-form-field {
+        width: 80%;
+        line-height: 0.9;
+    }
+
+    .mat-form-field-flex>.mat-form-field-infix {
+        padding: 0.4em 0px !important;
+    }
+
+    .mat-form-field-label-wrapper {
+        top: -1.5em;
+    }
+
+    .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+        transform: translateY(-1.1em) scale(.75);
+        width: 133.33333%;
+    }
+
+    .mat-form-field-infix {
+        position: relative;
+        top: 3px;
+    }
+}
+
 #Outer {
 
     padding-top: 15px;
@@ -67,7 +92,8 @@
         }
 
         .Select_button {
-            color: #2085fb;
+            color: white;
+            background-color: #2085fb;
             border: 1px solid #2085fb;
             font-size: 16px !important;
             transform: scale(0.8);
@@ -75,8 +101,8 @@
 
         .remove_button,
         .add_button {
-            background-color: white !important;
-            color: #2085fb !important;
+            background-color: #2085fb !important;
+            color: white !important;
             transform: scale(0.5) !important;
             box-shadow: none !important;
             border: 2px solid #2085fb;
@@ -84,7 +110,8 @@
 
         .selectCountDiv {
             border: 1px solid #2085fb;
-            input{
+
+            input {
                 border: none;
             }
         }
@@ -199,6 +226,16 @@
             }
         }
 
+        .Delete_button {
+            width: 24%;
+            background-color: red;
+            height: 26px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .Confirm_button {
             width: 24%;
             background-color: #00ba56;
@@ -287,28 +324,7 @@
 
             .mat-cell {
                 text-align: left !important;
-
-                .mat-form-field {
-                    width: 80%;
-                }
-
-                .mat-form-field-flex>.mat-form-field-infix {
-                    padding: 0.4em 0px !important;
-                }
-
-                .mat-form-field-label-wrapper {
-                    top: -1.5em;
-                }
-
-                .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
-                    transform: translateY(-1.1em) scale(.75);
-                    width: 133.33333%;
-                }
-
-                .mat-form-field-infix {
-                    position: relative;
-                    top: 3px;
-                }
+                @include formField();
 
                 input.mat-input-element {
                     position: relative;

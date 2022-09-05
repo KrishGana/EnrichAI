@@ -7,7 +7,7 @@ import { LoginServiceService } from './Services/login-service.service';
 import { BnNgIdleService } from 'bn-ng-idle';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -20,11 +20,8 @@ export class AppComponent implements OnInit,AfterViewInit {
   UserName : string;
   userrole: string;
   setInterval = setInterval;
-  title(title: any) {
-    throw new Error('Method not implemented.');
-  }
   navItems: NavItem[] = [];
-  navItemsForUser : NavItem[]=[];
+  
   @ViewChild("appDrawer") appDrawer: ElementRef;
   /**
    *
@@ -112,26 +109,7 @@ export class AppComponent implements OnInit,AfterViewInit {
         displayName:"Catalogue"
       }
     ];
-    this.navItemsForUser = [ 
-      {
-        route:'projects',
-        iconName:'Project',
-        isSvgIcon:true,
-        displayName:"Projects"
-      },
-      {
-        route:'deselect',
-        iconName:'Data_enrich',
-        isSvgIcon:true,
-        displayName:"Data Enrich"
-      },
-      {
-        route:'catalogue',
-        iconName:'Cataloge',
-        isSvgIcon:true,
-        displayName:"Cataloge"
-      }
-    ];
+    
     this.nav.changeEmitted$.subscribe(
       value => {
         this.islogin = value;

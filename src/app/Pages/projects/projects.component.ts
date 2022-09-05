@@ -22,7 +22,7 @@ type AOA = any[][];
         transform: 'translateX(0%)'
       })),
       state('closed', style({
-        transform: 'translateX(-110%)'
+        transform: 'translateX(-150%)'
       })),
       transition('open => closed', [
         animate('0.3s')
@@ -289,6 +289,12 @@ export class ProjectsComponent implements OnInit {
       }
       this.GetAllProjects();
       this.ResetProject();
+    }, err => {
+      this.isEdit = !this.isEdit;
+      this._snackBar.open('Something went wrong', '', {
+        duration: 4000,
+        panelClass: ['doesnotwork']
+      });
     }
     );
   }
